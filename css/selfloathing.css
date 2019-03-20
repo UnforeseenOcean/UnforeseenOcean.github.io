@@ -1,0 +1,86 @@
+/* Selfloathing.css by Torbjorn 2019 */
+/* Hide your fears */
+/* Never show your inner self */
+/* Hide your pain */
+
+@font-face {
+    font-family: nullfont;
+    src: url('/font/Nothing.woff');
+}
+
+.pain {
+    width: 0.01%;
+    height: 0.01%;
+    overflow: hidden;
+}
+
+.misery {
+    filter: opacity(0%);
+}
+
+.depression {
+    transform: scale(0%, 0%);
+    overflow: hidden;
+}
+
+.hopeless {
+    display: none;
+}
+
+.death {
+    visibility: hidden;
+}
+
+.helpless {
+    color: rgba(0, 0, 0, 0.0);
+}
+
+.worthless {
+    font-family: "nullfont";
+    font-size: 0.0em;
+    z-index: -999999999;
+    display: inline-block;
+}
+
+.sadness {
+    backface-visibility: hidden;
+}
+
+.loathing {
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+.hate {
+    opacity: 0;
+}
+
+.anger {
+    position: absolute;
+    top: -1000%;
+    left: -1000%;
+    overflow: hidden;
+}
+
+.self-destruct {
+    clip-path: polygon(0px 0px,0px 0px,0px 0px,0px 0px);
+}
+
+.empty {
+    color: rgba(0, 0, 0, 0.0);
+    background-color: rgba(0, 0, 0, 0.0);
+    opacity: 0;
+    z-index: -999999999;
+    filter: opacity(0%);
+    backface-visibility: hidden;
+    visibility: hidden;
+    font-family: "nullfont", monospace;
+    font-size: 0.01em;
+    transform: scale(0%, 0%);
+    position: absolute;
+    top: -1000%;
+    left: -1000%;
+    overflow: hidden;
+    display: none;
+}
+
+/* TIP OF THE DAY: NEVER BLAME THE USER FOR YOUR FUCKUPS */

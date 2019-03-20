@@ -1,0 +1,25 @@
+img.grayscale {
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(100%);
+}
+img.grayscale:hover {
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+    -webkit-filter: grayscale(0%);
+}
+.lead {
+color: #34495e;
+}
+.lead:hover{
+color: #3498db;
+}
+#dashboard { position: relative; height: 480px; background-color: #69c5e5; z-index: 300; -webkit-transform: translate3d(0,0,0); }
+
+	#dashboard_left { position: absolute; top: 0; left: 0; height: 100%; width: 50%; background-image: url(../Gloom.io_files/mockup.jpg); background-size: cover; background-position: top right; }
+	#dashboard_right { position: absolute; top: 0; right: 0; height: 100%; width: 50%; display: table; }
+	.textwrap { display: table-cell; vertical-align: middle; padding: 0 85px; }
+	#dashboard_right h2 {font-weight: 300;margin-bottom: 48px;font-size: 36px;line-height: 48px;color: #4a4a4a; }
+	#dashboard_right a { color: #4a4a4a; }
+	#dashboard_right a:hover { color: #FFF; }
+
+.partial-pricing-table{text-align:center}.partial-pricing-table.front-facing{padding-top:48px}.partial-pricing-table.front-facing .column{background-color:#fbfbfb}.partial-pricing-table.front-facing .column.startup{box-shadow:0 0 10px rgba(0,0,0,0.05);-moz-box-shadow:0 0 10px rgba(0,0,0,0.05);-webkit-box-shadow:0 0 10px rgba(0,0,0,0.05);-o-box-shadow:0 0 10px rgba(0,0,0,0.05);-ms-box-shadow:0 0 10px rgba(0,0,0,0.05);background-color:#fff;position:relative;top:-48px;padding-bottom:48px;margin-bottom:-48px}.partial-pricing-table.update-plan .column{width:33.333%}.partial-pricing-table.update-plan .column.startup .scratched-out-price{display:none}.partial-pricing-table.update-plan .column.startup .sale-banner-container{display:none}@media screen and (max-width: 900px){.partial-pricing-table.update-plan .column{width:100%;margin-bottom:2rem}.partial-pricing-table.update-plan .column:last-of-type{margin-bottom:0px}.partial-pricing-table.update-plan .column.hobby{border-right:1px solid #e0e0e0}.partial-pricing-table.update-plan .column.business{border-left:1px solid #e0e0e0}.partial-pricing-table.update-plan .column .table-row:empty{display:none}}.partial-pricing-table .column{width:24.85%;float:left;background-color:#f8f8f8;border:1px solid #e0e0e0}.partial-pricing-table .column.hobby{border-right:none}.partial-pricing-table .column.business{border-left:none}.partial-pricing-table .column.startup .scratched-out-price{text-decoration:line-through;color:#aaa;margin-bottom:1.8rem;font-size:1.25rem}.partial-pricing-table .column.startup .sale-banner-container{font-weight:500;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);position:absolute;top:-12px;right:-12px;height:80px;width:80px;line-height:55px;font-size:.75rem;color:#aaa}.partial-pricing-table .column.startup .sale-banner-container .sale-banner-background{height:0px;width:0px;border:40px solid #f0f0f0;border-top-color:transparent;border-left-color:transparent;border-right-color:transparent;position:absolute;top:-40px;left:0px}.partial-pricing-table .column.startup .sale-banner-container .sale-text{position:relative}.partial-pricing-table .column.enterprise{border-left:none}.partial-pricing-table .column.enterprise .header .price{font-size:4rem;line-height:3.6rem}.partial-pricing-table .column .button-container{margin:1.5rem}.partial-pricing-table .column .header{margin:1.9rem 1.5rem 1.9rem;padding-bottom:1.5rem;border-bottom:1px solid #e0e0e0}.partial-pricing-table .column .header .price{font-size:64px;line-height:57.6px;font-size:4rem;line-height:3.6rem}.partial-pricing-table .column .header .price .sup,.partial-pricing-table .column .header .price .sub{font-size:16px;line-height:24px;font-size:1rem;line-height:1.5rem;position:relative}.partial-pricing-table .column .header .price .sup{top:-30px;left:15px}.partial-pricing-table .column .header .price .sub{right:15px}.partial-pricing-table .column .header .price .amount{font-weight:500}.partial-pricing-table .column .header .name{margin-top:.5rem;text-transform:uppercase;font-size:20px;line-height:29px;font-size:1.25rem;line-height:1.8125rem;letter-spacing:2px}.partial-pricing-table .column .table-row{font-size:14px;line-height:21.35px;font-size:0.875rem;line-height:1.33438rem;margin-bottom:1rem;color:#666666}.partial-pricing-table .column .table-row:last-of-type{margin-bottom:1.5rem}.partial-pricing-table .column .table-row:empty{color:#aaa}.partial-pricing-table .column .table-row:empty:after{content:"-"}.partial-pricing-table .column .table-row .superscripts{display:none}.partial-pricing-table ul {list-style: none;margin: 0px 0px 5px 0px;}
