@@ -1,0 +1,336 @@
+<html>
+<meta charset="utf-8">
+
+<head>
+    <title>Layered SVG Demo</title>
+    <style>
+        body{
+            overflow-x: hidden;
+            font-family: "Helvetica Neue", "Rubik", "Arial", sans-serif;
+        }
+        .weatherbox {
+            /* placeholder color: linear-gradient(#597ef9, #ff9583); */
+            background: #000000;
+            border-style: ridge;
+            width: 1285px;
+            border-width: 20px;
+            border-color: burlywood;
+            
+        }
+
+        .clouds-front {
+            filter: blur(1px);
+            opacity: 0.9;
+        }
+
+        .clouds-back {
+            filter: blur(3px);
+            opacity: 0.86;
+        }
+
+        .mountains, .mountains-top{
+        }
+        .stars1 {
+            animation-name: twinkle;
+            animation-duration: 5s;
+            animation-delay: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+        .stars2 {
+            animation-name: twinkle;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+        .twinkle {
+            
+        }
+        .top-text{
+            font-weight: 300;
+            font-size: 1.2em;
+            margin: 4px;
+            width: 1285px;
+            text-align: center;
+        }
+        .bottom-text{
+            font-weight: 300;
+            font-size: 0.9em;
+            margin: 3px;
+            width: 1285px;
+            text-align: center;
+        }
+        
+        @keyframes twinkle {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        .dof1{
+            filter: blur(3px);
+        }
+        .dof2{
+            filter: blur(2.5px);
+        }
+        .dof3{
+            filter: blur(2px);
+        }
+        .dof4{
+            filter: blur(1.5px);
+        }
+        .dof5{
+            filter: blur(1px);
+        }
+    </style>
+</head>
+
+<body onload="window.setInterval(update,1000);">
+    <div class="top-text">
+    Time-reactive SVG graphics
+    </div>
+    <div id="weatherbox" class="weatherbox">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800">
+            <g id="cloud-back" class="clouds-back">
+                <!--clouds on the back-->
+                <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="401.5" y1="438" x2="401.5" y2="573">
+                    <stop offset="0" stop-color="#eff8f9" />
+                    <stop offset=".5" stop-color="#e8eae8" />
+                    <stop offset=".898" stop-color="#dae4e3" />
+                    <stop offset="1" stop-color="#d5e2e2" />
+                </linearGradient>
+                <path fill="url(#SVGID_2_)" d="M500 505.5c0-20.158-16.342-36.5-36.5-36.5-.305 0-.607.016-.91.023C459.947 451.463 444.796 438 426.5 438c-15.899 0-29.417 10.169-34.422 24.355A36.33 36.33 0 0 0 371.5 456c-18.371 0-33.565 13.574-36.117 31.237C317.164 489.283 303 504.734 303 523.5c0 20.158 16.342 36.5 36.5 36.5 2.857 0 5.634-.339 8.303-.96 6.683 8.497 17.049 13.96 28.697 13.96 14.323 0 26.712-8.254 32.689-20.262.903.105 1.814.183 2.736.222C417.943 564.847 430.266 573 444.5 573c19.806 0 35.916-15.777 36.474-35.449C492.31 531.357 500 519.328 500 505.5z" />
+                <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="777.5" y1="472" x2="777.5" y2="607">
+                    <stop offset="0" stop-color="#eff8f9" />
+                    <stop offset=".5" stop-color="#e8eae8" />
+                    <stop offset=".898" stop-color="#dae4e3" />
+                    <stop offset="1" stop-color="#d5e2e2" />
+                </linearGradient>
+                <path fill="url(#SVGID_3_)" d="M876 539.5c0-20.158-16.342-36.5-36.5-36.5-.305 0-.607.016-.91.023C835.947 485.463 820.797 472 802.5 472c-15.898 0-29.416 10.169-34.422 24.355A36.327 36.327 0 0 0 747.5 490c-18.371 0-33.565 13.574-36.117 31.237C693.164 523.283 679 538.734 679 557.5c0 20.158 16.342 36.5 36.5 36.5 2.857 0 5.635-.339 8.303-.96 6.683 8.497 17.049 13.96 28.697 13.96 14.323 0 26.713-8.254 32.689-20.262.902.105 1.814.183 2.735.222C793.943 598.847 806.266 607 820.5 607c19.806 0 35.916-15.777 36.474-35.449C868.31 565.357 876 553.328 876 539.5z" />
+                <linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="1169.5" y1="383" x2="1169.5" y2="518">
+                    <stop offset="0" stop-color="#eff8f9" />
+                    <stop offset=".5" stop-color="#e8eae8" />
+                    <stop offset=".898" stop-color="#dae4e3" />
+                    <stop offset="1" stop-color="#d5e2e2" />
+                </linearGradient>
+                <path fill="url(#SVGID_4_)" d="M1268 450.5c0-20.158-16.342-36.5-36.5-36.5-.305 0-.607.016-.91.023-2.643-17.561-17.793-31.023-36.09-31.023-15.898 0-29.416 10.169-34.422 24.355A36.32 36.32 0 0 0 1139.5 401c-18.371 0-33.565 13.574-36.117 31.237-18.219 2.046-32.383 17.497-32.383 36.263 0 20.158 16.342 36.5 36.5 36.5 2.857 0 5.635-.339 8.303-.96 6.683 8.497 17.049 13.96 28.697 13.96 14.323 0 26.713-8.254 32.689-20.262.902.105 1.814.183 2.735.222 6.019 11.887 18.341 20.04 32.575 20.04 19.806 0 35.916-15.777 36.474-35.449C1260.31 476.357 1268 464.328 1268 450.5z" />
+            </g>
+
+            <g id="mountain" class="mountains">
+                <!--Mountains-->
+                <linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="200.5" y1="530.242" x2="200.5" y2="801">
+                    <stop offset="0" stop-color="#b0eaef" />
+                    <stop offset="1" stop-color="#71bf6d" />
+                </linearGradient>
+                <path class="dof1" fill="url(#SVGID_6_)" d="M401.098 801L267.264 568.942c-.992.081-2.011.003-3.07.003-32.2 0-32.2-38.703-64.4-38.703-32.199 0-32.199 38.609-64.398 38.609-.583 0-1.134.195-1.696.17L-.098 801h401.196z" />
+                <linearGradient id="SVGID_7_" gradientUnits="userSpaceOnUse" x1="432" y1="622.045" x2="432" y2="801">
+                    <stop offset="0" stop-color="#b0eaef" />
+                    <stop offset="1" stop-color="#71bf6d" />
+                </linearGradient>
+                <path class="dof2" fill="url(#SVGID_7_)" d="M429.396 653.82c-21.749 0-28.814-17.371-41.028-28.814L286.902 801h290.196L473.922 622.045c-14.54 11.037-20.788 31.775-44.526 31.775z" />
+                <linearGradient id="SVGID_10_" gradientUnits="userSpaceOnUse" x1="632.5" y1="549.242" x2="632.5" y2="801">
+                    <stop offset="0" stop-color="#b0eaef" />
+                    <stop offset="1" stop-color="#71bf6d" />
+                </linearGradient>
+                <path class="dof3" fill="url(#SVGID_10_)" d="M833.098 801L708.699 585.285c-3.83 1.734-8.23 2.66-13.506 2.66-32.199 0-32.199-38.703-64.4-38.703-32.199 0-32.199 38.609-64.398 38.609-4.044 0-7.579-.377-10.735-1.442L431.902 801h401.196z" />
+                <linearGradient id="SVGID_12_" gradientUnits="userSpaceOnUse" x1="842.049" y1="444.305" x2="842.049" y2="801">
+                    <stop offset="0" stop-color="#b0eaef" />
+                    <stop offset="1" stop-color="#71bf6d" />
+                </linearGradient>
+                <path class="dof4" fill="url(#SVGID_12_)" d="M1079.098 801L875.684 448.426c-4.364-2.451-9.483-4.121-15.891-4.121-32.198 0-32.198 38.578-64.397 38.578-2.381 0-4.567-.015-6.623-.406L605 801h474.098z" />
+                <linearGradient id="SVGID_14_" gradientUnits="userSpaceOnUse" x1="1079.5" y1="634.242" x2="1079.5" y2="801">
+                    <stop offset="0" stop-color="#b0eaef" />
+                    <stop offset="1" stop-color="#71bf6d" />
+                </linearGradient>
+                <path class="dof5" fill="url(#SVGID_14_)" d="M1280.098 801l-95.504-165.667c-24.455 5.792-27.117 37.612-56.4 37.612-32.199 0-32.199-38.703-64.4-38.703-32.198 0-32.198 38.609-64.397 38.609-17.447 0-25.442-11.108-34.227-21.504L878.902 801h401.196z" />
+            </g>
+
+            <g id="mountain-top" class="mountains-top">
+                <!--Mountain peaks-->
+                <linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="200.482" y1="453.054" x2="200.482" y2="568.82">
+                    <stop offset="0" stop-color="#e9f9fa" />
+                    <stop offset=".219" stop-color="#e5f8f9" />
+                    <stop offset=".438" stop-color="#d9f5f7" />
+                    <stop offset=".658" stop-color="#c5eff3" />
+                    <stop offset=".827" stop-color="#b0eaef" />
+                    <stop offset="1" stop-color="#8bd6e9" />
+                </linearGradient>
+                <path class="dof1" fill="url(#SVGID_5_)" d="M199.793 530.18c32.2 0 32.2 38.641 64.4 38.641 1.059 0 2.079-.047 3.07-.128L200.5 453.054l-66.801 115.702c.563.025 1.113.064 1.696.064 32.2 0 32.2-38.64 64.398-38.64z" />
+                <linearGradient id="SVGID_8_" gradientUnits="userSpaceOnUse" x1="431.145" y1="549.183" x2="431.145" y2="653.82">
+                    <stop offset="0" stop-color="#e9f9fa" />
+                    <stop offset=".219" stop-color="#e5f8f9" />
+                    <stop offset=".438" stop-color="#d9f5f7" />
+                    <stop offset=".658" stop-color="#c5eff3" />
+                    <stop offset=".827" stop-color="#b0eaef" />
+                    <stop offset="1" stop-color="#8bd6e9" />
+                </linearGradient>
+                <path class="dof2" fill="url(#SVGID_8_)" d="M388.368 624.756c12.213 11.443 19.279 29.064 41.028 29.064 23.738 0 29.986-20.988 44.527-32.025L432 549.183l-43.632 75.573z" />
+                <linearGradient id="SVGID_9_" gradientUnits="userSpaceOnUse" x1="632.18" y1="453.054" x2="632.18" y2="587.82">
+                    <stop offset="0" stop-color="#e9f9fa" />
+                    <stop offset=".219" stop-color="#e5f8f9" />
+                    <stop offset=".438" stop-color="#d9f5f7" />
+                    <stop offset=".658" stop-color="#c5eff3" />
+                    <stop offset=".827" stop-color="#b0eaef" />
+                    <stop offset="1" stop-color="#8bd6e9" />
+                </linearGradient>
+                <path class="dof3" fill="url(#SVGID_9_)" d="M630.793 549.18c32.201 0 32.201 38.641 64.4 38.641 5.275 0 9.676-1.051 13.506-2.785L632.5 453.054l-76.839 133.09c3.156 1.065 6.691 1.677 10.735 1.677 32.199-.001 32.199-38.641 64.397-38.641z" />
+                <linearGradient id="SVGID_11_" gradientUnits="userSpaceOnUse" x1="832.229" y1="389.918" x2="832.229" y2="482.821">
+                    <stop offset="0" stop-color="#e9f9fa" />
+                    <stop offset=".219" stop-color="#e5f8f9" />
+                    <stop offset=".438" stop-color="#d9f5f7" />
+                    <stop offset=".658" stop-color="#c5eff3" />
+                    <stop offset=".827" stop-color="#b0eaef" />
+                    <stop offset="1" stop-color="#8bd6e9" />
+                </linearGradient>
+                <path class="dof4" fill="url(#SVGID_11_)" d="M859.793 444.18c6.407 0 11.526 1.545 15.891 3.996l-33.635-58.257-53.276 92.277c2.056.392 4.242.625 6.623.625 32.199-.001 32.199-38.641 64.397-38.641z" />
+                <linearGradient id="SVGID_13_" gradientUnits="userSpaceOnUse" x1="1074.881" y1="453.054" x2="1074.881" y2="672.82">
+                    <stop offset="0" stop-color="#e9f9fa" />
+                    <stop offset=".219" stop-color="#e5f8f9" />
+                    <stop offset=".438" stop-color="#d9f5f7" />
+                    <stop offset=".658" stop-color="#c5eff3" />
+                    <stop offset=".827" stop-color="#b0eaef" />
+                    <stop offset="1" stop-color="#8bd6e9" />
+                </linearGradient>
+                <path class="dof5" fill="url(#SVGID_13_)" d="M999.396 672.82c32.199 0 32.199-38.641 64.397-38.641 32.201 0 32.201 38.641 64.4 38.641 29.283 0 31.945-31.945 56.4-37.737L1079.5 453.054 965.169 651.082c8.784 10.396 16.779 21.738 34.227 21.738z" />
+            </g>
+
+            <g id="cloud-front" class="clouds-front">
+                <!--Clouds on the front-->
+                <linearGradient id="SVGID_15_" gradientUnits="userSpaceOnUse" x1="958.5" y1="519" x2="958.5" y2="654">
+                    <stop offset="0" stop-color="#eff8f9" />
+                    <stop offset=".5" stop-color="#e8eae8" />
+                    <stop offset=".898" stop-color="#dae4e3" />
+                    <stop offset="1" stop-color="#d5e2e2" />
+                </linearGradient>
+                <path fill="url(#SVGID_15_)" d="M1057 586.5c0-20.158-16.342-36.5-36.5-36.5-.305 0-.607.016-.91.023-2.643-17.56-17.793-31.023-36.09-31.023-15.898 0-29.416 10.169-34.422 24.355A36.327 36.327 0 0 0 928.5 537c-18.371 0-33.565 13.574-36.117 31.237C874.164 570.283 860 585.734 860 604.5c0 20.158 16.342 36.5 36.5 36.5 2.857 0 5.635-.339 8.303-.96 6.683 8.497 17.049 13.96 28.697 13.96 14.323 0 26.713-8.254 32.689-20.262.902.105 1.814.183 2.735.222 6.019 11.887 18.341 20.04 32.575 20.04 19.806 0 35.916-15.777 36.474-35.449C1049.31 612.357 1057 600.328 1057 586.5z" />
+                <linearGradient id="SVGID_16_" gradientUnits="userSpaceOnUse" x1="562.5" y1="520" x2="562.5" y2="655">
+                    <stop offset="0" stop-color="#eff8f9" />
+                    <stop offset=".5" stop-color="#e8eae8" />
+                    <stop offset=".898" stop-color="#dae4e3" />
+                    <stop offset="1" stop-color="#d5e2e2" />
+                </linearGradient>
+                <path fill="url(#SVGID_16_)" d="M661 587.5c0-20.158-16.342-36.5-36.5-36.5-.305 0-.607.016-.91.023C620.947 533.463 605.796 520 587.5 520c-15.899 0-29.417 10.169-34.422 24.355A36.33 36.33 0 0 0 532.5 538c-18.371 0-33.565 13.574-36.117 31.237C478.164 571.283 464 586.734 464 605.5c0 20.158 16.342 36.5 36.5 36.5 2.857 0 5.634-.339 8.303-.96 6.683 8.497 17.049 13.96 28.697 13.96 14.323 0 26.712-8.254 32.689-20.262.903.105 1.814.183 2.736.222C578.943 646.847 591.266 655 605.5 655c19.806 0 35.916-15.777 36.474-35.449C653.31 613.357 661 601.328 661 587.5z" />
+                <linearGradient id="SVGID_17_" gradientUnits="userSpaceOnUse" x1="124.5" y1="495" x2="124.5" y2="630">
+                    <stop offset="0" stop-color="#eff8f9" />
+                    <stop offset=".5" stop-color="#e8eae8" />
+                    <stop offset=".898" stop-color="#dae4e3" />
+                    <stop offset="1" stop-color="#d5e2e2" />
+                </linearGradient>
+                <path fill="url(#SVGID_17_)" d="M223 562.5c0-20.158-16.342-36.5-36.5-36.5-.305 0-.607.016-.91.023C182.947 508.463 167.796 495 149.5 495c-15.899 0-29.417 10.169-34.422 24.355A36.33 36.33 0 0 0 94.5 513c-18.371 0-33.565 13.574-36.117 31.237C40.164 546.283 26 561.734 26 580.5c0 20.158 16.342 36.5 36.5 36.5 2.857 0 5.634-.339 8.303-.96C77.485 624.537 87.852 630 99.5 630c14.323 0 26.712-8.254 32.689-20.262.903.105 1.814.183 2.736.222C140.943 621.847 153.266 630 167.5 630c19.806 0 35.916-15.777 36.474-35.449C215.31 588.357 223 576.328 223 562.5z" />
+            </g>
+            <g id="Stars-1" class="stars1 twinkle" fill="#FFF">
+                <circle cx="733" cy="48" r="3" />
+                <circle cx="524" cy="165" r="3" />
+                <circle cx="433" cy="75" r="3" />
+                <circle cx="621" cy="197" r="3" />
+                <circle cx="64" cy="63" r="3" />
+                <circle cx="709" cy="265" r="3" />
+                <circle cx="1111" cy="104" r="3" />
+                <circle cx="173" cy="94" r="3" />
+                <circle cx="263" cy="194" r="3" />
+                <circle cx="1185" cy="232" r="3" />
+                <circle cx="223" cy="34" r="3" />
+            </g>
+            <g id="Stars-2" class="stars2 twinkle" fill="#FFF">
+                <circle cx="592" cy="87" r="3" />
+                <circle cx="844" cy="101" r="3" />
+                <circle cx="943" cy="81" r="3" />
+                <circle cx="254" cy="84" r="3" />
+                <circle cx="427" cy="232" r="3" />
+                <circle cx="983" cy="191" r="3" />
+                <circle cx="354" cy="164" r="3" />
+                <circle cx="189" cy="246" r="3" />
+                <circle cx="154" cy="144" r="3" />
+                <circle cx="390" cy="28" r="3" />
+                <circle cx="61" cy="246" r="3" />
+                <circle cx="1017" cy="249" r="3" />
+                <circle cx="1230" cy="117" r="3" />
+                <circle cx="789" cy="141" r="3" />
+            </g>
+        </svg>
+    </div>
+    <div class="bottom-text">
+    <p>&copy; 2019 Blackbeard | Sky colors from https://codepen.io/billyysea/pen/whjbK</p>
+    </div>
+</body>
+<!-- Colors from https://codepen.io/billyysea/pen/whjbK -->
+<script>
+    window.setInterval(refresh,60000);
+    function update() {
+        // define sky gradients
+        var skyColors = ["#00000c;", "linear-gradient(to bottom, #020111 85%,#191621 100%);", "linear-gradient(to bottom, #020111 60%,#20202c 100%);", "linear-gradient(to bottom, #020111 10%,#3a3a52 100%);", "linear-gradient(to bottom, #20202c 0%,#515175 100%);", "linear-gradient(to bottom, #40405c 0%,#6f71aa 80%,#8a76ab 100%)", "linear-gradient(to bottom, #4a4969 0%,#7072ab 50%,#cd82a0 100%)", "linear-gradient(to bottom, #757abf 0%,#8583be 60%,#eab0d1 100%)", "linear-gradient(to bottom, #82addb 0%,#ebb2b1 100%)", "linear-gradient(to bottom, #94c5f8 1%,#a6e6ff 70%,#b1b5ea 100%)", "linear-gradient(to bottom, #b7eaff 0%,#94dfff 100%)", "linear-gradient(to bottom, #9be2fe 0%,#67d1fb 100%)", "linear-gradient(to bottom, #90dffe 0%,#38a3d1 100%)", "linear-gradient(to bottom, #57c1eb 0%,#246fa8 100%)", "linear-gradient(to bottom, #2d91c2 0%,#1e528e 100%)", "linear-gradient(to bottom, #2473ab 0%,#1e528e 70%,#5b7983 100%)", "linear-gradient(to bottom, #1e528e 0%,#265889 50%,#9da671 100%)", "linear-gradient(to bottom, #1e528e 0%,#728a7c 50%,#e9ce5d 100%)", "linear-gradient(to bottom, #154277 0%,#576e71 30%,#e1c45e 70%,#b26339 100%)", "linear-gradient(to bottom, #163C52 0%,#4F4F47 30%,#C5752D 60%,#B7490F 80%, #2F1107 100%)", "linear-gradient(to bottom, #071B26 0%,#071B26 30%,#8A3B12 80%,#240E03 100%)", "linear-gradient(to bottom, #010A10 30%,#59230B 80%,#2F1107 100%)", "linear-gradient(to bottom, #090401 50%,#4B1D06 100%)", "linear-gradient(to bottom, #00000c 80%,#150800 100%)"];
+        
+        // define filters for mountains
+        var mountainFilter = ["filter: brightness(4%); box-shadow: 0 3000px rgba(0, 0, 12, 0.5) inset;", "filter: brightness(5%); box-shadow: 0 3000px rgba(25, 22, 33, 0.5) inset;", "filter: brightness(1.7%); box-shadow: 0 3000px rgba(32, 32, 44, 0.5) inset;", "filter: brightness(3%); box-shadow: 0 3000px rgba(58, 58, 82, 0.5) inset;", "filter: brightness(5%); box-shadow: 0 3000px rgba(81, 81, 117, 0.4) inset;", "filter: brightness(33%); box-shadow: 0 3000px rgba(138, 118, 171, 0.3) inset;", "filter: brightness(45%); box-shadow: 0 3000px rgba(112, 114, 171, 0.2) inset;", "filter: brightness(80%); box-shadow: 0 3000px rgba(234, 176, 209, 0.1) inset;", "filter: brightness(90%); box-shadow: 0 3000px rgba(130, 173, 219, 0.03) inset;", "filter: brightness(100%); box-shadow: 0 3000px rgba(148, 197, 248, 0.01) inset;", "filter: brightness(100%); box-shadow: 0 3000px rgba(148, 223, 255, 0.01) inset;", "filter: brightness(100%); box-shadow: 0 3000px rgba(155, 226, 254, 0.01) inset;", "filter: brightness(100%); box-shadow: 0 3000px rgba(144, 223, 254, 0.01) inset;", "filter: brightness(100%); box-shadow: 0 3000px rgba(87, 193, 235, 0.01) inset;", "filter: brightness(100%); box-shadow: 0 3000px rgba(45, 145, 194, 0.01) inset;", "filter: brightness(90%); box-shadow: 0 3000px rgba(45, 145, 194, 0.05) inset;", "filter: brightness(80%); box-shadow: 0 3000px rgba(36, 115, 171, 0.07) inset;", "filter: brightness(60%); box-shadow: 0 3000px rgba(30, 82, 142, 0.1) inset;", "filter: brightness(40%); box-shadow: 0 3000px rgba(30, 82, 142, 0.15) inset;", "filter: brightness(25%); box-shadow: 0 3000px rgba(21, 66, 119, 0.27) inset;", "filter: brightness(15%); box-shadow: 0 3000px rgba(22, 60, 82, 0.4) inset;", "filter: brightness(10%); box-shadow: 0 3000px rgba(7, 27, 38, 0.5) inset;", "filter: brightness(5%); box-shadow: 0 3000px rgba(1, 10, 16, 0.2) inset;", "filter: brightness(4%); box-shadow: 0 3000px rgba(0, 0, 12, 0.2) inset;"];
+        
+        // define filters for clouds
+        var cloudFilter = ["filter: brightness(4%); box-shadow: 0 3000px rgba(0, 0, 12, 0.5) inset;", "filter: brightness(4%); box-shadow: 0 3000px rgba(2, 1, 17, 0.5) inset;", "filter: brightness(5%); box-shadow: 0 3000px rgba(32, 32, 44, 0.5) inset;", "filter: brightness(5%); box-shadow: 0 3000px rgba(58, 58, 82, 0.5) inset;", "filter: brightness(5%); box-shadow: 0 3000px rgba(81, 81, 117, 0.4) inset;", "filter: brightness(50%); box-shadow: 0 3000px rgba(138, 118, 171, 0.3) inset;", "filter: brightness(70%); box-shadow: 0 3000px rgba(205, 130, 160, 0.2) inset;", "filter: brightness(90%); box-shadow: 0 3000px rgba(234, 176, 209, 0.1) inset;", "filter: brightness(100%); box-shadow: 0 3000px rgba(235, 178, 177, 0.03) inset;", "filter: brightness(100%); box-shadow: 0 3000px rgba(166, 230, 255, 0.01) inset;", "filter: brightness(100%); box-shadow: 0 3000px rgba(183, 234, 255, 0.01) inset;", "filter: brightness(100%); box-shadow: 0 3000px rgba(155, 226, 254, 0.01) inset;", "filter: brightness(100%); box-shadow: 0 3000px rgba(144, 223, 254, 0.01) inset;", "filter: brightness(100%); box-shadow: 0 3000px rgba(87, 193, 235, 0.01) inset;", "filter: brightness(100%); box-shadow: 0 3000px rgba(45, 145, 194, 0.01) inset;", "filter: brightness(100%); box-shadow: 0 3000px rgba(91, 121, 131, 0.05) inset;", "filter: brightness(100%); box-shadow: 0 3000px rgba(157, 166, 113, 0.07) inset;", "filter: brightness(85%); box-shadow: 0 3000px rgba(233, 206, 93, 0.1) inset;", "filter: brightness(80%); box-shadow: 0 3000px rgba(225, 196, 94, 0.15) inset;", "filter: brightness(70%); box-shadow: 0 3000px rgba(197, 117, 45, 0.27) inset;", "filter: brightness(60%); box-shadow: 0 3000px rgba(138, 59, 18, 0.4) inset;", "filter: brightness(50%); box-shadow: 0 3000px rgba(89, 35, 11, 0.5) inset;", "filter: brightness(30%); box-shadow: 0 3000px rgba(75, 29, 6, 0.2) inset;", "filter: brightness(4%); box-shadow: 0 3000px rgba(21, 8, 0, 0.2) inset;"];
+        
+        var time = new Date();
+        var tVar = time.getHours();
+        // background
+        var elem = document.getElementById("weatherbox");
+        // clouds
+        var clud = document.getElementById("cloud-front");
+        var strife = document.getElementById("cloud-back");
+        // mountains
+        var forest = document.getElementById("mountain");
+        var giant = document.getElementById("mountain-top");
+        // stars
+        var ster = document.getElementById("Stars-1");
+        var dust = document.getElementById("Stars-2");
+        
+        elem.style.background = skyColors[tVar];
+        clud.style = cloudFilter[tVar];
+        strife.style = cloudFilter[tVar];
+        forest.style = mountainFilter[tVar];
+        giant.style = mountainFilter[tVar];
+        
+        // I was thinking of more elegant solution but alas, I suck
+        // Add time here to enable stars
+        if (tVar == 0){
+        }
+        else if (tVar == 1){
+        }
+        else if (tVar == 2){
+        }
+        else if (tVar == 3){
+        }
+        else if (tVar == 4){
+        }
+        else if (tVar == 5){
+        }
+        else if (tVar == 6){
+        }
+        else if (tVar == 7){
+        }
+        else if (tVar == 8){
+        }
+        else if (tVar == 19){
+        }
+        else if (tVar == 20){
+        }
+        else if (tVar == 21){
+        }
+        else if (tVar == 22){
+        }
+        else if (tVar == 23){
+            
+        }
+        else {
+            ster.style.display = "none";
+            dust.style.display = "none";
+        }
+    }
+function refresh() {
+    location.reload();
+}
+</script>
+
+</html>
