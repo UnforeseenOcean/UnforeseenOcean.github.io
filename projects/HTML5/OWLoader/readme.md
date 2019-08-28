@@ -9,9 +9,33 @@ This demonstrates various CSS and HTML5 abilities of mine.
 # To-do
 - Replacement font for Futura (Probably from Google Fonts) so the page doesn't come out like crap even when Futura Standard is not installed (Multiple fallback options, they'll look slightly different but I don't want to get sued for illegally sharing commercial fonts, sorry)
   - Reduced font for this purpose only (concatenated font which only contains most-used characters) could be done
+  - Found some pretty convincing free fonts
 - ~~Replace "fantasy" or "cursive" definition with "sans-serif" (remnant of debugging attempts)~~ :ballot_box_with_check:
 - Make new screens
   - Map loading screen
   - Matchmaking loading screen
 - Make index.html
   - It currently just redirects
+
+# Credits
+- [Indestructible Type](https://indestructible-type.github.io/Home.html) - Maker of Renner*, a good Futura Std replacement
+- Google Fonts and its contributors
+- *Reddit user who made the SVG version of Overwatch logo* (Update Me!)
+- Wikipedia Foundation (logos)
+- Blizzard Entertainment (Overwatch)
+- FaceImplosion (Sigma trailer theme arrangement)
+- GoldFire Studios ([Howler.js](https://howlerjs.com/))
+- SoundBible.com (sound effects)
+- ValhallaDSP (echo/reverb effect)
+- Square Enix (Chrono Trigger)
+- Sigma Mains (feedbacks)
+- Torbjorn Mains (feedbacks)
+- German Crusaders (encouragements, feedbacks)
+- Dark Watch (feedbacks)
+- People over at The Rossmann Group (programming help, encouragements)
+- Casino (help with other screens)
+- GuhGuppy (feedbacks)
+- Tyler (feedbacks)
+- Clive Mitchell (bearded god)
+- Tran (artist of the Blackbeard logo, thanks a lot!)
+- My dearest friends overseas
