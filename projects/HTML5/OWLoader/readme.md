@@ -28,6 +28,8 @@ This demonstrates various CSS and HTML5 abilities of mine.
 - SoundBible.com (sound effects)
 - ValhallaDSP (echo/reverb effect)
 - Square Enix (Chrono Trigger)
+- Rudench and xBytez (Portal 1 and 2 ending in HTML5)
+- Valve Corporation (Portal 1 and 2, Still Alive, Want You Gone)
 - Sigma Mains (feedbacks)
 - Torbjorn Mains (feedbacks)
 - German Crusaders (encouragements, feedbacks)
