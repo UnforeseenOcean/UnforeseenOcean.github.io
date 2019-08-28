@@ -5,3 +5,9 @@ This demonstrates various CSS and HTML5 abilities of mine.
 
 # LAWYERS.TXT
 **Please do not use GitHub's DMCA notice system! Contact me directly!** I'm willing to cooperate, so please don't ruin my future!
+
+# To-do
+- Replacement font for Futura (Google Fonts) so the page doesn't come out like crap
+- Replace "fantasy" or "cursive" definition with "sans-serif"
+- Make new screens
+- Make index.html
