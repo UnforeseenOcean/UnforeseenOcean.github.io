@@ -5,7 +5,7 @@
 - Original from Blizzard Entertainment
 - Arrangement by FaceImplosion
 
-## Gnosserie No.1
+## Gnossienne No.1
 - Compoased by Erik Satie
 
 ## Voice announcements
