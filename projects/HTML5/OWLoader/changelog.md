@@ -16,6 +16,7 @@
 
 - Fixed sound volume
 - Added sound effects (Not uploaded yet)
+- CSS and site structure clean-up (duplicate entries removed and concatenated)
 
 ## August 22, 2019
 - Added credits
@@ -27,6 +28,7 @@
 - Baked Cake
 - Changed background color
 - Added trigger (Key listener, konami.js)
+- Resolution lock (1280x800)
 
 ## August 20, 2019
 - Added clock
