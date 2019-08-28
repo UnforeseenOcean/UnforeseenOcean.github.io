@@ -1,0 +1,118 @@
+/*Creative Commons License Portal End Credits Web by xBytez/TylaKitty/Valve is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. Based on a work at https://xbytez.eu/. */
+
+body {
+    color: gold;
+    font-family: monospace;
+    font-size: 9pt;
+    line-height: 1.60em;
+    background-color: black;
+    
+}
+#lyrics {
+    position: absolute;
+    left: 2em;
+    top: 2em;
+    width: 30em;
+    height: 52em;
+    text-shadow: 0 0 2px gold;
+}
+#lyricstext {
+    position: absolute;
+    left: 1em;
+    right: 1em;
+    top: 1em;
+    bottom: 1em;
+    text-shadow: 0 0 2px gold;
+    text-align: left;
+}
+#lyricsleft, #lyricsright {
+    position: absolute;
+    width: 1em;
+    top: 1.5em;
+    bottom: 1.5em;
+    text-shadow: 0 0 2px gold;
+    text-align: center;
+}
+#lyricsleft {
+    left: 0em;
+    text-shadow: 0 0 2px gold;
+}
+#lyricsright {
+    right: 0em;
+    text-shadow: 0 0 2px gold;
+}
+#lyricstop, #lyricsbottom {
+    position: absolute;
+    left: 0em;
+    width: 30em;
+    height: 1em;
+    text-shadow: 0 0 2px gold;
+    text-align: center;
+}
+#lyricstop {
+    top: 0em;
+    text-shadow: 0 0 2px gold;
+}
+#lyricsbottom {
+    bottom: 0em;
+    text-shadow: 0 0 2px gold;
+}
+#credits {
+    position: absolute;
+    left: 33em;
+    top: 2em;
+    width: 30em;
+    height: 28em;
+    text-shadow: 0 0 2px gold;
+}
+#creditstext {
+    position: absolute;
+    left: 2em;
+    right: 1em;
+    top: 1.3em;
+    bottom: 1em;
+    text-align: left;
+    vertical-align: bottom;
+    text-shadow: 0 0 2px gold;
+}
+#creditsleft, #creditsright {
+    position: absolute;
+    width: 1em;
+    top: 1.5em;
+    bottom: 1.5em;
+    text-align: center;
+    text-shadow: 0 0 2px gold;
+}
+#creditsleft {
+    left: 0em;
+    text-shadow: 0 0 2px gold;
+}
+#creditsright {
+    right: 0em;
+    text-shadow: 0 0 2px gold;
+}
+#creditstop, #creditsbottom {
+    position: absolute;
+    left: 0em;
+    width: 30em;
+    height: 1em;
+    text-align: center;
+    text-shadow: 0 0 2px gold;
+}
+#creditstop {
+    top: 0em;
+    text-shadow: 0 0 2px gold;
+}
+#creditsbottom {
+    bottom: 0em;
+    text-shadow: 0 0 2px gold;
+}
+#picture {
+    position: absolute;
+    left: 36em;
+    top: 30em;
+    width: 30em;
+    height: 25em;
+    line-height: 1.3em;
+    text-shadow: 0 0 2px gold;
+}
