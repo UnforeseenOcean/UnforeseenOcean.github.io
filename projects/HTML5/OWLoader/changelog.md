@@ -1,5 +1,11 @@
 # Change logs
 
+## August 29, 2019
+
+- Added proper Index page
+- Fixed clock position
+- Changed attribution per request
+
 ## August 28, 2019
 
 - Fixed wrong attribution on credits page
