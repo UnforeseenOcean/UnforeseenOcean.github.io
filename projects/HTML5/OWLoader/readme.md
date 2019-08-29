@@ -14,8 +14,8 @@ This demonstrates various CSS and HTML5 abilities of mine.
 - Make new screens
   - Map loading screen
   - Matchmaking loading screen
-- Make index.html
-  - It currently just redirects
+- ~~Make index.html~~ :ballot_box_with_check:
+  - ~~It currently just redirects~~ :ballot_box_with_check:
 
 # Credits
 - [Indestructible Type](https://indestructible-type.github.io/Home.html) - Maker of Renner*, a good Futura Std replacement
