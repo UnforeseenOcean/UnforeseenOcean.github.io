@@ -35,7 +35,7 @@ This demonstrates various CSS and HTML5 abilities of mine.
 - German Crusaders (encouragements, feedbacks)
 - Dark Watch (feedbacks)
 - People over at The Rossmann Group (programming help, encouragements)
-- Casino (help with other screens)
+- peromar64 (help with other screens)
 - GuhGuppy (feedbacks)
 - Tyler (feedbacks)
 - Clive Mitchell (bearded god)
