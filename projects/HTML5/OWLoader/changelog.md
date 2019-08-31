@@ -1,5 +1,13 @@
 # Change logs
 
+## August 31, 2019
+
+- Fixed layout of index page
+- Added user icon
+- Added level indicator
+- Added definitions for other levels
+- Added user profile
+
 ## August 29, 2019
 
 - Added proper Index page
