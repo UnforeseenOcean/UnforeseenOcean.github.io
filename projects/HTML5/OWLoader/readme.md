@@ -48,6 +48,7 @@ And for the regular fonts:
 - SoundBible.com (sound effects)
 - ValhallaDSP (echo/reverb effect)
 - Square Enix (Chrono Trigger)
+- https://jakearchibald.github.io/svgomg/
 - Rudench and xBytez (Portal 1 and 2 ending in HTML5)
 - Valve Corporation (Portal 1 and 2, Still Alive, Want You Gone)
 - Sigma Mains (feedbacks)
