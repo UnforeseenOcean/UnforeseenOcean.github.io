@@ -1,5 +1,10 @@
 # Change logs
 
+## September 2, 2019
+
+- Fixed a bug with the window handling
+- Fixed a display bug
+
 ## September 1, 2019
 
 - Added new index page (beta)
@@ -7,6 +12,9 @@
 - Fixed resolution scaling (now resizes the logo)
 - Emergency fix for index page
 - Added demonstration for `:after` pseudo-element combined with `:hover`
+- Added popups
+- Added popup functionality to `torbjorn-ui.js`
+- Disabled multiple popup chains for now
 
 ## August 31, 2019
 
