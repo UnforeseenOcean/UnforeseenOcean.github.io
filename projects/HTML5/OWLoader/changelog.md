@@ -6,6 +6,7 @@
 - Fixed resolution lock (now hides some of the UI elements if the screen is too small)
 - Fixed resolution scaling (now resizes the logo)
 - Emergency fix for index page
+- Added demonstration for `:after` pseudo-element combined with `:hover`
 
 ## August 31, 2019
 
