@@ -1,5 +1,11 @@
 # Change logs
 
+## September 1, 2019
+
+- Fixed resolution lock (now hides some of the UI elements if the screen is too small)
+- Fixed resolution scaling (now resizes the logo)
+- Emergency fix for index page
+
 ## August 31, 2019
 
 - Fixed layout of index page
