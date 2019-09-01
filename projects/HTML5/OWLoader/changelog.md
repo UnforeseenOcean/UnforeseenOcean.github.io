@@ -2,6 +2,7 @@
 
 ## September 1, 2019
 
+- Added new index page (beta)
 - Fixed resolution lock (now hides some of the UI elements if the screen is too small)
 - Fixed resolution scaling (now resizes the logo)
 - Emergency fix for index page
@@ -13,6 +14,14 @@
 - Added level indicator
 - Added definitions for other levels
 - Added user profile
+- Added icons for friend functions
+- Added Torbjörn UI Library
+
+## August 30, 2019
+
+- Added light rays
+- Changed index big buttons
+
 
 ## August 29, 2019
 
