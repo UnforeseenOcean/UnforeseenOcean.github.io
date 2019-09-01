@@ -22,11 +22,19 @@
         html {
             background-color: rgb(15, 3, 30);
             /* Fallback fonts, not optimal but works okay-ish */
-            font-family: "Futura Std", "Renner*", "Nunito Sans", "Hind", "Montserrat", sans-serif;
+            font-family: "Futura No2", "Futura Nr2", "Futura", "Futura Std", "Renner*", "Nunito Sans", "Hind", "Montserrat", sans-serif;
             overflow-x: hidden;
             min-width: 1280px;
             min-height: 720px;
             overflow-x: hidden;
+        }
+
+        a {
+            font-weight: bold;
+            font-size: 1.2em;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: rgb(255, 192, 61);
         }
 
         .about-container {
@@ -397,6 +405,22 @@
         .error-text {
             margin: 5px;
         }
+
+        .swaptext-play:hover:after {
+            content: "Waiting Game";
+        }
+        
+        .swaptext-training:hover:after {
+            content: "Patience";
+        }
+        .swaptext-author:hover:after {
+            content: "- About Author";
+        }
+        
+        .swaptext-project:hover:after {
+            content: "- About Project";
+        }
+
         @media screen and (max-height: 830px) {
 
             .chat-btn {
@@ -404,7 +428,7 @@
                 overflow: hidden;
             }
         }
-        
+
         @media screen and (max-width: 1279px),
         (max-height: 750px) {
 
@@ -441,6 +465,8 @@
             </svg>
             <p>https://unforeseenocean.github.io</p>
             <p>Gothenburg, Sweden</p>
+            <p><a href="https://github.com/UnforeseenOcean/UnforeseenOcean.github.io/tree/master/projects/HTML5/OWLoader#font-is-weird" title="Readme - Font is weird?">Readme - Font is weird?</a></p>
+            <p>&nbsp;</p>
             <p>Logo design by Tran (nyaarr) - I appreciate your work greatly.</p>
             <div class="close-button" id="close-button" onclick="closeWindow('about-author');">Close</div>
         </div>
@@ -544,10 +570,10 @@
                 <div class="version-nr">1.39.1.0 - 60993</div>
             </div>
             <div class="ow-menu-left">
-                <div class="ow-button-big" title="Map Loading Screen" onclick="gotoPage('transfer.html');">
+                <div class="ow-button-big swaptext-play" title="Map Loading Screen" onclick="gotoPage('transfer.html');">
                     Play
                 </div>
-                <div class="ow-button-big" title="Login Screen" onclick="gotoPage('loader.html');">
+                <div class="ow-button-big swaptext-training" title="Login Screen" onclick="gotoPage('loader.html');">
                     Training
                 </div>
                 <div class="ow-button-big disabled" title="To be continued..." onclick="popupMsg('Error','The page is not ready yet.');">
@@ -562,10 +588,10 @@
                 <div class="ow-button-small disabled" onclick="popupMsg('Error','You do not have any sort of meaningful achievements in your life.');">
                     Highlights
                 </div>
-                <div class="ow-button-small" title="About Author" onclick="openWindow('about-author', 'flex');">
+                <div class="ow-button-small swaptext-author" title="About Author" onclick="openWindow('about-author', 'flex');">
                     Social
                 </div>
-                <div class="ow-button-small" title="About Project" onclick="openWindow('about-project', 'flex');">
+                <div class="ow-button-small swaptext-project" title="About Project" onclick="openWindow('about-project', 'flex');">
                     Career Profile
                 </div>
                 <div class="ow-button-small disabled" onclick="popupMsg('Error','This action is not possible at this moment.');">
@@ -591,6 +617,7 @@
             formatAMPM(date);
             clock.innerHTML = formatAMPM(new Date);
         }
+        
 
         function formatAMPM(date) {
             var hours = date.getHours(); // get hours
@@ -603,6 +630,7 @@
             return strTime; // return the end product
         }
     </script>
+    <!-- Echo 113! Echo 113! Echo 113! -->
 </body>
 
 </html>
