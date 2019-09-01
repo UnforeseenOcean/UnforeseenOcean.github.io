@@ -17,6 +17,26 @@ This demonstrates various CSS and HTML5 abilities of mine.
 - ~~Make index.html~~ :ballot_box_with_check:
   - ~~It currently just redirects~~ :ballot_box_with_check:
 
+# Font is weird?
+Install the following fonts, installing the one you have access to, from the first font. If you already have the fonts installed, ensure it's set to Visible.
+
+Most fonts are available for free online, or on Google Fonts. (The Google Fonts problem will be addressed on the next release)
+
+Starting with the bold big fonts:
+- BigNoodleToo
+- BigNoodleTitling
+- Sturkopf Grotesk (install *all* variants)
+- Bebas Neue (install *all* variants)
+
+And for the regular fonts:
+
+- Futura Nr.2
+- Futura Std
+- Renner*
+- Nunito Sans
+- Hind
+- Montserrat
+
 # Credits
 - [Indestructible Type](https://indestructible-type.github.io/Home.html) - Maker of Renner*, a good Futura Std replacement
 - Google Fonts and its contributors
