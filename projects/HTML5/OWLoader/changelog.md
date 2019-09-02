@@ -4,6 +4,7 @@
 
 - Fixed a bug with the window handling
 - Fixed a display bug
+- Updated the UI library
 
 ## September 1, 2019
 
