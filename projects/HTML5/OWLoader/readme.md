@@ -16,6 +16,7 @@ This demonstrates various CSS and HTML5 abilities of mine.
   - Matchmaking loading screen
 - ~~Make index.html~~ :ballot_box_with_check:
   - ~~It currently just redirects~~ :ballot_box_with_check:
+- Integrate Google Font CSS
 
 # Font is weird?
 Install the following fonts, installing the one you have access to, from the first font. If you already have the fonts installed, ensure it's set to Visible.
