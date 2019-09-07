@@ -16,7 +16,8 @@ This demonstrates various CSS and HTML5 abilities of mine.
   - Matchmaking loading screen
 - ~~Make index.html~~ :ballot_box_with_check:
   - ~~It currently just redirects~~ :ballot_box_with_check:
-- Integrate Google Font CSS
+- ~~Integrate Google Font CSS~~ :ballot_box_with_check:
+  - Limitations: BigNoodleToo cannot be shared, thus Impact is used as a substitute if the font is not installed.
 
 # Font is weird?
 Install the following fonts, installing the one you have access to, from the first font. If you already have the fonts installed, ensure it's set to Visible.
@@ -34,9 +35,9 @@ And for the regular fonts:
 - Futura Nr.2
 - Futura Std
 - Renner*
-- Nunito Sans
-- Hind
-- Montserrat
+- ~~Nunito Sans~~ Now integrated
+- ~~Hind~~ Now integrated
+- ~~Montserrat~~ Now integrated
 
 # Credits
 - [Indestructible Type](https://indestructible-type.github.io/Home.html) - Maker of Renner*, a good Futura Std replacement
