@@ -1,0 +1,255 @@
+<html>
+<meta charset="utf-8">
+<meta name="description" content="With love, from Sweden">
+<meta name="author" content="Blackbeard">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Icons by Font Awesome. License CC-BY, refer to https://fontawesome.com/license -->
+
+<head>
+    <title>My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css?family=Hind|Montserrat|Nunito+Sans&display=swap" rel="stylesheet">
+    <style>
+        body {
+            color: white;
+            font-family: "Nunito Sans", "Hind", "Montserrat", sans-serif;
+            font-weight: 400;
+            cursor: default;
+        }
+
+        .page-container {
+            background: linear-gradient(#3066BE, #1F487E);
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: fixed;
+        }
+
+        .mouse-blocker {
+            display: none;
+            background: rgba(255, 255, 255, 0);
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: fixed;
+        }
+
+        .ui-container {
+            color: #EBF5DF;
+            display: flex;
+            position: fixed;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            overflow: hidden;
+            z-index: -98;
+        }
+
+        .anim-container {
+            color: #EBF5DF;
+            display: flex;
+            position: fixed;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0);
+            overflow: hidden;
+            z-index: -99;
+        }
+
+        .ui-title {
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .ui-buttons-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .ui-button-1,
+        .ui-button-2,
+        .ui-button-3 {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+            background-color: #679436;
+            transition: all 0.25s;
+            margin: 10px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.6em;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .ui-button-1:hover,
+        .ui-button-2:hover,
+        .ui-button-3:hover {
+            transform: scale(1.25);
+            transform-origin: center;
+            background-color: #FFC145;
+            margin: 20px;
+            line-height: 4.5em;
+            color: black;
+        }
+
+        .icon {
+            width: 80px;
+            height: 80px;
+            transform-origin: center;
+            transform: translate(25%, 25%);
+        }
+
+        .ui-footer {
+            margin-top: 20px;
+        }
+
+        .expand-circle {
+            display: block;
+            position: relative;
+            opacity: 0;
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            background-color: #679436;
+            transform: translate(10%, -70%) scale(0.1);
+            z-index: -99;
+        }
+
+        .expand {
+            animation: expand 2s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes expand {
+            0% {
+                transform: translate(10%, -70%) scale(0.0);
+                opacity: 0;
+            }
+
+            1% {
+                transform: translate(10%, -70%) scale(0.0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(10%, -70%) scale(200);
+                opacity: 1;
+            }
+        }
+
+        .shrink {
+            animation: shrink 0.75s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes shrink {
+            0% {
+                transform: scale(1.0);
+            }
+
+            100% {
+                transform: scale(0.0);
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="mouse-blocker" id="curtain"></div>
+        <div class="ui-container">
+            <div class="ui-title">Welcome to my portfolio<noscript>, but you disabled JavaScript. No JavaScript, no fun. Tsk, tsk.</noscript></div>
+            <div class="ui-buttons-container">
+                <div class="ui-button-1" title="Portfolio" id="portfolio-btn" onclick="expand('portfolio-btn', 'about-btn', 'contact-btn');">
+                    <div class="icon" id="portfolio-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-49.5 206.5 100 100">
+                            <path fill="currentColor" d="M8 237.75c1.38 0 2.5-1.13 2.5-2.5s-1.13-2.5-2.5-2.5-2.5 1.13-2.5 2.5 1.13 2.5 2.5 2.5zm27.5 34.75v-52c0-2.5-1.5-4-4-4h-51c-8.5 0-15 6.5-15 15v50c0 8.5 6.5 15 15 15h51c2 0 4-1.5 4-4V290c0-1-.5-2-1.5-3-.5-2.5-.5-9.5 0-11.5 1-.5 1.5-1.5 1.5-3zM3 225.25c6.9 0 12.5 4.48 12.5 10 0 3.27-1.98 6.13-5 7.95v2.05a2.5 2.5 0 0 1-2.5 2.5H-2a2.5 2.5 0 0 1-2.5-2.5v-2.05c-3.02-1.82-5-4.68-5-7.95 0-5.52 5.6-10 12.5-10zm-18 26.14l.98-2.3c.27-.64 1-.92 1.64-.65l15.36 6.58 15.38-6.58c.64-.27 1.37.01 1.64.65l.98 2.3c.27.64-.01 1.38-.65 1.64l-10.99 4.72 10.99 4.7c.64.27.92 1 .65 1.64l-.98 2.3c-.27.64-1 .92-1.64.66L3 260.47l-15.36 6.6a1.25 1.25 0 0 1-1.64-.66l-.98-2.3c-.27-.64.01-1.38.65-1.64l11-4.7-11.01-4.74c-.64-.26-.93-1-.66-1.64zm40 35.11h-44.5c-3 0-5-2-5-5s2.5-5 5-5H25v10zm-27-48.75c1.38 0 2.5-1.13 2.5-2.5s-1.13-2.5-2.5-2.5-2.5 1.13-2.5 2.5 1.13 2.5 2.5 2.5z" />
+                        </svg>
+                    </div>
+                    <div class="expand-circle" id="expand1"></div>
+                </div>
+                <div class="ui-button-2" title="About" id="about-btn" onclick="expand('about-btn', 'portfolio-btn', 'contact-btn');">
+                    <div class="icon" id="about-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-49.5 206.5 100 100">
+                            <path fill="currentColor" d="M.57 216.5c-12.47 0-20.55 5.11-26.89 14.22a3.75 3.75 0 0 0 .81 5.14l6.74 5.11a3.75 3.75 0 0 0 5.2-.65c3.91-4.9 6.81-7.72 12.93-7.72 4.8 0 10.75 3.09 10.75 7.75 0 3.52-2.9 5.33-7.65 8-5.54 3.1-12.86 6.96-12.86 16.62v1.53a3.75 3.75 0 0 0 3.75 3.75H4.67a3.75 3.75 0 0 0 3.75-3.75v-.9c0-6.7 19.57-6.98 19.57-25.1 0-13.65-14.15-24-27.42-24zm-1.56 58.35a10.83 10.83 0 1 0 10.82 10.82c0-5.96-4.85-10.82-10.82-10.82z" />
+                        </svg>
+                    </div>
+                    <div class="expand-circle" id="expand2"></div>
+                </div>
+                <div class="ui-button-3" title="Contact" id="contact-btn" onclick="expand('contact-btn', 'portfolio-btn', 'about-btn');">
+                    <div class="icon" id="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-49.5 206.5 100 100">
+                            <path fill="currentColor" d="M37.6 220.35l-16.26-3.75a3.78 3.78 0 0 0-4.3 2.17l-7.5 17.5a3.74 3.74 0 0 0 1.09 4.37l9.46 7.75a57.91 57.91 0 0 1-27.68 27.69l-7.75-9.47a3.75 3.75 0 0 0-4.38-1.08l-17.5 7.5a3.8 3.8 0 0 0-2.19 4.32l3.75 16.24c.4 1.7 1.9 2.91 3.66 2.91A72.5 72.5 0 0 0 40.5 224c0-1.75-1.2-3.26-2.9-3.65z" />
+                        </svg>
+                    </div>
+                    <div class="expand-circle" id="expand3"></div>
+                </div>
+            </div>
+            <div class="ui-footer">&copy; 2019 Blackbeard. All rights reserved.</div>
+        </div>
+        <!--<div class="anim-container">
+            <div class="expand-circle" id="expand1"></div>
+            <div class="expand-circle" id="expand2"></div>
+            <div class="expand-circle" id="expand3"></div>
+        </div>-->
+    </div>
+</body>
+<script>
+    function expand(id, hide1, hide2) {
+        // Get DOM for each function
+        var show = document.getElementById(id);
+        var a = document.getElementById(hide1);
+        var b = document.getElementById(hide2);
+        // Block mouse input by spawning an invisible div that covers the entire screen
+        var block = document.getElementById("curtain");
+        // Add shrink effect to buttons defined
+        a.classList.add("shrink");
+        b.classList.add("shrink");
+        // Spawn blocker
+        block.style.display = "block";
+
+        if (id == "portfolio-btn") {
+            document.getElementById("expand2").display = "none";
+            document.getElementById("expand3").display = "none";
+        } else if (id == "about-btn") {
+            document.getElementById("expand1").display = "none";
+            document.getElementById("expand3").display = "none";
+        } else {
+            document.getElementById("expand1").display = "none";
+            document.getElementById("expand2").display = "none";
+        }
+        setTimeout(function() {
+            if (id == "portfolio-btn") {
+                document.getElementById("expand1").classList.add("expand");
+                setTimeout(function(){window.location.href = "portfolio.html"},500);
+            } else if (id == "about-btn") {
+                document.getElementById("expand2").classList.add("expand");
+                setTimeout(function(){window.location.href = "about.html"},500);
+            } else {
+                document.getElementById("expand3").classList.add("expand");
+                setTimeout(function(){window.location.href = "contact.html"},500);
+            }
+        }, 250);
+    }
+</script>
+
+</html>
