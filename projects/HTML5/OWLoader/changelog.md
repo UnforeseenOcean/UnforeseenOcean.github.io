@@ -1,5 +1,12 @@
 # Change logs
 
+## September 7, 2019
+
+- Google Fonts now integrated
+- Adjusted wording
+- Updated index
+- Updated loader
+
 ## September 2, 2019
 
 - Fixed a bug with the window handling
