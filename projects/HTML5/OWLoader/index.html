@@ -18,6 +18,7 @@
 
 <head>
     <title>Overwatch</title>
+    <link href="https://fonts.googleapis.com/css?family=Hind|Montserrat|Nunito+Sans&display=swap" rel="stylesheet"> 
     <style>
         html {
             background-color: rgb(15, 3, 30);
@@ -241,7 +242,7 @@
             margin-top: 80px;
             text-decoration: none;
             cursor: pointer;
-            width: 500px;
+            width: 550px;
             text-indent: 30px;
             text-shadow: 0 0 1px black;
         }
@@ -407,11 +408,11 @@
         }
 
         .swaptext-play:hover:after {
-            content: "Waiting Game";
+            content: "The Waiting Game";
         }
 
         .swaptext-training:hover:after {
-            content: "Patience";
+            content: "Your Patience";
         }
 
         .swaptext-author:hover:after {
@@ -420,6 +421,12 @@
 
         .swaptext-project:hover:after {
             content: "- About Project";
+        }
+        .swaptext-hero:hover:before {
+            content: "There's No";
+        }
+        .swaptext-gambling:hover:before {
+            content: "Glorified";
         }
 
         .hidden {
@@ -781,10 +788,10 @@
                     <div class="ow-button-big swaptext-training" title="Login Screen" onclick="gotoPage('loader.html');">
                         Training
                     </div>
-                    <div class="ow-button-big disabled" title="To be continued..." onclick="popupMsg('Error','The page is not ready yet.');">
+                    <div class="ow-button-big swaptext-hero disabled" title="To be continued..." onclick="popupMsg('Error','The page is not ready yet.');">
                         Hero Gallery
                     </div>
-                    <div class="ow-button-big disabled" title="To be continued..." onclick="popupMsg('Error','I told you it is not ready.');">
+                    <div class="ow-button-big swaptext-gambling disabled" title="To be continued..." onclick="popupMsg('Error','I told you it is not ready.');">
                         Gambling
                     </div>
                     <div class="ow-button-small disabled" onclick="popupMsg('Warning','No stream available.');">
