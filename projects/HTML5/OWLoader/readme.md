@@ -18,6 +18,7 @@ This demonstrates various CSS and HTML5 abilities of mine.
   - ~~It currently just redirects~~ :ballot_box_with_check:
 - ~~Integrate Google Font CSS~~ :ballot_box_with_check:
   - Limitations: BigNoodleToo cannot be shared, thus Impact is used as a substitute if the font is not installed.
+- Split the big Easter Egg from loader page
 
 # Font is weird?
 Install the following fonts, installing the one you have access to, from the first font. If you already have the fonts installed, ensure it's set to Visible.
