@@ -1,5 +1,15 @@
 # Change logs
 
+## September 9, 2019
+
+- Fixed odd-sounding names
+- Fixed (or at least stopped) random picker picking number outside of array
+
+## September 8, 2019
+
+- Added hero.html
+- Added Torbjörn Name Generator Library
+
 ## September 7, 2019
 
 - Google Fonts now integrated
