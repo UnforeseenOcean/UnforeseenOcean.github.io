@@ -717,18 +717,24 @@
                 </div>
                 <div class="top-hud-right" id="clock" title="Can you hear the universe singing?">EE:EE PM</div>
                 <div class="top-user-menu">
-                    <div class="find-friend" title="You have no friends." onclick="popupMsg('Error','There are no friends in your area.');"><svg xmlns="http://www.w3.org/2000/svg" width="55" height="55">
+                    <div class="find-friend" title="You have no friends." onclick="popupMsg('Error','Nobody wants to play with you.');">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55">
                             <ellipse fill="white" cx="16.56" cy="16.97" rx="5.41" ry="3.68" transform="rotate(-33.4 16.56 16.97)" />
                             <path fill="white" d="M9.5 26.76c1.86-3.27 9.9-5.63 10.37-5.5s3.2 3.16 2.93 3.84-3.8 2.1-4.38 2.93-.83 1.2-.9 2.94c-.07 1.73 2.1 2.08 2.35 3.4s-1.04 2.06-3.3 2.2-2.18-2.31-2.18-2.31.03-.75-1.37-2.52-2.85-1.24-3.16-1.49c-.71-.56-.36-3.5-.36-3.5z" />
                             <ellipse fill="white" cx="26.25" cy="19.15" rx="5.41" ry="3.68" transform="rotate(-33.4 26.24 19.15)" />
                             <path fill="white" d="M19.5 29.35c1.86-3.27 14.9-8.1 15.38-8.1s.91 1.37.62 1.8-4.76.6-7.7 3.47c-.97.95-1.73 3.55-1.8 5.27s1.19 3.15 1.43 4.46 1.17 2.18-1.1 2.31c-2.26.13-2.1-2.65-3.5-4.43-1.4-1.77-3.02-2.17-3.33-2.42s0-2.36 0-2.36z" />
-                            <path fill="white" d="M45.05 40.73l-4.14-4.57a7.33 7.33 0 1 0-2.12 2.13l4.04 4.45 2.23-2.01zm-14.62-8.58a4.34 4.34 0 1 1 8.68 0 4.34 4.34 0 0 1-8.68 0z" /></svg></div>
-                    <div class="add-friend" title="No friend found." onclick="popupMsg('Error','There are no friends in your area.');"><svg xmlns="http://www.w3.org/2000/svg" width="55" height="55">
+                            <path fill="white" d="M45.05 40.73l-4.14-4.57a7.33 7.33 0 1 0-2.12 2.13l4.04 4.45 2.23-2.01zm-14.62-8.58a4.34 4.34 0 1 1 8.68 0 4.34 4.34 0 0 1-8.68 0z" />
+                        </svg>
+                    </div>
+                    <div class="add-friend" title="No friend found." onclick="popupMsg('Error','Do you even have any friends to add?');">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55">
                             <ellipse fill="white" cx="19.53" cy="18.84" rx="5.41" ry="3.68" transform="rotate(-33.4 19.52 18.84)" />
                             <path fill="white" d="M12.46 28.63c1.86-3.27 9.9-5.62 10.37-5.5s3.2 3.16 2.94 3.84-3.8 2.1-4.4 2.93-.82 1.21-.89 2.94 2.11 2.08 2.35 3.4-1.04 2.06-3.3 2.2-2.18-2.31-2.18-2.31.03-.75-1.37-2.52-2.84-1.24-3.16-1.49c-.71-.56-.36-3.5-.36-3.5z" />
                             <ellipse fill="white" cx="29.21" cy="21.02" rx="5.41" ry="3.68" transform="rotate(-33.4 29.2 21.02)" />
                             <path fill="white" d="M22.46 31.22c1.86-3.27 14.9-8.1 15.38-8.1s.66 1.37.51 1.87c-.24.79-2.85.28-4.69 1.77-.72.58.22 1.92-.6 2.73-.97.95-4.56-1.38-4.1 4.17.3 3.63 1.87 2.3 2.12 3.62s.48 3.02-1.79 3.15c-2.26.13-2.1-2.65-3.5-4.43s-3.02-2.17-3.33-2.42 0-2.36 0-2.36z" />
-                            <path fill="white" d="M42.63 31.13h-3.87l.94-3.9h-4.5l-.95 3.9h-3.69l-.75 3.89h3.44l-1.13 4.86h4.55l1.1-4.86h3.6z" /></svg></div>
+                            <path fill="white" d="M42.63 31.13h-3.87l.94-3.9h-4.5l-.95 3.9h-3.69l-.75 3.89h3.44l-1.13 4.86h4.55l1.1-4.86h3.6z" />
+                        </svg>
+                    </div>
                     <div class="user-info" title="Ha ha">
                         <div class="status-line"></div>
                         <div class="user-icon">
@@ -788,16 +794,16 @@
                     <div class="ow-button-big swaptext-training" title="Login Screen" onclick="gotoPage('loader.html');">
                         Training
                     </div>
-                    <div class="ow-button-big swaptext-hero disabled" title="To be continued..." onclick="popupMsg('Error','The page is not ready yet.');">
+                    <div class="ow-button-big swaptext-hero disabled" title="To be continued..." onclick="popupMsg('Warning','Now we are not even sure who is a hero and who is not. Blame the Overwatch League. They have better lore.');">
                         Hero Gallery
                     </div>
-                    <div class="ow-button-big swaptext-gambling disabled" title="To be continued..." onclick="popupMsg('Error','I told you it is not ready.');">
+                    <div class="ow-button-big swaptext-gambling disabled" title="To be continued..." onclick="popupMsg('Error','Lootboxes are just glorified, unregulated gambling exploiting the vulnerable people.');">
                         Gambling
                     </div>
                     <div class="ow-button-small disabled" onclick="popupMsg('Warning','No stream available.');">
                         Overwatch League
                     </div>
-                    <div class="ow-button-small disabled" onclick="popupMsg('Error','You do not have any sort of meaningful achievements in your life.');">
+                    <div class="ow-button-small disabled" onclick="popupMsg('Error','You do not have any sort of meaningful achievements in your life. What makes you think you have them?');">
                         Highlights
                     </div>
                     <div class="ow-button-small swaptext-author" title="About Author" onclick="openWindow('about-author', 'flex');">
