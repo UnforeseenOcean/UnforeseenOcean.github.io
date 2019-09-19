@@ -217,21 +217,7 @@
         }
 
         .rotate-screen {
-            color: #ffffff;
             display: none;
-            position: fixed;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            overflow: hidden;
-            z-index: 999999;
-            background: rgb(0, 0, 0);
-            line-height: 0.4em;
         }
 
         .error-icon {
@@ -316,30 +302,38 @@
 
         @media only screen and (max-width: 360px) {
             .screen-rotate {
+                color: #ffffff;
                 display: flex;
-                background: black;
-                width: 100%;
-                height: 100%;
+                position: fixed;
                 flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                overflow: hidden;
+                z-index: 999999;
+                background: rgb(0, 0, 0);
+                line-height: 0.4em;
             }
 
             .intro-container {
                 display: none;
             }
         }
+
         @media only screen and (min-width: 460px) {
             .screen-rotate {
                 display: none;
                 transform: translate(99999px);
             }
+
             .rotate-icon {
                 display: none;
             }
         }
-
     </style>
 </head>
 
@@ -482,7 +476,6 @@
             }
         }, 250);
     }
-
 </script>
 
 </html>
