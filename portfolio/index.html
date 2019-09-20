@@ -6,7 +6,7 @@
 <!-- Icons by Font Awesome. License CC-BY, refer to https://fontawesome.com/license -->
 
 <head>
-    <title>My Portfolio</title>
+    <title>Intro</title>
     <link href="https://fonts.googleapis.com/css?family=Hind|Montserrat|Nunito+Sans&display=swap" rel="stylesheet">
     <style>
         /*
@@ -213,7 +213,7 @@
             background-color: rgb(0, 0, 0);
             transition: all 0.5s;
             opacity: 1;
-            line-height: 0.4em;
+            line-height: auto;
         }
 
         .rotate-screen {
@@ -327,6 +327,7 @@
         @media only screen and (min-width: 460px) {
             .screen-rotate {
                 display: none;
+                /* Yeet the icon and the div way outside of the view just to be safe */
                 transform: translate(99999px);
             }
 
@@ -388,6 +389,7 @@
         </div>
         <div class="ui-container">
             <div class="ui-title">Welcome to my portfolio<noscript>, but you disabled JavaScript. No JavaScript, no fun. Tsk, tsk.</noscript></div>
+            <div class="ui-subtitle">Please click/touch on one of those buttons</div>
             <div class="ui-buttons-container">
                 <div class="ui-button-1" title="Portfolio" id="portfolio-btn" onclick="expand('portfolio-btn', 'about-btn', 'contact-btn');">
                     <div class="icon" id="portfolio-icon">
