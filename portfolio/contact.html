@@ -9,7 +9,6 @@
     <title>Contact Me</title>
     <link href="https://fonts.googleapis.com/css?family=Hind|Montserrat|Nunito+Sans&display=swap" rel="stylesheet">
     <style>
-        
         body {
             color: white;
             font-family: "Nunito Sans", "Hind", "Montserrat", sans-serif;
@@ -49,10 +48,11 @@
             left: 0;
             bottom: 0;
             right: 0;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: visible;
             z-index: -98;
         }
-        
+
         .ui-title {
             font-size: 2em;
             margin-bottom: 10px;
@@ -212,7 +212,7 @@
             font-size: 1.7em;
         }
 
-        @media only screen and (max-width: 459px) {
+        @media only screen and (max-width: 439px) {
             .screen-rotate {
                 color: #ffffff;
                 display: flex;
@@ -230,12 +230,15 @@
                 background: rgb(0, 0, 0);
                 line-height: 0.4em;
             }
+
+            .intro-container {
+                display: none;
+            }
         }
 
-        @media only screen and (min-width: 460px) {
+        @media only screen and (min-width: 440px) {
             .screen-rotate {
                 display: none;
-                /* Yeet the icon and the div way outside of the view just to be safe */
                 transform: translate(99999px);
             }
 
@@ -243,6 +246,7 @@
                 display: none;
             }
         }
+
     </style>
 </head>
 
@@ -351,6 +355,7 @@
             }, 500);
         }, 250);
     }
+
 </script>
 
 </html>
