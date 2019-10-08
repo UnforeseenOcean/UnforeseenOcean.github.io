@@ -1,4 +1,9 @@
 # Change logs
+## October 9, 2019
+
+- Support for Blizzard Entertainment products terminated
+- Development for the project has been suspended indefinitely
+- Added an explanation for the decision
 
 ## September 9, 2019
 
