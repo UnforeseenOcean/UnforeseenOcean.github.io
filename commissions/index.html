@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Request info</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald|PT+Serif&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Oswald", sans-serif;
+            font-size: 1.2em;
+            background-color: antiquewhite;
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .page-container {
+            display: flex;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+        }
+
+        .content {
+            display: flex;
+            width: 100%;
+        }
+
+        .side-menu {
+            width: 240px;
+            padding-left: 30px;
+            padding-top: 20px;
+        }
+
+        .menu-title {
+            font-size: 2em;
+            font-weight: bold;
+            line-height: 0.5em;
+        }
+
+        .jump-menu {
+            font-size: 1.5em;
+        }
+
+        .jump-menu a {
+            color: darkred;
+        }
+
+        .jump-menu a:hover {
+            color: lightcoral;
+        }
+
+        .jump-menu a:active {
+            color: darkmagenta;
+        }
+
+        .page-content {
+            overflow-y: scroll;
+            width: 100%;
+        }
+
+        .page-header {
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .header-text {
+            font-size: 2.5em;
+            font-weight: bold;
+
+        }
+
+        .section-content {
+            font-family: "PT Serif", serif;
+        }
+
+        .section-header {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .page-footer {
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        .no-copy {
+            font-size: 0em;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="content">
+            <div class="side-menu">
+                <div class="menu-title">
+                    <p>I accept</p>
+                    <p>Web Design</p>
+                    <p>Requests</p>
+                </div>
+                <div class="jump-menu">
+                    <div class="menu-elem"><a href="">Home</a></div>
+                    <div class="menu-elem"><a href="#intro">Intro</a></div>
+                    <div class="menu-elem"><a href="#reqs">Requirements</a></div>
+                    <div class="menu-elem"><a href="#pricing">Pricing</a></div>
+                    <div class="menu-elem"><a href="#terms">Terms &amp; Conditions</a></div>
+                </div>
+            </div>
+            <div class="page-content">
+                <div class="page-header">
+                    <div class="header-text">Free* Web Designs for Everyone</div>
+                    <div class="header-sub">*Terms and conditions apply</div>
+                </div>
+                <div class="page-body">
+                    <div class="section-container" id="intro">
+                        <div class="section-header">What is this?</div>
+                        <div class="section-content">
+                            <p>This is a free service for designing your own websites.</p>
+                            <p>Please read the entire page before requesting!</p>
+                            <p>Service features:</p>
+                            <ul>
+                                <li>A complete, singular webpage (NOT whole website)</li>
+                                <li>Free QA service</li>
+                                <li>Free tech support</li>
+                                <li>Ideal for landing pages</li>
+                                <li>Good for making your own websites</li>
+                                <li>Least amount of files to upload</li>
+                                <li>Lightweight page</li>
+                                <li>Least amount of JavaScript used</li>
+                                <li>Least amount of CDN (Content Distribution Network) reliance</li>
+                                <li>Easy to modify, throughly documented code</li>
+                            </ul>
+                            <p>However, this service does have caveats:</p>
+                            <ul>
+                                <li>The page is static - No dynamic content support out-of-the-box.</li>
+                                <li>The page cannot be used for sites such as WordPress, Tumblr, BlogSpot, Squarespace or Wix, as they're not compatible.</li>
+                                <li>The page will be simple. No fancy designs will be done.</li>
+                                <li>The page cannot be updated without changing the code.</li>
+                                <li>No fancy animations are possible due to the simple JavaScript code.</li>
+                                <li>The page only uses vanilla JavaScript. This will not use JavaScript frameworks such as Vue.js, Bootstrap or jQuery.</li>
+                                <li>The process will be slow, as it will be processed whenever I have free time.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="section-container" id="reqs">
+                        <div class="section-header">What do I need?</div>
+                        <div class="section-content">
+                            <p>You'll need to provide the following:</p>
+                            <ul>
+                                <li>Info on what the page will be used for</li>
+                                <li>A sketch of the page's layout</li>
+                                <li>Any logo or content that'll be included in the page</li>
+                                <li>That's all!</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="section-container" id="pricing">
+                        <div class="section-header">How much does it cost?</div>
+                        <div class="section-content">
+                            <p>Nothing!*</p>
+                            <p>*Terms and conditions apply. Refer to the Terms and Conditions.</p>
+                            <p>Please use this donation link for any donations:</p>
+                            <p><a href="https://ko-fi.com/torbjornlindholm">Click here to go to my Ko-fi page</a></p>
+                            <p>And because the work will be done in my free time, it may take a long time.</p>
+                            <p>Please take this into consideration before requesting!</p>
+                        </div>
+                    </div>
+                    <div class="section-container" id="terms">
+                        <div class="section-header">Any catches?</div>
+                        <div class="section-content">
+                            <p>There are some catches. The following is the terms and conditions:</p>
+                            <ul>
+                                <li>Blackbeard Design reserves the right to refuse or deny service for any reason.</li>
+                                <li>The pages must be used only for personal or non-profit, non-commercial use only.</li>
+                                <li>If you intend to earn money using the page, you must donate to me using the link above.</li>
+                                <li>This includes jumping to the online stores, donation pages, affiliate links and using the page for for-profit campaign.</li>
+                                <ul>
+                                    Exceptions include:
+                                <li>Fundraisers for non-profit use</li>
+                                    <li>Charities</li>
+                                    
+                                </ul>
+                                <li>The footer copyright text must not be removed before donating.</li>
+                                <li>Adding your own copyright text is okay, but please do not obscure the copyright text.</li>
+                                <li>You must have a valid, non-temporary email address. This is to allow smooth communication for design work.</li>
+                                <li>The page must not be used for illegal or immoral purposes, such as but not limited to:</li>
+                                <ul>
+                                    <li>Scams</li>
+                                    <li>Fraudulent fundraisers</li>
+                                    <li>Pages hosting or containing illegal materials such as pirated software or child pornography</li>
+                                    <li>Targeted harrassment campaigns especially against people of color or LGBTQ+</li>
+                                </ul>
+                                <li>If you do not agree to the terms listed above, you may not use the service.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-footer">
+                    <div class="copyright-text">&copy; 2019 Blackbeard Design. All rights reserved.</div>
+                    <div class="social-links">
+                    <div class="email">t<span class="no-copy">7</span>o<span class="no-copy">]</span>r<span class="no-copy">1</span>b<span class="no-copy">,</span>j<span class="no-copy">^</span>o<span class="no-copy">`</span>r<span class="no-copy">&reg;</span>n<span class="no-copy">+</span>l<span class="no-copy">y</span>7<span class="no-copy">&micro;</span>6<span class="no-copy">@</span>@<span class="no-copy">&amp;</span>g<span class="no-copy">&alpha;</span>m<span class="no-copy">$</span>a<span class="no-copy">!</span>i<span class="no-copy">q</span>l<span class="no-copy">z</span>.<span class="no-copy">.</span>c<span class="no-copy">A</span>o<span class="no-copy">6</span>m<span class="no-copy">:</span></div>
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
