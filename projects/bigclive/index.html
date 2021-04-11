@@ -1,0 +1,173 @@
+<html>
+
+<head>
+	<link href="css/materialize.min.css" rel="stylesheet">
+	<link href="css/fira_code.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.min.js"></script>
+	<style>
+	.hideall{
+		display: none;
+		opacity: 0;
+		transform: scale(0px);
+	}
+	</style>
+	<title>Big Clive's LED Bulb Hack calculator</title>
+</head>
+
+<body>
+	<nav class="pink lighten-3" role="navigation">
+		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">LED Hack</a>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="#top">Home</a></li>
+				<li><a href="#exp">Calculations</a></li>
+				<li><a href="#calc">LED Calculator</a></li>
+			</ul>
+			<ul id="nav-mobile" class="sidenav">
+				<li><a href="#top">Home</a></li>
+				<li><a href="#exp">Calculations</a></li>
+				<li><a href="#calc">LED Calculator</a></li>
+			</ul>
+			<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">Menu</i></a>
+		</div>
+	</nav>
+	<div class="container">
+		<h2>Big Clive's LED Bulb Hack calculator</h2>
+
+		<blockquote>
+			This page is made for LED bulbs based on the chip called <b>SM2082</b>.
+			Other devices will need to be manually calculated (if a specific wattage is desired).<br>
+			This page is also useful for those who want to make the light based on this IC.
+		</blockquote>
+		<div class="section">
+			<h2>Calculation</h2>
+			<p>
+				Current for all LEDs: 0.6 / R where 0.6 is a Vref<br>
+				Wattage: Mains Peak Voltage (120V = 170V, 240V = 340V) * I<br>
+				Example: 0.6 / 24 = <b>0.025A</b>, 340 * 0.025 = <b>8.5W</b>
+			</p>
+			<h2>Pre-calculated values</h2>
+			<p>
+				1W: 200 ohms<br>
+				2W: 100 ohms<br>
+				3W: 68 ohms<br>
+				4W: 50 ohms<br>
+				5W: 40 ohms
+			</p>
+		</div>
+
+		<div class="section" id="calc">
+			<h3>LED Calculator</h3>
+			<img class="materialboxed col s4" width="350" src="img/bigclive-led-bulb-circuit.png">
+			<p>
+				Image from Big Clive.
+			</p>
+			<div class="row">
+				<form class="col s12">
+					<div class="row">
+						<div class="input-field col s6">
+							<input placeholder="Ohms" id="r1-value" type="text">
+							<label for="r1-value">R1's value in ohms</label>
+						</div>
+						<div class="input-field col s6">
+							<input placeholder="Ohms" id="r2-value" type="text">
+							<label for="r2-value">R2's value in ohms</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s6">
+							<input id="rc-value" type="text" value="0" disabled>
+							<label for="rc-value">Voltage divider resistance value</label>
+						</div>
+						<div class="input-field col s6">
+							<input id="currentval" type="text" value="0" disabled>
+							<label for="currentval">Total current to the LEDs</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s6">
+							<select id="inputvolt">
+								<option value="170" selected>100~120V (US)</option>
+								<option value="340">220~240V (EU)</option>
+							</select>
+							<label>Input voltage</label>
+						</div>
+					</div>
+					<div class="row">
+					<a class="waves-effect waves-light btn" id="watt-calculate" onclick="calc_led();">Calculate</a>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="section">
+			<h3>Results</h3>
+			<p>Before modification: <b><span id="watts-before">0</span></b> Watts</p>
+			<p>After modification: <b><span id="watts-after1">0</span></b> Watts (R1 removed) or <b><span id="watts-after2">0</span></b> Watts (R2 removed)</p>
+		</div>
+		
+		<script>
+		function calc_led(){
+		// Get the values
+		var r1val = $("#r1-value").val();
+		var r2val = $("#r2-value").val();
+		//var rcval = $("#rc-value").val();
+		var volts = $("#inputvolt").val();
+		
+		// Remove all non-numeric stuff except the decimal point
+		r1val = r1val.replace(/[^\d.-]/g, '');
+		r2val = r2val.replace(/[^\d.-]/g, '');
+		//rcval = rcval.replace(/[^\d.-]/g, '');
+		
+		// Convert them to integer
+		r1val = Number(r1val);
+		r2val = Number(r2val);
+		//rcval = Number(rcval);
+		volts = Number(volts);
+		
+		// Rt = (R1 * R2) / (R1 + R2)
+		// Iled = 0.6 (Vref) / Rt
+		// Wt = Vm * Iled
+		
+		var rcval = (r1val * r2val) / (r1val + r2val);
+		// Set the value of rc-value to the result
+		$("#rc-value").val(rcval.toFixed(4)+" Ohms");
+		
+		var current = 0.6 / rcval;
+		$("#currentval").val((current*1000).toFixed(4)+" mA");
+		
+		var b4watts = volts * current;
+		$("#watts-before").text(b4watts.toFixed(4));
+		
+		
+		var after1 = (0.6 / r2val) * volts;
+		var after2 = (0.6 / r1val) * volts;
+		$("#watts-after1").text(after1.toFixed(4));
+		$("#watts-after2").text(after2.toFixed(4));
+
+		// Reinitialize selectors
+		$('select').formSelect();
+		}
+		</script>
+		<footer class="page-footer pink lighten-3">
+			<div class="footer-copyright">
+				<div class="container">
+					Information provided by <a class="white-text" href="https://www.youtube.com/channel/UCtM5z2gkrGRuWd0JQMx76qA">BigCliveDotCom</a>. <a href="http://www.bigclive.com/">(Click here for the website)</a><br>
+					Web design &amp; Programming by Blackbeard Softworks. Uses Materialize CSS.
+				</div>
+			</div>
+		</footer>
+</body>
+
+
+<script>
+	$(document).ready(function() {
+		$('.materialboxed').materialbox();
+		$('select').formSelect();
+	});
+	}
+	
+</script>
+
+</html>
