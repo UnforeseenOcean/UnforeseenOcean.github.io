@@ -1,0 +1,358 @@
+<html>
+<meta charset="utf-8">
+
+<head>
+        <meta property="og:type" content="website">
+<meta property="twitter:card" content="summary_large_image">
+
+<!-- Change me to match the title -->
+<title>Pangram Maker</title>
+<meta name="title" content="Pangram Maker">
+<meta property="og:title" content="Pangram Maker">
+<meta property="twitter:title" content="Pangram Maker">
+
+<!-- Change me to match the description -->
+<meta name="description" content="Pangram Maker - 2019">
+<meta property="og:description" content="Pangram Maker - 2019">
+<meta property="twitter:description" content="Pangram Maker - 2019">
+
+<!-- Change me to match the URL -->
+<meta property="twitter:url" content="https://unforeseenocean.github.io/projects/pangram/index.html">
+<meta property="og:url" content="https://unforeseenocean.github.io/projects/pangram/index.html">
+
+<!-- Change me to match the preview image -->
+<meta property="og:image" content="https://unforeseenocean.github.io/img/pangram.png">
+<meta property="twitter:image" content="https://unforeseenocean.github.io/img/pangram.png">
+    <style>
+        body {
+            text-align: center;
+            background: linear-gradient(rgb(166, 212, 159), rgb(156, 179, 128), rgb(37, 142, 166));
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: Source Sans, Open Sans, Helvetica Neue, Arial, sans-serif;
+        }
+
+        .pangram-title {
+            font-size: 4.5em;
+            font-weight: 200;
+            text-transform: uppercase;
+            color: white;
+            margin-top: 4em;
+            margin-bottom: -12px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .pangram-container {
+            color: white;
+
+        }
+
+        .pangram-subtext.title {
+            color: white;
+        }
+
+        .pangram-subtext.footer {
+            color: white;
+        }
+
+        .pangram-markers {
+            margin-top: 50px;
+        }
+
+        .marker {
+            display: inline-block;
+            font-size: 2.5em;
+            font-weight: bold;
+            opacity: 0.3;
+            transition: opacity 0.3s;
+        }
+
+        .pangram-form {
+            margin-top: 10px;
+        }
+
+        .pangram-form input {
+            width: 75%;
+            resize: none;
+            background-color: rgba(255, 255, 255, 0);
+            color: white;
+            font-weight: bold;
+            font-size: 1em;
+            padding: 10px;
+            text-transform: uppercase;
+            box-sizing: border-box;
+        }
+
+        input[type=text] {
+            border: 3px solid white;
+            outline: none;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        input[type=text]:focus {
+            border: 3px solid white;
+            opacity: 1.0;
+        }
+
+        .checked {
+            opacity: 1.0;
+        }
+
+        .unchecked {
+            opacity: 0.3;
+        }
+
+        .is-ok {
+            display: inline-block;
+            font-size: 2.5em;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+
+        .pangram-footer {
+            margin-top: 15px;
+            line-height: 50%;
+        }
+
+        .pangram-update {
+            background-color: rgba(231, 191, 191, 0);
+            border: 3px solid white;
+            padding: 15px;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translate(0px, 0px);
+                opacity: 1;
+            }
+
+            5% {
+                transform: translate(1px, 0px);
+                opacity: 1;
+            }
+
+            10% {
+                transform: translate(0px, -3px);
+                opacity: 1;
+            }
+
+            15% {
+                transform: translate(-5px, 0px);
+                opacity: 1;
+            }
+
+            20% {
+                transform: translate(-7px, 9px);
+                opacity: 1;
+            }
+
+            25% {
+                transform: translate(0px, -11px);
+                opacity: 1;
+            }
+
+            30% {
+                transform: translate(13px, 0px);
+                opacity: 1;
+            }
+
+            35% {
+                transform: translate(0px, -15px);
+                opacity: 1;
+            }
+
+            40% {
+                transform: translate(17px, 19px);
+                opacity: 1;
+            }
+
+            45% {
+                transform: translate(21px, 23px);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translate(25px, 0px);
+                opacity: 1;
+            }
+
+            55% {
+                transform: translate(0px, -23px);
+                opacity: 1;
+            }
+
+            60% {
+                transform: translate(0px, -21px);
+                opacity: 1;
+            }
+
+            65% {
+                transform: translate(19px, 17px);
+                opacity: 1;
+            }
+
+            70% {
+                transform: translate(-15px, 0px);
+                opacity: 1;
+            }
+
+            75% {
+                transform: translate(0px, -13px);
+                opacity: 1;
+            }
+
+            80% {
+                transform: translate(-11px, 9px);
+                opacity: 1;
+            }
+
+            85% {
+                transform: translate(7px, 0px);
+                opacity: 1;
+            }
+
+            90% {
+                transform: translate(0px, -5px);
+                opacity: 1;
+            }
+
+            95% {
+                transform: translate(-3px, -1px);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(0px, 0px);
+                opacity: 1;
+            }
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .light {
+            font-weight: 300;
+        }
+        .button {
+            margin-top: 10px;
+            font-size: 1.2em;
+            background-color: rgba(255,255,255,0.2);
+            padding-top: 3px;
+            padding-bottom: 3px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="pangram-header">
+        <div class="pangram-title">Pangram Maker</div>
+        <div class="pangram-subtext title">2019 Blackbeard</div>
+    </div>
+    <div class="pangram-container">
+        <div class="pangram-markers">
+            <div class="marker" id="a">A</div>
+            <div class="marker" id="b">B</div>
+            <div class="marker" id="c">C</div>
+            <div class="marker" id="d">D</div>
+            <div class="marker" id="e">E</div>
+            <div class="marker" id="f">F</div>
+            <div class="marker" id="g">G</div>
+            <div class="marker" id="h">H</div>
+            <div class="marker" id="i">I</div>
+            <div class="marker" id="j">J</div>
+            <div class="marker" id="k">K</div>
+            <div class="marker" id="l">L</div>
+            <div class="marker" id="m">M</div>
+            <div class="marker" id="n">N</div>
+            <div class="marker" id="o">O</div>
+            <div class="marker" id="p">P</div>
+            <div class="marker" id="q">Q</div>
+            <div class="marker" id="r">R</div>
+            <div class="marker" id="s">S</div>
+            <div class="marker" id="t">T</div>
+            <div class="marker" id="u">U</div>
+            <div class="marker" id="v">V</div>
+            <div class="marker" id="w">W</div>
+            <div class="marker" id="x">X</div>
+            <div class="marker" id="y">Y</div>
+            <div class="marker" id="z">Z</div>
+            <div class="is-ok" id="ok">🆗</div>
+        </div>
+        <form class="pangram-form">
+            <input type="text" id="pangram-input" name="pangram-input" value="However jinxed my zealousy-filled love would be, my quaint affection towards my good friend kept me awaken">
+        </form>
+        <button class="pangram-update" id="pangram-update" name="pangram-update">Click me to check</button>
+        <div class="pangram-footer"><a onclick="showDiv()" class="button" id="showBtn">Show Credits</a></div>
+        <div class="pangram-footer" id="credits" style="display: none;">
+            <p>Site design by Blackbeard</p>
+            <p>Code revamped by Louis &amp; ayyEve</p>
+            <p class="bold">Special thanks to:</p>
+            <p>Louis Rossmann</p>
+            <p>Paul Daniels</p>
+            <p>Clive Mitchell</p>
+            <p>Tran</p>
+            <a class="button" onclick="hideDiv()">Close</a>
+        </div>
+    </div>
+    <script>
+        function showDiv() {
+            var x = document.getElementById("credits");
+            var y = document.getElementById("showBtn");
+            x.style.display = "block";
+            y.style.display = "none";
+        }
+
+        function hideDiv() {
+            var x = document.getElementById("credits");
+            var y = document.getElementById("showBtn");
+            x.style.display = "none";
+            y.style.display = "inline";
+        }
+
+    </script>
+    <script>
+        // This script was 40 lines long! It was a big fucking mess.
+        
+        document.getElementById('pangram-update').addEventListener('click', function() {
+            var pool = document.getElementById('pangram-input').value.replace(/[^a-zA-Z]/g, '').toLowerCase().split('');
+            var unique = [...new Set(pool)];
+            unique.sort();
+            var result = Array.from(document.getElementsByClassName('marker')).reduce((acc, ele) => {
+
+                var classlist = ele.classList;
+                if (unique.includes(ele.id)) {
+                    classlist.remove('unchecked');
+                    classlist.add('checked');
+                    acc++;
+                } else {
+                    classlist.remove('checked');
+                    classlist.add('unchecked');
+                }
+                return acc;
+            }, 0);
+            var classlist = document.getElementById('ok').classList;
+            if (result == 26) {
+                classlist.remove('unchecked');
+                classlist.add('checked');
+            } else {
+                classlist.remove('checked');
+                classlist.add('unchecked');
+            }
+        });
+
+    </script>
+</body>
