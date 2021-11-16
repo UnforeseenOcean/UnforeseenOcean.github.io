@@ -1,244 +1,258 @@
 <html>
+
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta property="og:type" content="website">
-<meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:card" content="summary_large_image">
 
-<!-- Change me to match the title -->
-<title>Ascender Readme</title>
-<meta name="title" content="Ascender Readme">
-<meta property="og:title" content="Ascender Readme">
-<meta property="twitter:title" content="Ascender Readme">
+    <!-- Change me to match the title -->
+    <title>Ascender Readme</title>
+    <meta name="title" content="Ascender Readme">
+    <meta property="og:title" content="Ascender Readme">
+    <meta property="twitter:title" content="Ascender Readme">
 
-<!-- Change me to match the description -->
-<meta name="description" content="Having trouble with Ascender? Read this!">
-<meta property="og:description" content="Having trouble with Ascender? Read this!">
-<meta property="twitter:description" content="Having trouble with Ascender? Read this!">
+    <!-- Change me to match the description -->
+    <meta name="description" content="Having trouble with Ascender? Read this!">
+    <meta property="og:description" content="Having trouble with Ascender? Read this!">
+    <meta property="twitter:description" content="Having trouble with Ascender? Read this!">
 
-<!-- Change me to match the URL -->
-<meta property="twitter:url" content="https://unforeseenocean.github.io/ascender/readme/index.html">
-<meta property="og:url" content="https://unforeseenocean.github.io/ascender/readme/index.html">
+    <!-- Change me to match the URL -->
+    <meta property="twitter:url" content="https://unforeseenocean.github.io/ascender/readme/index.html">
+    <meta property="og:url" content="https://unforeseenocean.github.io/ascender/readme/index.html">
 
-<!-- Change me to match the preview image -->
-<meta property="og:image" content="https://unforeseenocean.github.io/img/ascender.png">
-<meta property="twitter:image" content="https://unforeseenocean.github.io/img/ascender.png">
-<style>
-body{
-font-family: sans-serif;
-background-color: #0f0f0f;
-color: white;
-}
-emp{
-font-weight: bold;
-color: cyan;
-}
-eml{
-font-weight: bold;
-color: yellow;
-}
-emr{
-font-weight: bold;
-color: red;
-}
-a{
-color: #bada55;
-}
-a:hover{
-color: #bada55
-}
-li{
-font-size: 1.25em;
-}
-</style>
+    <!-- Change me to match the preview image -->
+    <meta property="og:image" content="https://unforeseenocean.github.io/img/ascender.png">
+    <meta property="twitter:image" content="https://unforeseenocean.github.io/img/ascender.png">
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #0f0f0f;
+            color: white;
+        }
+
+        emp {
+            font-weight: bold;
+            color: cyan;
+        }
+
+        eml {
+            font-weight: bold;
+            color: yellow;
+        }
+
+        emr {
+            font-weight: bold;
+            color: red;
+        }
+
+        a {
+            color: #bada55;
+        }
+
+        a:hover {
+            color: #bada55
+        }
+
+        li {
+            font-size: 1.25em;
+        }
+    </style>
 </head>
+
 <body>
-<h1>Ascender Readme</h1>
-<p>
-Ascender is a server replacement for the game Ascend: Hand of Kul, which has shut down. This is more of a proof-of-concept, so expect bugs to occur. And no, we are not the original developers of the game, and we are not in any way endorsed or affiliated with Signal Studios.
-</p>
-<h2>
-Installation
-</h2>
-<p>
-<emp>The NEW and IMPROVED launcher</emp> should do it automatically for you, which you can get through our Discord server: <a href="https://discord.gg/PpgHEB8">Discord server</a> (<a href="https://github.com/UnforeseenOcean/UnforeseenOcean.github.io/raw/master/ascender/readme/Ascender_Launcher_Lite_20200609.zip">mirror link, may not be up to date</a>)
-</p>
-<p>
-Should the launcher not install the game for you, click on the link to start the game on Steam:
-<a href="steam://install/233630">Install Ascend: Hand of Kul on Steam</a>
-</p>
-<p>
-Don't have Steam installed? You should have it installed first! Go install it now.
-</p>
-
-<h2>
-Playing the game
-</h2>
-<p>
-<eml>Simply start the launcher you downloaded</eml> from our Discord server. Enjoy!
-</p>
-<p>
-<emr><b>IMPORTANT: <i><u>Do not</u></i> start the game from Steam.</b></emr> This is the launcher you should use, unless specifically required.
-</p>
-<h2>
-Common issues
-</h2>
-<p>
-<ul>
-<li>
-<b>Important: Before anything, try this first</b>
-<p>
-Restart your Steam client. Yeah. For reasons unknown, this fixes most of the issues.
-</p>
-</li>
-  
-<li>
-<b>Important: Crashes on some AMD Ryzen processors and Intel processors with more than 4 cores</b>
-<p>
-A bug in the game engine causes the game to crash when running on CPUs with more than 4 cores. Download the patched version of the game executable (<a href="https://github.com/UnforeseenOcean/UnforeseenOcean.github.io/raw/master/ascender/readme/Game_Emulator_ThreadPatch.rar">mirror link</a>) from our Discord server and put it in <code>game installation folder/bin</code> folder, overwriting the main executable.
-</p>
-</li>
-  
-<li>
-<b>Important: XINPUT1_3.dll and d3dx9_43.dll error</b>
-<p>
-Please install DirectX 9 Runtime from Microsoft. This does not come pre-installed on Windows 10.
-</p>
-</li>
-
-<li>
-<b>Important: Launcher not starting, complains about Visual C++ Runtime</b>
-<p>
-This sometimes will say "This program cannot start because VCRUNTIME140.dll is missing from your computer".<br>
-Please install <i>Microsoft Visual C++ Redistributable 2015/2017</i>. The launcher requires this. Make sure you download the version that matches your OS (usually 64bit).<br>
-<a href="https://aka.ms/vs/16/release/vc_redist.x86.exe">Visual C++ 2017 download (32bit)</a>
-<a href="https://aka.ms/vs/16/release/vc_redist.x64.exe">Visual C++ 2017 download (64bit)</a>
-</p>
-</li>
-    
-<li>
-<b>Important: "Game not installed" error</b>
-<p>
-    Try moving the game to another library folder through Steam client. <emr><b>DO NOT move the game manually.</b></emr> That will not work. At all. Don't even try it. Believe me, I tried.
-</p>
+    <h1>Ascender Readme</h1>
     <p>
-        Make a new library folder or select one that does <b>NOT</b> contain the game. Then, move the game to that library.
+        Ascender is a server replacement for the game Ascend: Hand of Kul, which has shut down. This is more of a proof-of-concept, so expect bugs to occur. And no, we are not the original developers of the game, and we are not in any way endorsed or affiliated with Signal Studios.
     </p>
-</li>
+    <h2>
+        Installation
+    </h2>
+    <p>
+        <emp>The NEW and IMPROVED launcher</emp> should do it automatically for you, which you can get through our Discord server: <a href="https://discord.gg/PpgHEB8">Discord server</a> (<a href="https://github.com/UnforeseenOcean/UnforeseenOcean.github.io/raw/master/ascender/readme/Ascender_Launcher_Lite_20200609.zip">mirror link, may not be up to date</a>)
+    </p>
+    <p>
+        Should the launcher not install the game for you, click on the link to start the game on Steam:
+        <a href="steam://install/233630">Install Ascend: Hand of Kul on Steam</a>
+    </p>
+    <p>
+        Don't have Steam installed? You should have it installed first! Go install it now.
+    </p>
 
-<li>
-"Ascend Service Not Available"
-<p>
-Use the launcher to start the game. <emr><u>NOT</u></emr> from Steam.
-</p>
-</li>
-  
-<li>
-Game crashes or black-screens when Alt-tabbing
-<p>
-Use Windowed mode. (Click Play on Steam, click on Use Launcher, set the window mode to Windowed, click Launch then close the game)
-</p>
-</li>
-  
-<li>
-Where did the launcher go? I'm sure I downloaded  it...
-<p>
-Your antivirus program (which may include your built-in Windows Defender) is deleting the file due to a false positive match. Add the launcher executable to the exception list, disable the antivirus while playing or use other antivirus programs.
-</p>
-</li>
-  
-<li>
-Invalid Resolution error
-<p>
-This may happen when you first start the game. Click Play on Steam, click on Use Launcher, set the desired resolution, click Launch, close the game and try again.
-</p>
-</li>
+    <h2>
+        Playing the game
+    </h2>
+    <p>
+        <eml>Simply start the launcher you downloaded</eml> from our Discord server. Enjoy!
+    </p>
+    <p>
+        <emr><b>IMPORTANT: <i><u>Do not</u></i> start the game from Steam.</b></emr> This is the launcher you should use, unless specifically required.
+    </p>
+    <h2>
+        Common issues
+    </h2>
+    <p>
+    <ul>
+        <li>
+            <b>Important: Before anything, try this first</b>
+            <p>
+                Restart your Steam client. Yeah. For reasons unknown, this fixes most of the issues.
+            </p>
+        </li>
 
-<li>
-The launcher does not start
-<p>
-Unpack the full archive (consult G**gle or other search engines if you have no idea how to do so) into a folder then try again.
-</p>
-</li>
+        <li>
+            <b>Important: Crashes on some AMD Ryzen processors and Intel processors with more than 4 cores</b>
+            <p>
+                A bug in the game engine causes the game to crash when running on CPUs with more than 4 cores. Download the patched version of the game executable (<a href="https://github.com/UnforeseenOcean/UnforeseenOcean.github.io/raw/master/ascender/readme/Game_Emulator_ThreadPatch.rar">mirror link</a>) from our Discord server and put it in <code>game installation folder/bin</code> folder, overwriting the main executable.
+            </p>
+        </li>
 
-<li>
-Game does not work on Windows 10 despite trying everything
-<p>
-Try reinstalling the game outside of the default folder. This is <b>not a recommended fix</b>, but it sometimes resolves the issue on some Windows 10 systems. Before you try this, try other solutions first.
-</p>
-</li>
-</ul>
-<h2>Known issues</h2>
-<ul>
-<li>
-About transcending/ascending
-<p>
-This function is not implemented yet and will result in the game softlocking or disconnects.
-</p>
-</li>
-<li>
-Boosts - What&apos;s going on with that?
-<p>
-Boosts are not working correctly. Applying boost and logging out will make the boost expire immediately.
-</p>
-</li>
-<li>
-Sanctum is looking a bit... bare
-<p>
-Yeah, the leaderboards and previous player data is nonexistent, that's why it's empty.
-</p>
-</li>
-<li>
-Curses and Blessings
-<p>
-This also doesn't work that well, meaning some curses and blessings may not work on other players.
-</p>
-</li>
-<li>
-Negative Souls
-<p>
-This is either a result of game hacking, cheating or game bugs. (if you suspect it's a bug, please let us know through Discord!)
-</p>
-</li>
-<li>
-Incorrect prices on shop items / items show up as "Free" instead of "Owned"
-<p>
-This is due to the server returning incorrect, placeholder values. May be fixed later.
-</p>
-</li>
-<li>
-Forging / Repairing items using pedestals in the game
-<p>
-This function is not quite there yet... So it mostly doesn't work.
-</p>
-</li>
-<li>
-Invading / Being Invaded
-<p>
-This stat resets on every logon because its data is not being saved.
-</p>
-</li>
-<li>
-Auto-save icon won't go away
-<p>
-This means you just did something the server cannot handle and you've been disconnected from the server.<br>
-Please quit the game using Task Manager and try again. (Please tell us what action you just took!)
-</p>
-</li>
-</ul>
-</p>
-<h2>
-Credits
-</h2>
-<p>
-permanull/pnill - Well, everything!
-</p>
-<p>
-Torbjorn - Moderation
-</p>
-<h2>
-Disclaimer
-</h2>
-<p>
-This program and its components are provided "AS-IS" without ANY warranty, implied or otherwise. Permanull &amp; Co is not affiliated with, endorsed by, and/or sponsored by Signal Studios.
-</p>
+        <li>
+            <b>Important: XINPUT1_3.dll and d3dx9_43.dll error</b>
+            <p>
+                Please install DirectX 9 Runtime from Microsoft. This does not come pre-installed on Windows 10.
+            </p>
+        </li>
+
+        <li>
+            <b>Important: Launcher not starting, complains about Visual C++ Runtime</b>
+            <p>
+                This sometimes will say "This program cannot start because VCRUNTIME140.dll is missing from your computer".<br>
+                Please install <i>Microsoft Visual C++ Redistributable 2015/2017</i>. The launcher requires this. Make sure you download the version that matches your OS (usually 64bit).<br>
+                <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe">Visual C++ 2017 download (32bit)</a>
+                <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe">Visual C++ 2017 download (64bit)</a>
+            </p>
+        </li>
+
+        <li>
+            <b>Important: "Game not installed" error</b>
+            <p>
+                Try moving the game to another library folder through Steam client. <emr><b>DO NOT move the game manually.</b></emr> That will not work. At all. Don't even try it. Believe me, I tried.
+            </p>
+            <p>
+                Make a new library folder or select one that does <b>NOT</b> contain the game. Then, move the game to that library.
+            </p>
+        </li>
+
+        <li>
+            "Ascend Service Not Available"
+            <p>
+                Use the launcher to start the game. <emr><u>NOT</u></emr> from Steam.
+            </p>
+        </li>
+
+        <li>
+            Game crashes or black-screens when Alt-tabbing
+            <p>
+                Use Windowed mode. (Click Play on Steam, click on Use Launcher, set the window mode to Windowed, click Launch then close the game)
+            </p>
+        </li>
+
+        <li>
+            Where did the launcher/Game_Emulator.exe go? I'm sure I downloaded it...
+            <p>
+                Your antivirus program (which may include your built-in Windows Defender) is deleting the file due to a false positive match. Add the launcher executable and Game_Emulator.exe to the exception list, disable the antivirus while playing or use other antivirus programs.
+            </p>
+        </li>
+
+        <li>
+            Invalid Resolution error
+            <p>
+                This may happen when you first start the game. Click Play on Steam, click on Use Launcher, set the desired resolution, click Launch, close the game and try again.
+            </p>
+        </li>
+
+        <li>
+            The launcher does not start
+            <p>
+                Unpack the full archive (consult G**gle or other search engines if you have no idea how to do so) into a folder then try again.
+            </p>
+        </li>
+
+        <li>
+            Game does not work on Windows 10 despite trying everything
+            <p>
+                Try reinstalling the game outside of the default folder. This is <b>not a recommended fix</b>, but it sometimes resolves the issue on some Windows 10 systems. Before you try this, try other solutions first.
+            </p>
+        </li>
+        <li>
+            The launcher doesn't work, I've tried everything
+            <p>
+                You technically don't need the launcher. Download the multi-thread patched version of the executable, and put it in <code>game installation folder/bin</code> folder. You can access this folder through Steam (right click on the game in the list - Properties - Local Files - Browse Local Files).
+            </p>
+        </li>
+    </ul>
+    <h2>Known issues</h2>
+    <ul>
+        <li>
+            About transcending/ascending
+            <p>
+                This function is not implemented yet and will result in the game softlocking or disconnects.
+            </p>
+        </li>
+        <li>
+            Boosts - What&apos;s going on with that?
+            <p>
+                Boosts are not working correctly. Applying boost and logging out will make the boost expire immediately.
+            </p>
+        </li>
+        <li>
+            Sanctum is looking a bit... bare
+            <p>
+                Yeah, the leaderboards and previous player data is nonexistent, that's why it's empty.
+            </p>
+        </li>
+        <li>
+            Curses and Blessings
+            <p>
+                This also doesn't work that well, meaning some curses and blessings may not work on other players.
+            </p>
+        </li>
+        <li>
+            Negative Souls
+            <p>
+                This is either a result of game hacking, cheating or game bugs. (if you suspect it's a bug, please let us know through Discord!)
+            </p>
+        </li>
+        <li>
+            Incorrect prices on shop items / items show up as "Free" instead of "Owned"
+            <p>
+                This is due to the server returning incorrect, placeholder values. May be fixed later.
+            </p>
+        </li>
+        <li>
+            Forging / Repairing items using pedestals in the game
+            <p>
+                This function is not quite there yet... So it mostly doesn't work.
+            </p>
+        </li>
+        <li>
+            Invading / Being Invaded
+            <p>
+                This stat resets on every logon because its data is not being saved.
+            </p>
+        </li>
+        <li>
+            Auto-save icon won't go away
+            <p>
+                This means you just did something the server cannot handle and you've been disconnected from the server.<br>
+                Please quit the game using Task Manager and try again. (Please tell us what action you just took!)
+            </p>
+        </li>
+    </ul>
+    </p>
+    <h2>
+        Credits
+    </h2>
+    <p>
+        permanull/pnill - Well, everything!
+    </p>
+    <p>
+        Torbjorn - Moderation
+    </p>
+    <h2>
+        Disclaimer
+    </h2>
+    <p>
+        This program and its components are provided "AS-IS" without ANY warranty, implied or otherwise. Permanull &amp; Co is not affiliated with, endorsed by, and/or sponsored by Signal Studios.
+    </p>
 </body>
