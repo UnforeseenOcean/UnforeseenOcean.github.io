@@ -800,8 +800,8 @@
 		  <p>The minimum supported screen size is <b>1024x768.</b></p>
 	  </div>
 	  <div class="flex-container ord-col body-container" id="main">
-			<div class="plank-menu stats" id="plankton">
-				<div class="stats-container" id="stats-disp">
+			<div class="plank-menu" id="plankton">
+				<div class="stats-container toggle-off" id="stats-disp">
 					<div class="stats-top">
 						<div class="stats-binder">
 						<img class="stats-graphic" src="assets/vitesse-01.png" alt="distance traveled">
@@ -855,7 +855,7 @@
 						
 					</div>
 				</div>
-				<div class="main-container toggle-off" id="mainmenu">
+				<div class="main-container" id="mainmenu">
 				<div class="plank-menu-top" id="pl-main-top">
 				<div class="song-info">
 				<div class="album-image-container">
@@ -949,7 +949,7 @@
 			  </div>
 		  </div>
 		  <div class="menu-overlay toggle-off" id="menu" data-html2canvas-ignore>
-		  	<div class="menu toggle-off" id="menu-main">
+		  	<div class="menu" id="menu-main">
 			  <div class="menu-col1">
 				  <div class="binder">
 				  <p class="white-text low-drag">Song Info</p>
@@ -1059,7 +1059,7 @@
 					  </div>
 				</div>
 			  </div>
-			  <div class="menu" id="menu-stat">
+			  <div class="menu toggle-off" id="menu-stat">
 			  <div class="menu-col1">
 				  <div class="binder">
 				  <p class="white-text low-drag">Stat Settings</p>
@@ -1098,11 +1098,11 @@
 				  </div>
 				  <!-- The total number of combos should update according to those two values -->
 				  <div class="binder">
-				  <input type="number" class="numberinput" name="lowcombo" id="lc-input" value="0" min="0" max="255" onChange="updateStats()">
+				  <input type="number" class="numberinput" name="lowcombo" id="lc-input" value="0" min="0" max="256" onChange="updateStats()">
 				  <label for="lowcombo" class="padding-left-fix">Combos (Partial)</label>
 				  </div>
 				  <div class="binder">
-				  <input type="number" class="numberinput" name="maxcombo" id="mc-input" value="0" min="0" max="255" onChange="updateStats()">
+				  <input type="number" class="numberinput" name="maxcombo" id="mc-input" value="0" min="0" max="256" onChange="updateStats()">
 				  <label for="maxcombo" class="padding-left-fix">Combos (Full)</label>
 					  
 				  </div>
