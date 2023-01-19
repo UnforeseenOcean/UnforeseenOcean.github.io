@@ -1017,39 +1017,43 @@
 				  </div>
 				  <div class="binder fix-checkbox">
 				  <input type="radio" class="bgselector" name="newradio1" id="bg0" onChange="updateBG()">
-				  <label for="bg1" class="padding-left-fix">Alfheim</label>
+				  <label for="bg0" class="padding-left-fix">Alfheim</label>
 				  </div>
 				  <div class="binder fix-checkbox">
 				  <input type="radio" class="bgselector" name="newradio1" id="bg1" onChange="updateBG()">
-				  <label for="bg2" class="padding-left-fix">Asgard</label>
+				  <label for="bg1" class="padding-left-fix">Asgard</label>
 					  </div>
 				  <div class="binder fix-checkbox">
 				  <input type="radio" class="bgselector" name="newradio1" id="bg2" onChange="updateBG()">
-				  <label for="bg3" class="padding-left-fix">Muspelheim</label>
+				  <label for="bg2" class="padding-left-fix">Muspelheim</label>
 					  </div>
 				  <div class="binder fix-checkbox">
 				  <input type="radio" class="bgselector" name="newradio1" id="bg3" onChange="updateBG()">
-				  <label for="bg4" class="padding-left-fix">Midgard</label>
+				  <label for="bg3" class="padding-left-fix">Midgard</label>
 					  </div>
 				  <div class="binder fix-checkbox">
 				  <input type="radio" class="bgselector" name="newradio1" id="bg4" onChange="updateBG()">
-				  <label for="bg5" class="padding-left-fix">Nidavellir</label>
+				  <label for="bg4" class="padding-left-fix">Nidavellir</label>
 					  </div>
 				  <div class="binder fix-checkbox">
 				  <input type="radio" class="bgselector" name="newradio1" id="bg5" onChange="updateBG()">
-				  <label for="bg6" class="padding-left-fix">Helheim</label>
+				  <label for="bg5" class="padding-left-fix">Helheim</label>
 					  </div>
 				  <div class="binder fix-checkbox">
 				  <input type="radio" class="bgselector" name="newradio1" id="bg6" onChange="updateBG()">
-				  <label for="bg7" class="padding-left-fix">Hellfest</label>
+				  <label for="bg6" class="padding-left-fix">Hellfest</label>
 					  </div>
 				  <div class="binder fix-checkbox">
 				  <input type="radio" class="bgselector" name="newradio1" id="bg7" onChange="updateBG()">
-				  <label for="bg8" class="padding-left-fix">DarkEmpty</label>
+				  <label for="bg7" class="padding-left-fix">DarkEmpty</label>
+					  </div>
+				  <div class="binder fix-checkbox">
+				  <input type="radio" class="bgselector" name="newradio1" id="bg9" onChange="updateBG()">
+				  <label for="bg9" class="padding-left-fix">Chroma-Key</label>
 					  </div>
 				  <div class="binder fix-checkbox">
 				  <input type="radio" class="bgselector" name="newradio1" id="bg8" onChange="updateBG()">
-				  <label for="bg9" class="padding-left-fix">Custom Image</label>
+				  <label for="bg8" class="padding-left-fix">Custom Image</label>
 					  </div>
 				  <div class="binder margin-top-fix">
 				  <input type="file" class="bguploader" name="bguploader" id="bgcustom" accept=".jpg, .jpeg, .png">
@@ -1353,6 +1357,9 @@
 			  }
 			  else if (which == "bg8") {
 				  $('body').css('background-image', "url("+bg_custom+")");
+			  }
+			  else if (which =="bg9") {
+				  $('body').css('background-image', "url('assets/green.png')");
 			  }
 		  }
 		  
