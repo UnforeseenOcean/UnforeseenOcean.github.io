@@ -39,7 +39,7 @@
 			margin: 0;
 		}
 		.ord-1 {
-			z-index: 999999;
+			z-index: 9999;
 		}
 		.ord-2 {
 			z-index: 2;
@@ -48,7 +48,7 @@
 			z-index: 3;
 		}
 		.ord-4 {
-			z-index: -999999;
+			z-index: -9999;
 		}
 		
 		.ord-col {
@@ -261,6 +261,7 @@
 			background-color: rgba(0,0,0,0.50);
 			padding: 8px;
 			width: 100%;
+			z-index: 15;
 		}
 		
 		.song-info {
@@ -1182,7 +1183,7 @@
 		  var bg_custom;
 		  var album_img;
 		  // Actually this is unnecessary but I will leave this change alone for the future
-		  tippy("#albumimg", {content: "Click to change! square image please.",});
+		  tippy("#albumimg", {content: "Click to change! Square image please.",});
 	  		const albumarttippy = tippy("#albumimg");
 		  tippy("#menubtn", {content: "Show/Hide Menu",});
 		  	const menubtntippy = tippy("#menubtn");
