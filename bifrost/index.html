@@ -1046,14 +1046,18 @@
 					  </div>
 				  <div class="binder fix-checkbox">
 				  <input type="radio" class="bgselector" name="newradio1" id="bg7" onChange="updateBG()">
-				  <label for="bg7" class="padding-left-fix">DarkEmpty</label>
+				  <label for="bg7" class="padding-left-fix">Empty</label>
+					  </div>
+				  <div class="binder fix-checkbox">
+				  <input type="radio" class="bgselector" name="newradio1" id="bg8" onChange="updateBG()">
+				  <label for="bg8" class="padding-left-fix">Dark Empty</label>
 					  </div>
 				  <div class="binder fix-checkbox">
 				  <input type="radio" class="bgselector" name="newradio1" id="bg9" onChange="updateBG()">
 				  <label for="bg9" class="padding-left-fix">Chroma-Key</label>
 					  </div>
 				  <div class="binder fix-checkbox">
-				  <input type="radio" class="bgselector" name="newradio1" id="bg8" onChange="updateBG()">
+				  <input type="radio" class="bgselector" name="newradio1" id="bgc" onChange="updateBG()">
 				  <label for="bg8" class="padding-left-fix">Custom Image</label>
 					  </div>
 				  <div class="binder margin-top-fix">
@@ -1350,13 +1354,13 @@
 		  function updateBG(){
 			  // There is a way better way to do this but I can't make it work
 			  var which = $(".bgselector:checked").attr("id");
-			  if (which != "bg8"){
+			  if (which != "bgc"){
 				  $('body').css('background-image', "url('assets/"+which+".png')");
 			  }
-			  if (bg_custom == undefined && which == "bg8") {
+			  if (bg_custom == undefined && which == "bgc") {
 				  $('body').css('background-image', "url('assets/custom_bg_tmp.png')");
 			  }
-			  else if (which == "bg8") {
+			  else if (which == "bgc") {
 				  $('body').css('background-image', "url("+bg_custom+")");
 			  }
 			  else if (which =="bg9") {
