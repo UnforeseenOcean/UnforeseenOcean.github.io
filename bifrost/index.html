@@ -283,8 +283,17 @@
 		}
 		.song-name{
 			text-transform: uppercase;
+			display: inline-block;
 			font-size: 1.17em;
 			line-height: 0.95em;
+			height: 35px;
+			z-index: 1;
+			width: min-content;
+		}
+		.artist-name{
+			display: inline-block;
+			width: min-content;
+			height: 48px;
 			z-index: 1;
 		}
 		.icon {
@@ -697,6 +706,14 @@
 		}
 		.stats-text.numbers {
 			font-size: 1.8em;
+			width: 114px;
+			height: 36px;
+			display: inline-block;
+			width: min-content;
+		}
+		.numbers-disp {
+			display: inline-block;
+			width: min-content;
 		}
 		.stats-text.numbers.small {
 			font-size: 1.3em;
@@ -762,6 +779,15 @@
 		.yellow {
 			color: #FFEB00;
 		}
+		
+		.turn-inline {
+			display: inline;
+		}
+		.fit {
+			display: inline-block;
+			white-space: nowrap;
+			
+		}
 		  @keyframes wave {
 			  0% {
 				  transform: rotate(0deg);
@@ -772,9 +798,16 @@
 		  }
 	  </style>
 	  <script src="js/jquery-3.6.3.min.js"></script>
+<!--	  <script src="js/jquery.textfill.min.js"></script>-->
 	  <script src="js/imagesloaded.pkgd.min.js"></script>
 	  <script>
-	  
+		  /*
+	  $("songname").textfill(
+			  {
+				  minFontPixels: 18, maxFontPixels: 35, changeLineHeight: true, debug: true, allowOverflow: false, success: function(){console.log("OK")}, fail: function(){console.error("FUCK")}, complete: function(){console.warn("DONE")}
+			  }
+		  );
+		  */
 	  </script>
   </head>
   <body id="body">
@@ -809,7 +842,7 @@
 						<div class="stats-text large-caps">Distance</div>
 							<div class="binder-sub">
 								<img class="stats-frame" src="assets/bg_compteur_stats.png" alt="stats frame">
-								<div class="stats-text numbers adj3" id="dist-text">0,000.00</div>
+								<div class="stats-text numbers adj3 fit"><span id="dist-text" class="numbers-disp">1,000.00</span></div>
 								<!-- Ugly hack! -->
 								<div class="stats-text numbers small adj2">meters</div>
 							</div>
@@ -819,7 +852,7 @@
 						<div class="stats-text large-caps">Notes hit</div>
 							<div class="binder-sub">
 								<img class="stats-frame" src="assets/bg_compteur_stats.png" alt="stats frame">
-								<div class="stats-text numbers adj1" id="notes-hit">999,999</div>
+								<div class="stats-text numbers adj1 fit"><span id="notes-hit" class="numbers-disp">999,999</span></div>
 								<div class="stats-text numbers small adj2" id="notes-hit-percent">(100%)</div>
 							</div>
 						</div>
@@ -828,7 +861,7 @@
 						<div class="stats-text large-caps">Notes missed</div>
 							<div class="binder-sub">
 								<img class="stats-frame" src="assets/bg_compteur_stats.png" alt="stats frame">
-								<div class="stats-text numbers adj1" id="notes-missed">999,999</div>
+								<div class="stats-text numbers adj1 fit" ><span id="notes-missed" class="numbers-disp">999,999</span></div>
 								<div class="stats-text numbers small adj2" id="notes-missed-percent">(100%)</div>
 							</div>
 						</div>
@@ -839,7 +872,7 @@
 						<div class="stats-text large-caps">Perfects</div>
 							<div class="binder-sub">
 								<img class="stats-frame" src="assets/bg_compteur_stats.png" alt="stats frame">
-								<div class="stats-text numbers adj1" id="perfects">999,999</div>
+								<div class="stats-text numbers adj1 fit" ><span id="perfects" class="numbers-disp">999,999</span></div>
 								<div class="stats-text numbers small adj2" id="perfects-latency">-999ms</div>
 							</div>
 						</div>
@@ -849,7 +882,7 @@
 							<div class="binder-sub">
 								<img class="stats-frame" src="assets/bg_compteur_stats.png" alt="stats frame">
 								<div class="stats-text numbers adj1" id="combo-total">256</div>
-								<div class="stats-text numbers small adj2">(<span class="blue" id="partial-boost">64</span> + <span class="yellow" id="full-boost">64</span>)</div>
+								<div class="stats-text numbers small adj2"><span class="turn-inline">(</span><span class="blue turn-inline" id="partial-boost">64</span><span class="turn-inline">&nbsp;+&nbsp;</span><span class="yellow turn-inline" id="full-boost">64</span>)</div>
 							</div>
 						</div>
 						
@@ -871,8 +904,8 @@
 						</div>
 					</div>
 					<div class="song-info-text">
-						<div class="song-name" id="songname">Welcome to Asgard</div>
-						<div class="artist-name" id="artist">Manaberry</div>
+						<div class="song-name fit" id="songname">Welcome to Asgard</div>
+						<div class="artist-name fit" id="artist">Manaberry</div>
 					</div>
 					<div class="explicit-indicator toggle-off-alt" id="explicit">
 						<img class="explicit-icon" src="assets/explicit_song.png" alt="E">
@@ -956,11 +989,11 @@
 				  <p class="white-text low-drag">Song Info</p>
 				  </div>
 				  <div class="binder">
-				  <input type="text" class="numberinput" name="songnametext" id="songnametext" value="Untitled Song" maxlength="24" onChange="updateSongInfo()">
+				  <input type="text" class="numberinput" name="songnametext" id="songnametext" value="Untitled Song" maxlength="32" onChange="updateSongInfo()">
 				  <label for="songnametext" class="padding-left-fix" >Song Name</label>
 				  </div>
 				  <div class="binder">
-				  <input type="text" class="numberinput" name="artisttext" id="artistinput" value="Various Artists" maxlength="24" onChange="updateSongInfo()">
+				  <input type="text" class="numberinput" name="artisttext" id="artistinput" value="Various Artists" maxlength="32" onChange="updateSongInfo()">
 				  <label for="artisttext" class="padding-left-fix" >Artist</label>
 				  </div>
 				  <div class="binder fix-checkbox">
@@ -1098,7 +1131,7 @@
 				  </div>
 				  
 				  <div class="binder">
-				  <input type="number" class="numberinput" name="perfects" id="perfects-input" min="0" value="0" max="100" onChange="updateStats()">
+				  <input type="number" class="numberinput" name="perfects" id="perfects-input" min="0" value="0" max="4294967295" onChange="updateStats()">
 				  <label for="perfects" class="padding-left-fix">Perfects</label>
 				  </div>
 				  <div class="binder">
@@ -1182,10 +1215,24 @@
 	<script src="js/html2canvas.min.js"></script>
 	<script src="js/tippy-bundle.umd.min.js"></script>
 	  <script src="js/sweetalert2.js"></script>
+	  <script src="js/fitty.min.js"></script>
 	  
 	  <script>
 		  var bg_custom;
 		  var album_img;
+		  
+		  /*var fitties = fitty(".fit");
+		  for (var ia = 0; ia < fitties.length; ia++){
+			  fitties[ia].fit();
+		  }*/
+		  
+		  fitty("#songname", {minSize: 16, maxSize: 35});
+		  fitty("#artist", {minSize: 12, maxSize: 30});
+		  fitty("#dist-text", {minSize: 6, maxSize: 35});
+		  fitty("#notes-hit", {minSize: 6, maxSize: 35});
+		  fitty("#notes-missed", {minSize: 6, maxSize: 35});
+		  fitty("#perfects", {minSize: 6, maxSize: 35});
+		  
 		  // Actually this is unnecessary but I will leave this change alone for the future
 		  tippy("#albumimg", {content: "Click to change! Square image please.",});
 	  		const albumarttippy = tippy("#albumimg");
@@ -1282,11 +1329,16 @@
 			  
 			  if (songname.length == 0){
 				  songname = "Extends Levant";
-			  }
+			  }/*
+			  if (artist.length > 16) {
+				$("#songname").css("font-size", "");
+			  }*/
 			  if (artist.length == 0){
 				  artist = "HertzDevil";
-			  }
-			  
+			  }/*
+			  if (artist.length > 16) {
+				$("#artist").css("font-size", "");
+			  }*/
 			  $("#songname").text(songname);
 			  $("#artist").text(artist);
 		  }
