@@ -51,7 +51,7 @@
 			<div class="input-wrapper">
 				<div class="mid-text">How many to suggest?: </div>
 				<span class="picker">
-					<input class="counter" id="counter" type="number" name="counter" min="1" max="62" value="1" onChange="updateCount()">
+					<input class="counter" id="counter" type="number" name="counter" min="0" max="62" value="1" onChange="updateCount()">
 					<div class="mid-text">&nbsp;song(s)</div>
 				</span><br>
 				<button class="button" onClick="makePlaylist()">CLICK HERE TO SOLVE THE PROBLEM</button>
@@ -70,6 +70,7 @@
 			"Gloryhammer Raid - Gloryhammer",
 			"Gloryhammer Raid - Questlords of Inverness Ride to the Galactic Fortress!",
 			"Gloryhammer Raid - Rise of the Chaos Wizards",
+			"Gloryhammer Raid - The Fires of Ancient Cosmic Destiny",
 			"Gloryhammer Raid - The Land of Unicorns",
 			"Gloryhammer Raid - The Siege of Dunkeld",
 			"Hellfest Raid - Battlefield",
@@ -113,7 +114,7 @@
 			"OST Volume 1 - Mine Mine Mine!",
 			"OST Volume 1 - Nitro",
 			"OST Volume 1 - No Grave But The Sea",
-			"OST Volume 1 - Red wine teeth",
+			"OST Volume 1 - Red Wine Teeth",
 			"OST Volume 1 - The Great Pirate Bottle",
 			"OST Volume 1 - The Next One Down",
 			"OST Volume 1 - To Erebor",
@@ -127,6 +128,7 @@
 			"OST Volume 2 - Memento Mori",
 			"OST Volume 2 - Niemi",
 			"OST Volume 2 - Out Of Control",
+			"OST Volume 2 - Redneck Vikings From Hell",
 			"OST Volume 2 - Utopia",
 			"OST Volume 2 - We Are The Fire"
 		];
@@ -153,10 +155,15 @@
 			var shuffledPlaylist = shuffle(songList);
 			var outputDOM = document.getElementById("output");
 			var result = "";
-			for (let i = 0; i < songCount; i++){
-				result += shuffledPlaylist[i] + "<br>";
+			if (songCount == 0){
+				outputDOM.innerHTML = "Ragnarock by Wanadev Studio<br>This tool made by Blackbeard<br>Under 2 hours from start to end<br>Version 1.2.1<br>Thank you for using my tool!<br>Hope you have fun.<br><br>Special thanks to Nicolas!"
 			}
+			if (songCount != 0){
+				for (let i = 0; i < songCount; i++){
+					result += shuffledPlaylist[i] + "<br>";
+				}
 			outputDOM.innerHTML = result;
+			}
 		}
 		
 		</script>
