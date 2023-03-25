@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>RagnaChooser</title>
+	<style>
+		body {
+			overflow-x: hidden;
+			font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
+		}
+		.main-container {
+			display: flex;
+			flex-direction: column;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			
+		}
+		.title {
+			font-size: 3em;
+		}
+		.subtitle {
+			font-size: 1.5em;
+		}
+		.main-wrapper {
+			justify-content: center;
+            align-items: center;
+            text-align: center;
+		}
+		.picker {
+			display: inline-flex;
+			flex-direction: row;
+		}
+		.output-text {
+			font-size: 2em;
+			font-weight: bold;
+		}
+		
+		
+	</style>
+	</head>
+	<body>
+	<div class="main-container">
+		<div class="main-wrapper">
+			<div class="title-wrapper">
+				<div class="title">Gee Whiz, I Can't Choose What To Play!&trade;</div>
+				<div class="subtitle">(Or I just want to set my arms on fire)</div>
+			</div>
+			
+			<div class="input-wrapper">
+				<div class="mid-text">How many to suggest?: </div>
+				<span class="picker">
+					<input class="counter" id="counter" type="number" name="counter" min="0" max="64" value="1" onChange="updateCount()">
+					<div class="mid-text">&nbsp;song(s)</div>
+				</span><br>
+				<button class="button" onClick="makePlaylist()">CLICK HERE TO SOLVE THE PROBLEM</button>
+			</div>
+			
+			<div class="output-wrapper">
+				<div class="output-text" id="output">CLICK THE BUTTON!!!</div>
+			</div>
+		</div>
+	</div>
+
+<script>
+		var songCount = 1;
+		var playlistIndex = 0;
+		var songList = [
+			"Gloryhammer Raid - Gloryhammer",
+			"Gloryhammer Raid - Questlords of Inverness Ride to the Galactic Fortress!",
+			"Gloryhammer Raid - Rise of the Chaos Wizards",
+			"Gloryhammer Raid - The Fires of Ancient Cosmic Destiny",
+			"Gloryhammer Raid - The Land of Unicorns",
+			"Gloryhammer Raid - The Siege of Dunkeld",
+			"Hellfest Raid - Battlefield",
+			"Hellfest Raid - Born For One Thing",
+			"Hellfest Raid - Going Hunting",
+			"Hellfest Raid - Great Marquis Of Hell",
+			"Hellfest Raid - Härjaren",
+			"Hellfest Raid - Heart Demolition",
+			"Hellfest Raid - Life Will Always Find Its Way",
+			"Hellfest Raid - One For The Road",
+			"Hellfest Raid - Skyfall",
+			"Hellfest Raid - Tribal",
+			"Hellfest Raid - You're Gonna Go Far, Kid",
+			"Nuclear Blast Raid - A Man With A Plan",
+			"Nuclear Blast Raid - Abyss Of Time",
+			"Nuclear Blast Raid - Ambiramus",
+			"Nuclear Blast Raid - Eye of the Storm",
+			"Nuclear Blast Raid - Nevermore",
+			"Nuclear Blast Raid - One Night In Tokyo",
+			"Nuclear Blast Raid - Revolution",
+			"Nuclear Blast Raid - Rise Again",
+			"Nuclear Blast Raid - Vodka",
+			"OST Volume 1 - Au Petit Matin",
+			"OST Volume 1 - Call of the North",
+			"OST Volume 1 - Chomp Chomp",
+			"OST Volume 1 - Dead and Gone",
+			"OST Volume 1 - Dewey",
+			"OST Volume 1 - Drunken dwarves",
+			"OST Volume 1 - Evier metal",
+			"OST Volume 1 - Heroes",
+			"OST Volume 1 - Hootsforce",
+			"OST Volume 1 - Iridium",
+			"OST Volume 1 - Join The Riot",
+			"OST Volume 1 - Kammthaar",
+			"OST Volume 1 - Kampfzwerg",
+			"OST Volume 1 - Löwenherz",
+			"OST Volume 1 - Loki",
+			"OST Volume 1 - Masters of The Galaxy",
+			"OST Volume 1 - Metfest",
+			"OST Volume 1 - Mexico",
+			"OST Volume 1 - Mine Mine Mine!",
+			"OST Volume 1 - Nitro",
+			"OST Volume 1 - No Grave But The Sea",
+			"OST Volume 1 - Red Wine Teeth",
+			"OST Volume 1 - The Great Pirate Bottle",
+			"OST Volume 1 - The Next One Down",
+			"OST Volume 1 - To Erebor",
+			"OST Volume 1 - Tortuga",
+			"OST Volume 1 - Universe on fire",
+			"OST Volume 1 - Valhalleluja",
+			"OST Volume 1 - Welcome To Asgard",
+			"OST Volume 1 - Whaole",
+			"OST Volume 2 - Hypa Hypa",
+			"OST Volume 2 - Mediator",
+			"OST Volume 2 - Memento Mori",
+			"OST Volume 2 - Niemi",
+			"OST Volume 2 - Out Of Control",
+			"OST Volume 2 - Redneck Vikings From Hell",
+			"OST Volume 2 - Utopia",
+			"OST Volume 2 - We Are The Fire"
+		];
+	
+		function updateCount(){
+			songCount = document.getElementById("counter").value;
+			console.log("songCount = " + songCount);
+		};
+	
+		function shuffle(array)
+		{
+		  var m = array.length, t, i;
+		  while (m > 0) 
+		  {
+			i = Math.floor(Math.random() * m--);
+			t = array[m];
+			array[m] = array[i];
+			array[i] = t;
+		  }
+		  return array;
+		};
+	
+		function makePlaylist(){
+			var shuffledPlaylist = shuffle(songList);
+			var outputDOM = document.getElementById("output");
+			var result = "";
+			if (songCount == 0){
+				outputDOM.innerHTML = "Ragnarock by Wanadev Studio<br>This tool made by Blackbeard<br>Under 2 hours from start to end<br>Version 1.2.1<br>Thank you for using my tool!<br>Hope you have fun.<br><br>Special thanks to Nicolas!"
+			}
+			if (songCount != 0){
+				for (let i = 0; i < songCount; i++){
+					result += shuffledPlaylist[i] + "<br>";
+				}
+			outputDOM.innerHTML = result;
+			}
+		}
+		
+		</script>
+	</body>
+</html>
