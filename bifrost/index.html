@@ -288,11 +288,11 @@
 			line-height: 0.95em;
 			height: 35px;
 			z-index: 1;
-			width: min-content;
+			width: max-content;
 		}
 		.artist-name{
 			display: inline-block;
-			width: min-content;
+			width: max-content;
 			height: 48px;
 			z-index: 1;
 		}
@@ -788,6 +788,9 @@
 			white-space: nowrap;
 			
 		}
+		textarea {
+			color: white;
+		}
 		  @keyframes wave {
 			  0% {
 				  transform: rotate(0deg);
@@ -1211,6 +1214,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed --> 
     <script src="js/popper2.min.js"></script>
     <!--<script src="js/bootstrap-4.4.1.js"></script>-->
+	  <script src="js/jquery.editable.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/html2canvas.min.js"></script>
 	<script src="js/tippy-bundle.umd.min.js"></script>
@@ -1220,11 +1224,6 @@
 	  <script>
 		  var bg_custom;
 		  var album_img;
-		  
-		  /*var fitties = fitty(".fit");
-		  for (var ia = 0; ia < fitties.length; ia++){
-			  fitties[ia].fit();
-		  }*/
 		  
 		  fitty("#songname", {minSize: 16, maxSize: 35});
 		  fitty("#artist", {minSize: 12, maxSize: 30});
@@ -1236,7 +1235,7 @@
 		  // Actually this is unnecessary but I will leave this change alone for the future
 		  tippy("#albumimg", {content: "Click to change! Square image please.",});
 	  		const albumarttippy = tippy("#albumimg");
-		  tippy("#menubtn", {content: "Show/Hide Menu",});
+		  tippy("#menubtn", {content: "Fallback Menu",});
 		  	const menubtntippy = tippy("#menubtn");
 		  tippy("#aboutbtn", {content: "About Bifrost",});
 		  	const aboutbtntippy = tippy("#aboutbtn"); 
@@ -1285,6 +1284,15 @@
 			
 		}  
 		
+		  // Section to invoke ClickToEdit
+		 $('#songname').editable(function(data) { if (data.text) { fitty.fitAll() }});
+		 $('#artist').editable(function(data) { if (data.text) { fitty.fitAll() }});
+		 /*
+		 $('#dist-text').editable(function(data) { if (data.text) { fitty.fitAll() }}); 
+		 $('#notes-hit').editable(function(data) { if (data.text) { fitty.fitAll() }});
+		 $('#notes-missed').editable(function(data) { if (data.text) { fitty.fitAll() }}); 
+		 $('#perfects').editable(function(data) { if (data.text) { fitty.fitAll() }}); 
+		 */
 		function updateTime(){
 			var minutes = $("#minutes").val();
 			var seconds = $("#seconds").val();
