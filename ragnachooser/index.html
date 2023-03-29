@@ -337,6 +337,7 @@
 		  return arr.every(element => element === false);
 		}
 		function makePlaylist(){
+			updateConfig();
 			updateCount();
 			var ii = [includeVol1, includeVol2, includeGH, includeHF, includeNB];
 			var intermediatePL = [];
