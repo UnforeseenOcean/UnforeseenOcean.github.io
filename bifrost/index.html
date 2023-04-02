@@ -1253,6 +1253,10 @@
 		  	const metalinktippy = tippy("#ragnarock-link-hp");
 		  tippy("#ragnarock-link-steam", {content: "Steam Store Page",});
 		  	const steamlinktippy = tippy("#ragnarock-link-hp");
+		  tippy("#songname", {content: "Double-click to edit!",});
+		  	const songnametippy = tippy("#songname");
+		  tippy("#artist", {content: "Double-click to edit!",});
+		  	const artisttippy = tippy("#artist");
 		  //console.log(albumarttippy);
 		  
 		function updateDiff(){
@@ -1285,8 +1289,57 @@
 		}  
 		
 		  // Section to invoke ClickToEdit
-		 $('#songname').editable(function(data) { if (data.text) { fitty.fitAll() }});
-		 $('#artist').editable(function(data) { if (data.text) { fitty.fitAll() }});
+		 $('#songname').editable(
+			 {
+				 closeOnEnter: true, 
+				 emptyMessage: "-", 
+				 callback: function(data){ 
+					 if (data.content){ 
+						 console.log("Song name edited");
+					 }
+					 if (!data.content){ 
+						 console.log("Song name edited");
+						 if (data.content == "") {
+							 console.log("Song name set to nothing");
+							 $('#songname').text("Welcome to Asgard");
+						 }
+					 }
+				 }
+			 });
+		 $('#artist').editable(
+			 {
+				 closeOnEnter: true, 
+				 emptyMessage: "-", 
+				 callback: function(data){ 
+					 if (data.content){ 
+						 console.log("Song name edited");
+					 }
+					 if (!data.content){ 
+						 console.log("Song name edited");
+						 if (data.content == "") {
+							 console.log("Song name set to nothing");
+							 $('#artist').text("Manaberry");
+						 }
+					 }
+				 }
+			 });
+		  $('#song-time').editable(
+			 {
+				 closeOnEnter: true, 
+				 emptyMessage: "3:30", 
+				 callback: function(data){ 
+					 if (data.content){ 
+						 console.log("Song time edited");
+					 }
+					 if (!data.content){ 
+						 console.log("Song time edited");
+						 if (data.content == "") {
+							 console.log("Song time set to nothing");
+							 $('#song-time').text("3:30");
+						 }
+					 }
+				 }
+			 });
 		 /*
 		 $('#dist-text').editable(function(data) { if (data.text) { fitty.fitAll() }}); 
 		 $('#notes-hit').editable(function(data) { if (data.text) { fitty.fitAll() }});
