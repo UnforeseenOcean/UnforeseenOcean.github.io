@@ -549,6 +549,9 @@
 		.toggle-off-alt {
 			opacity: 0;
 		}
+		.toggle-off-alt-1 {
+			opacity: 0.25;
+		}
 		.explicit-indicator-backup {
 			position: relative;
 			left: 700px;
@@ -801,17 +804,7 @@
 		  }
 	  </style>
 	  <script src="js/jquery-3.6.3.min.js"></script>
-<!--	  <script src="js/jquery.textfill.min.js"></script>-->
 	  <script src="js/imagesloaded.pkgd.min.js"></script>
-	  <script>
-		  /*
-	  $("songname").textfill(
-			  {
-				  minFontPixels: 18, maxFontPixels: 35, changeLineHeight: true, debug: true, allowOverflow: false, success: function(){console.log("OK")}, fail: function(){console.error("FUCK")}, complete: function(){console.warn("DONE")}
-			  }
-		  );
-		  */
-	  </script>
   </head>
   <body id="body">
 	  <div class="preloader-container" id="preloader" data-html2canvas-ignore>
@@ -910,7 +903,7 @@
 						<div class="song-name fit" id="songname">Welcome to Asgard</div>
 						<div class="artist-name fit" id="artist">Manaberry</div>
 					</div>
-					<div class="explicit-indicator toggle-off-alt" id="explicit">
+					<div class="explicit-indicator toggle-off-alt-1" id="explicit">
 						<img class="explicit-icon" src="assets/explicit_song.png" alt="E">
 					</div>
 					<div class="song-difficulty-container" id="diffcontainer">
@@ -939,9 +932,9 @@
 							<img class="medal-bg" src="assets/medal_backplate.png" alt="medal background">
 						</div>
 					</div>
-					<div class="binder custom-author-container white-text toggle-off-alt" id="custom-author-div">
-							<img class="icon-rune" src="assets/icon_custom_author.png" alt="rune">
-							<div class="custom-name" id="custom-author">xXJohnDoe78Xx</div>
+					<div class="binder custom-author-container white-text toggle-off-alt-1" id="custom-author-div">
+							<img class="icon-rune" id="rune" src="assets/icon_custom_author.png" alt="rune">
+							<div class="custom-name" id="custom-author">Blackbeard</div>
 					</div>
 				</div>
 			</div>
@@ -991,32 +984,26 @@
 				  <div class="binder">
 				  <p class="white-text low-drag">Song Info</p>
 				  </div>
-				  <div class="binder">
+				  <!--<div class="binder">
 				  <input type="text" class="numberinput" name="songnametext" id="songnametext" value="Untitled Song" maxlength="32" onChange="updateSongInfo()">
 				  <label for="songnametext" class="padding-left-fix" >Song Name</label>
 				  </div>
 				  <div class="binder">
 				  <input type="text" class="numberinput" name="artisttext" id="artistinput" value="Various Artists" maxlength="32" onChange="updateSongInfo()">
 				  <label for="artisttext" class="padding-left-fix" >Artist</label>
-				  </div>
+				  </div>-->
 				  <div class="binder fix-checkbox">
 				  <input type="checkbox" class="checkbox_custom" name="togglemedal" id="showmedals" onChange="toggleMedals()" checked>
 				  <label for="showmedals" class="padding-left-fix">Show Medals</label>
 				  </div>
 				  <div class="binder fix-checkbox">
 				  <input type="radio" class="checkbox_custom medal-selector" name="newradio" id="bronzemedal" onChange="updateMedals()">
-				  <label for="bronzemedal" class="padding-left-fix">Bronze</label>
+				  <label for="bronzemedal" class="padding-left-fix">Ranked</label>
 				  </div>
 				  <div class="binder fix-checkbox">
-				  <input type="radio" class="checkbox_custom medal-selector" name="newradio" id="silvermedal" onChange="updateMedals()">
-				  <label for="silvermedal" class="padding-left-fix">Silver</label>
+				  <input type="radio" class="checkbox_custom medal-selector" name="newradio" id="silvermedal" onChange="updateMedals('none')">
+				  <label for="silvermedal" class="padding-left-fix">Unranked</label>
 				  </div>
-				  <div class="binder fix-checkbox">
-				  <input type="radio" class="checkbox_custom medal-selector" name="newradio" id="goldmedal" onChange="updateMedals()">
-				  <label for="goldmedal" class="padding-left-fix">Gold</label>
-				  </div>
-				</div>
-			  <div class="menu-col2">
 				  <div class="binder">
 				  <p class="white-text low-drag">Song Length</p>
 				  </div>
@@ -1048,7 +1035,7 @@
 				  <label for="explicit-yn" class="padding-left-fix">Is Explicit</label>
 				  </div>
 				</div>
-			  <div class="menu-col3">
+			  <div class="menu-col2">
 				  <div class="binder">
 				  <p class="white-text">Background</p>
 				  </div>
@@ -1209,6 +1196,7 @@
 			customCheckbox("togglediff");
 			customCheckbox("togglecustom");
 			customCheckbox("toggleexplicit");
+			console.log(version);
 		});
 	</script>
     <!-- Include all compiled plugins (below), or include individual files as needed --> 
@@ -1224,7 +1212,7 @@
 	  <script>
 		  var bg_custom;
 		  var album_img;
-		  
+		  var version = "1.9.2 RC1";
 		  fitty("#songname", {minSize: 16, maxSize: 35});
 		  fitty("#artist", {minSize: 12, maxSize: 30});
 		  fitty("#dist-text", {minSize: 6, maxSize: 35});
@@ -1257,6 +1245,18 @@
 		  	const songnametippy = tippy("#songname");
 		  tippy("#artist", {content: "Double-click to edit!",});
 		  	const artisttippy = tippy("#artist");
+		  tippy("#explicit", {content: "Click to toggle Explicit status!",});
+		  	const explicittippy = tippy("#explicit");
+		  tippy("#rune", {content: "Click to toggle Custom Map Author name!",});
+		  	const csntippy = tippy("#rune");
+		  
+		  tippy("#bronze-medal", {content: ["Click to set medal! To hide all medals, use Unranked option in menu."],});
+		  	const bronzetippy = tippy("#bronze-medal");
+		  tippy("#silver-medal", {content: ["Click to set medal! To hide all medals, use Unranked option in menu."],});
+		  	const silvertippy = tippy("#silver-medal");
+		  tippy("#gold-medal", {content: ["Click to set medal! To hide all medals, use Unranked option in menu."],});
+		  	const goldtippy = tippy("#gold-medal");
+		  
 		  //console.log(albumarttippy);
 		  
 		function updateDiff(){
@@ -1340,12 +1340,23 @@
 					 }
 				 }
 			 });
-		 /*
-		 $('#dist-text').editable(function(data) { if (data.text) { fitty.fitAll() }}); 
-		 $('#notes-hit').editable(function(data) { if (data.text) { fitty.fitAll() }});
-		 $('#notes-missed').editable(function(data) { if (data.text) { fitty.fitAll() }}); 
-		 $('#perfects').editable(function(data) { if (data.text) { fitty.fitAll() }}); 
-		 */
+		  $('#custom-author').editable(
+			 {
+				 closeOnEnter: true, 
+				 emptyMessage: "Blackbeard", 
+				 callback: function(data){ 
+					 if (data.content){ 
+						 console.log("CSN edited");
+					 }
+					 if (!data.content){ 
+						 console.log("CSN edited");
+						 if (data.content == "") {
+							 console.log("CSN set to nothing");
+							 $('#custom-author').text("Blackbeard");
+						 }
+					 }
+				 }
+			 });
 		function updateTime(){
 			var minutes = $("#minutes").val();
 			var seconds = $("#seconds").val();
@@ -1404,63 +1415,112 @@
 			  $("#artist").text(artist);
 		  }
 		  
-		  function updateMedals(){
+		  $("#bronze-medal").click(function(event){
+			  updateMedals("bronzemedal");
+		  });
+		  $("#silver-medal").click(function(event){
+			  updateMedals("silvermedal");
+		  });
+		  $("#gold-medal").click(function(event){
+			  updateMedals("goldmedal");
+		  });
+		  
+		  
+		  function updateMedals(ext){
 			  // There is a way better way to do this but I can't make it work
-			  var which = $(".medal-selector:checked").attr("id");
+			  //var which = $(".medal-selector:checked").attr("id");
+			  var which = ext;
 			  var elemArray = [ $("#bronze-medal"), $("#silver-medal"), $("#gold-medal") ];
 			  // Ensure a known state
-			  	  elemArray[0].addClass("toggle-off-alt");
-				  elemArray[1].addClass("toggle-off-alt");
-				  elemArray[2].addClass("toggle-off-alt");
+			  	  elemArray[0].addClass("toggle-off-alt-1");
+				  elemArray[1].addClass("toggle-off-alt-1");
+				  elemArray[2].addClass("toggle-off-alt-1");
 			  // Now just add and remove class to our liking
 			  // This IS inefficient but it is easy
 			  if (which == "bronzemedal"){
-				  elemArray[0].removeClass("toggle-off-alt");
-				  elemArray[1].addClass("toggle-off-alt");
-				  elemArray[2].addClass("toggle-off-alt");
+				  elemArray[0].removeClass("toggle-off-alt-1");
+				  elemArray[1].addClass("toggle-off-alt-1");
+				  elemArray[2].addClass("toggle-off-alt-1");
 			  }
 			  else if (which == "silvermedal"){
-				  elemArray[0].removeClass("toggle-off-alt");
-				  elemArray[1].removeClass("toggle-off-alt");
-				  elemArray[2].addClass("toggle-off-alt");
+				  elemArray[0].removeClass("toggle-off-alt-1");
+				  elemArray[1].removeClass("toggle-off-alt-1");
+				  elemArray[2].addClass("toggle-off-alt-1");
 			  }
 			  else if (which == "goldmedal"){
-				  elemArray[0].removeClass("toggle-off-alt");
-				  elemArray[1].removeClass("toggle-off-alt");
-				  elemArray[2].removeClass("toggle-off-alt");
+				  elemArray[0].removeClass("toggle-off-alt-1");
+				  elemArray[1].removeClass("toggle-off-alt-1");
+				  elemArray[2].removeClass("toggle-off-alt-1");
+			  }
+			  else if (which == "none"){
+				  elemArray[0].addClass("toggle-off-alt-1");
+				  elemArray[1].addClass("toggle-off-alt-1");
+				  elemArray[2].addClass("toggle-off-alt-1");
 			  }
 			  else {
 				  console.error("Fatal error on updateMedals() - Uncaught condition");
+				  elemArray[0].removeClass("toggle-off-alt-1");
+				  elemArray[1].removeClass("toggle-off-alt-1");
+				  elemArray[2].removeClass("toggle-off-alt-1");
 			  }
 		  }
 		  
+		  // Attach click handler for Explicit icon
+		  $("#explicit").click(function(event){
+			  toggleExplicit();
+		  });
+		  
+		  // Likewise, attach click handler for Custom Map Author name
+		  $("#rune").click(function(event){
+			  toggleCSName();
+		  });
+		  
+		  var expState = true;
+		  var csnState = true;
+		  var mdlState = false;
+		  var medalCount = 1;
+		  
 		  function toggleMedals(){
-			  var state = $("#showmedals").is(":checked");
-			  if (state == true){
+			  // var state = $("#showmedals").is(":checked");
+			  if (mdlState == true){
+				  mdlState = false;
+				  $("#showmedals").prop("checked", false);
 				  $("#medals-container").removeClass("toggle-off-alt");
 			  }
-			  else if (state == false){
+			  else if (mdlState == false){
+				  mdlState = true;
+				  $("#showmedals").prop("checked", true);
 				  $("#medals-container").addClass("toggle-off-alt");
 			  }
 		  }
 		  
 		  function toggleCSName(){
-			  var state = $("#customsong").is(":checked");
-			  if (state == true){
-				  $("#custom-author-div").removeClass("toggle-off-alt");
+			  // var state = $("#customsong").is(":checked");
+			  if (csnState == true){
+				  csnState = false;
+				  $("#customsong").prop("checked", false);
+				  $("#custom-author-div").removeClass("toggle-off-alt-1");
 			  }
-			  else if (state == false){
-				  $("#custom-author-div").addClass("toggle-off-alt");
+			  else if (csnState == false){
+				  csnState = true;
+				  $("#customsong").prop("checked", true);
+				  $("#custom-author-div").addClass("toggle-off-alt-1");
 			  }
 		  }
 		  
+		  
 		  function toggleExplicit() {
-			  var state = $("#explicit-yn").is(":checked");
-			  if (state == true){
-				  $("#explicit").removeClass("toggle-off-alt");
+			  // var state = $("#explicit-yn").is(":checked");
+			  
+			  if (expState == true){
+				  expState = false;
+				  $("#explicit-yn").prop("checked",false);
+				  $("#explicit").removeClass("toggle-off-alt-1");
 			  }
-			  else if (state == false){
-				  $("#explicit").addClass("toggle-off-alt");
+			  else if (expState == false){
+				  expState = true;
+				  $("#explicit-yn").prop("checked",true);
+				  $("#explicit").addClass("toggle-off-alt-1");
 			  }
 		  }
 		  
@@ -1676,6 +1736,11 @@
 			}
 			
 		}
+		  
+		  function printVersion(){
+			  return version;
+		  }
+		  
 	  	function downloadImg(){
 			let menubar = $("#bottombeard");
 			let menu1 = $("#menu");
@@ -1692,10 +1757,10 @@
 			menubar.addClass("toggle-off-alt");
 			// Hide any tooltips if they're visible
 			tippy.hideAll();
-			
+			$('.toggle-off-alt-1').addClass('toggle-off-alt').removeClass('toggle-off-alt-1');
 			if (songname.length == 0) {songname = "Untitled";}
 			if (artistname.length == 0) {artistname = "Various Artists";}	
-				filename = songname+"-"+artistname+"-Bifrost.png";
+				filename = songname+" - "+artistname+" - Bifrost.png";
 			//document.documentElement.requestFullscreen();
 			html2canvas(document.body, { allowTaint: true, useCORS: true, width: 1920, height: 1080, windowWidth: 1920, windowHeight: 1080 }).then((canvas) => { 
 				img = canvas.toDataURL("image/png"); 
@@ -1705,6 +1770,7 @@
 			//document.exitFullscreen();
 			// Now re-enable the menu bar
 			menubar.removeClass("toggle-off-alt");
+			$('.toggle-off-alt').addClass('toggle-off-alt-1').removeClass('toggle-off-alt');
 			Swal.fire({title: 'Just so you know',text: 'If the page breaks, please refresh the page.',icon: 'info',confirmButtonText: 'Ahou'});
 		}
 		
