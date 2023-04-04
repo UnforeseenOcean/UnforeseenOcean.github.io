@@ -868,7 +868,7 @@
 						<div class="stats-text large-caps">Perfects</div>
 							<div class="binder-sub">
 								<img class="stats-frame" src="assets/bg_compteur_stats.png" alt="stats frame">
-								<div class="stats-text numbers adj1 fit" ><span id="perfects" class="numbers-disp">999,999</span></div>
+								<div class="stats-text numbers adj1 fit" ><span id="perfects" class="numbers-disp">100</span>%</div>
 								<div class="stats-text numbers small adj2" id="perfects-latency">-999ms</div>
 							</div>
 						</div>
@@ -1022,18 +1022,18 @@
 				  <input type="number" class="numberinput" name="diffinput" id="difficultysel" min="1" max="64" value="1" onChange="updateDiff()">
 				  <label for="difficultysel" class="padding-left-fix">Difficulty</label>
 				  </div>
-				  <div class="binder fix-checkbox">
+				  <!--<div class="binder fix-checkbox">
 				  <input type="checkbox" class="checkbox_custom" name="togglecustom" id="customsong" onChange="toggleCSName()">
 				  <label for="customsong" class="padding-left-fix">Is A Custom Song</label>
-				  </div>
+				  </div>-->
 				  <div class="binder">
 				  <input type="text" class="numberinput" name="authorinput" id="customauthor" value="Blackbeard" onChange="updateAuthor()">
 				  <label for="customauthor" class="padding-left-fix" maxlength="32">Author</label>
 				  </div>
-				  <div class="binder fix-checkbox">
+				  <!--<div class="binder fix-checkbox">
 				  <input type="checkbox" class="checkbox_custom" name="toggleexplicit" id="explicit-yn" onChange="toggleExplicit()">
 				  <label for="explicit-yn" class="padding-left-fix">Is Explicit</label>
-				  </div>
+				  </div>-->
 				</div>
 			  <div class="menu-col2">
 				  <div class="binder">
@@ -1121,7 +1121,7 @@
 				  </div>
 				  
 				  <div class="binder">
-				  <input type="number" class="numberinput" name="perfects" id="perfects-input" min="0" value="0" max="4294967295" onChange="updateStats()">
+				  <input type="number" class="numberinput" name="perfects" id="perfects-input" min="0" value="0" max="100" onChange="updateStats()">
 				  <label for="perfects" class="padding-left-fix">Perfects</label>
 				  </div>
 				  <div class="binder">
