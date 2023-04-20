@@ -580,10 +580,10 @@
 		.custom-author-container {
 			display: inline-flex;
 			flex-direction: row;
-			line-height: 32px;
+			line-height: 36px;
 			position: relative;
 			left: -40px;
-			bottom: 154px;
+			bottom: 155px;
 		}
 		
 		.preloader-container {
@@ -1347,6 +1347,7 @@
 				 callback: function(data){ 
 					 if (data.content){ 
 						 console.log("CSN edited");
+						 toggleCSName(true);
 					 }
 					 if (!data.content){ 
 						 console.log("CSN edited");
@@ -1494,8 +1495,15 @@
 			  }
 		  }
 		  
-		  function toggleCSName(){
+		  function toggleCSName(forceState){
 			  // var state = $("#customsong").is(":checked");
+			  if (forceState == true) {
+				  	if (csnState == false){
+					  csnState = true;
+					  $("#customsong").prop("checked", true);
+					  $("#custom-author-div").addClass("toggle-off-alt-1");
+			  } 
+			  }
 			  if (csnState == true){
 				  csnState = false;
 				  $("#customsong").prop("checked", false);
