@@ -98,7 +98,7 @@
 			<div class="input-wrapper">
 				<div class="mid-text">How many to suggest?: </div>
 				<span class="picker">
-					<input class="counter" id="counter" type="number" name="counter" min="0" max="64" value="1" onChange="updateCount()">
+					<input class="counter" id="counter" type="number" name="counter" min="0" max="72" value="1" onChange="updateCount()">
 					<div class="mid-text">&nbsp;song(s)</div>
 				</span><br><br>
 				<span class="picker">
@@ -142,6 +142,14 @@
 					<label for="NuclearBlast">Nuclear Blast
 					</label>
 					</div>
+					&nbsp;
+					
+					<div class="binder fix-checkbox">
+					<input class="pickme" id="cfgSabaton" type="checkbox" name="Sabaton" onChange="updateConfig()">
+						&nbsp;
+					<label for="Sabaton">Sabaton
+					</label>
+					</div>
 					
 					<br>
 				</span>
@@ -164,6 +172,7 @@
 		var includeGH = 0;
 		var includeHF = 0;
 		var includeNB = 0;
+		var includeSabaton = 0;
 		var songList = [
 			"Gloryhammer Raid - Gloryhammer",
 			"Gloryhammer Raid - Questlords of Inverness Ride to the Galactic Fortress!",
@@ -191,6 +200,12 @@
 			"Nuclear Blast Raid - Revolution",
 			"Nuclear Blast Raid - Rise Again",
 			"Nuclear Blast Raid - Vodka",
+			"Sabaton Raid - Stormtroopers",
+			"Sabaton Raid - To Hell and Back",
+			"Sabaton Raid - Night Witches",
+			"Sabaton Raid - Steel Commanders",
+			"Sabaton Raid - Resist and Bite",
+			"Sabaton Raid - Seven Pillars of Wisdom",
 			"OST Volume 1 - Au Petit Matin",
 			"OST Volume 1 - Call of the North",
 			"OST Volume 1 - Chomp Chomp",
@@ -264,6 +279,15 @@
 			"Nuclear Blast Raid - Rise Again",
 			"Nuclear Blast Raid - Vodka",
 		];
+	var songListSabaton = [
+			"Sabaton Raid - Stormtroopers",
+			"Sabaton Raid - To Hell and Back",
+			"Sabaton Raid - Night Witches",
+			"Sabaton Raid - Steel Commanders",
+			"Sabaton Raid - Resist and Bite",
+			"Sabaton Raid - Seven Pillars of Wisdom",
+		];
+					
 	var songListVol1 = [
 			"OST Volume 1 - Au Petit Matin",
 			"OST Volume 1 - Call of the North",
@@ -332,7 +356,8 @@
 			includeGH = document.getElementById("cfgGloryhammer").checked;
 			includeHF = document.getElementById("cfgHellfest").checked;
 			includeNB = document.getElementById("cfgNuclearBlast").checked;
-			console.log(includeVol1, includeVol2, includeGH, includeHF, includeNB);
+			includeSabaton = document.getElementById("cfgSabaton").checked;
+			console.log(includeVol1, includeVol2, includeGH, includeHF, includeNB, includeSabaton);
 		}
 		function allAreTrue(arr) {
 		  return arr.every(element => element === true);
@@ -343,7 +368,7 @@
 		function makePlaylist(){
 			updateConfig();
 			updateCount();
-			var ii = [includeVol1, includeVol2, includeGH, includeHF, includeNB];
+			var ii = [includeVol1, includeVol2, includeGH, includeHF, includeNB, includeSabaton];
 			var intermediatePL = [];
 			if (ii[0] == true) {
 				intermediatePL = intermediatePL.concat(songListVol1);
@@ -359,6 +384,9 @@
 				}
 			if (ii[4] == true) {
 				intermediatePL = intermediatePL.concat(songListNB);
+				}
+			if (ii[5] == true) {
+				intermediatePL = intermediatePL.concat(songListSabaton);
 				}
 			if ((allAreTrue(ii) == true)||(allAreFalse(ii) == true)) {
 				intermediatePL = intermediatePL.concat(songList);
@@ -406,6 +434,7 @@
 			customCheckbox("Gloryhammer");
 			customCheckbox("Hellfest");
 			customCheckbox("NuclearBlast");
+			customCheckbox("Sabaton");
 		});
 		</script>
 	</body>
