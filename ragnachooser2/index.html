@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <head>
+        <title>RagnaChooser 2: The Electric Boogaloo</title>
+        <style>
+            body {
+                font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+            }
+            .page-container {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .page-top {
+                background-color: #333333;
+                padding: 10px;
+                color: white;
+                border-radius: 15px;
+            }
+            .page-mid {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                min-height: 200px;
+                flex: 1;
+            }
+            .center {
+                font-weight: bold;
+                font-size: 4em;
+                text-align: center;
+            }
+            .prev, .next {
+                font-weight: bold;
+                font-size: 1.25em;
+                background-color: #A9A9A9;
+                padding: 5px 12px;
+                border-radius: 15px;
+                cursor: pointer;
+            }
+            .footer {
+                width: 100%;
+                font-size: 1.25em;
+                text-align: center;
+            }
+            .no {
+              -webkit-user-select: none; /* Safari */
+              -ms-user-select: none; /* IE 10 and IE 11 */
+              user-select: none; /* Standard syntax */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page-container">
+            <div class="page-top">
+                <div class="title">RagnaChooser V2</div>
+                <input class="picker" type="checkbox" name="v1" id="v1" onChange="updateConfig(0)">
+                <label for="v1">Volume 1</label>
+                <input class="picker" type="checkbox" name="v2" id="v2" onChange="updateConfig(1)">
+                <label for="v2">Volume 2</label>
+                <input class="picker" type="checkbox" name="gh" id="gh" onChange="updateConfig(2)">
+                <label for="gh">Gloryhammer Raid</label>
+                <input class="picker" type="checkbox" name="hf" id="hf" onChange="updateConfig(3)">
+                <label for="hf">Hellfest Raid</label>
+                <input class="picker" type="checkbox" name="nb" id="nb" onChange="updateConfig(4)">
+                <label for="nb">Nuclear Blast Raid</label>
+                <input class="picker" type="checkbox" name="sb" id="sb" onChange="updateConfig(5)">
+                <label for="sb">Sabaton Raid</label>
+                <br/>
+                <input class="option" type="checkbox" name="sort" id="sort" onChange="updateConfig(1023)">
+                <label for="sort">Sort songs by intensity</label>
+                <br/>
+                <input class="count" type="number" name="count" id="count" value="1" min="1" max="72" onChange="updateConfig(99)">
+                <label for="count no">&nbsp;songs</label>
+                <button class="button" id="button" onClick="makePlaylist()">Make Playlist!</button>
+            </div>
+            <div class="shim"><span class="shim-text" id="counter"> 1 of 0 songs in playlist</span></div>
+            <div class="page-mid">
+                <div class="prev no" id="prev" onClick="showPlaylist(false)">Prev</div>
+                <div class="center no" id="center">Press Make Playlist!</div>
+                <div class="next no" id="next" onClick="showPlaylist(true)">Next</div>
+            </div>
+        </div>
+        <div class="footer no">Controls: A = Previous, D = Next, W/S to increase/decrease song count,<br/>1~6 to select/deselect song lists, Q to enable/disable sorting, Enter to generate playlist<br/>Pressing W/S will also regenerate the playlist</div>
+        <script src="js/jquery.js"></script>
+        <script>
+            var songListGH = [
+                {name: "Gloryhammer Raid - Gloryhammer", dlc: "gh", diff: 16},
+                {name: "Gloryhammer Raid - Questlords of Inverness Ride to the Galactic Fortress!", dlc: "gh", diff: 22},
+                {name: "Gloryhammer Raid - Rise of the Chaos Wizards", dlc: "gh", diff: 18},
+                {name: "Gloryhammer Raid - The Fires of Ancient Cosmic Destiny", dlc: "gh", diff: 18},
+                {name: "Gloryhammer Raid - The Land of Unicorns", dlc: "gh", diff: 17},
+                {name: "Gloryhammer Raid - The Siege of Dunkeld", dlc: "gh", diff: 21}
+            ];
+            var songListHF = [
+                {name: "Hellfest Raid - Battlefield", dlc: "hf", diff: 15},
+                {name: "Hellfest Raid - Born For One Thing", dlc: "hf", diff: 19},
+                {name: "Hellfest Raid - Going Hunting", dlc: "hf", diff: 15},
+                {name: "Hellfest Raid - Great Marquis Of Hell", dlc: "hf", diff: 17},
+                {name: "Hellfest Raid - Härjaren", dlc: "hf", diff: 12},
+                {name: "Hellfest Raid - Heart Demolition", dlc: "hf", diff: 18},
+                {name: "Hellfest Raid - Life Will Always Find Its Way", dlc: "hf", diff: 19},
+                {name: "Hellfest Raid - One For The Road", dlc: "hf", diff: 14},
+                {name: "Hellfest Raid - Skyfall", dlc: "hf", diff: 21},
+                {name: "Hellfest Raid - Tribal", dlc: "hf", diff: 16},
+                {name: "Hellfest Raid - You're Gonna Go Far, Kid", dlc: "hf", diff: 13}
+            ];
+            var songListNB = [
+                {name: "Nuclear Blast Raid - A Man With A Plan", dlc: "nb", diff: 17},
+                {name: "Nuclear Blast Raid - Abyss Of Time", dlc: "nb", diff: 18},
+                {name: "Nuclear Blast Raid - Ambiramus", dlc: "nb", diff: 14},
+                {name: "Nuclear Blast Raid - Eye of the Storm", dlc: "nb", diff: 15},
+                {name: "Nuclear Blast Raid - Nevermore", dlc: "nb", diff: 20},
+                {name: "Nuclear Blast Raid - One Night In Tokyo", dlc: "nb", diff: 18},
+                {name: "Nuclear Blast Raid - Revolution", dlc: "nb", diff: 20},
+                {name: "Nuclear Blast Raid - Rise Again", dlc: "nb", diff: 18},
+                {name: "Nuclear Blast Raid - Vodka", dlc: "nb", diff: 14}
+            ];
+            var songListSabaton = [
+                {name: "Sabaton Raid - Night Witches", dlc: "sb", diff: 17},
+                {name: "Sabaton Raid - Resist and Bite", dlc: "sb", diff: 16},
+                {name: "Sabaton Raid - Seven Pillars of Wisdom", dlc: "sb", diff: 19},
+                {name: "Sabaton Raid - Steel Commanders", dlc: "sb", diff: 18},
+                {name: "Sabaton Raid - Stormtroopers", dlc: "sb", diff: 18},
+                {name: "Sabaton Raid - To Hell and Back", dlc: "sb", diff: 14}
+            ];
+            var songListVol1 = [
+                {name: "OST Volume 1 - Au Petit Matin", dlc: "v1", diff: 23},
+                {name: "OST Volume 1 - Call of the North", dlc: "v1", diff: 13},
+                {name: "OST Volume 1 - Chomp Chomp", dlc: "v1", diff: 22},
+                {name: "OST Volume 1 - Dead and Gone", dlc: "v1", diff: 14},
+                {name: "OST Volume 1 - Dewey", dlc: "v1", diff: 14},
+                {name: "OST Volume 1 - Drunken dwarves", dlc: "v1", diff: 17},
+                {name: "OST Volume 1 - Evier metal", dlc: "v1", diff: 18},
+                {name: "OST Volume 1 - Heroes", dlc: "v1", diff: 15},
+                {name: "OST Volume 1 - Hootsforce", dlc: "v1", diff: 17},
+                {name: "OST Volume 1 - Iridium", dlc: "v1", diff: 19},
+                {name: "OST Volume 1 - Join The Riot", dlc: "v1", diff: 11},
+                {name: "OST Volume 1 - Kammthaar", dlc: "v1", diff: 18},
+                {name: "OST Volume 1 - Kampfzwerg", dlc: "v1", diff: 17},
+                {name: "OST Volume 1 - Löwenherz", dlc: "v1", diff: 13},
+                {name: "OST Volume 1 - Loki", dlc: "v1", diff: 13},
+                {name: "OST Volume 1 - Masters of The Galaxy", dlc: "v1", diff: 17},
+                {name: "OST Volume 1 - Metfest", dlc: "v1", diff: 15},
+                {name: "OST Volume 1 - Mexico", dlc: "v1", diff: 16},
+                {name: "OST Volume 1 - Mine Mine Mine!", dlc: "v1", diff: 18},
+                {name: "OST Volume 1 - Nitro", dlc: "v1", diff: 15},
+                {name: "OST Volume 1 - No Grave But The Sea", dlc: "v1", diff: 17},
+                {name: "OST Volume 1 - Red Wine Teeth", dlc: "v1", diff: 15},
+                {name: "OST Volume 1 - The Great Pirate Bottle", dlc: "v1", diff: 21},
+                {name: "OST Volume 1 - The Next One Down", dlc: "v1", diff: 15},
+                {name: "OST Volume 1 - To Erebor", dlc: "v1", diff: 17},
+                {name: "OST Volume 1 - Tortuga", dlc: "v1", diff: 15},
+                {name: "OST Volume 1 - Universe on fire", dlc: "v1", diff: 17},
+                {name: "OST Volume 1 - Valhalleluja", dlc: "v1", diff: 18},
+                {name: "OST Volume 1 - Welcome To Asgard", dlc: "v1", diff: 10},
+                {name: "OST Volume 1 - Whaole", dlc: "v1", diff: 17}
+            ];
+        var songListVol2 = [
+                {name: "OST Volume 2 - Hypa Hypa", dlc: "v2", diff: 18},
+                {name: "OST Volume 2 - Mediator", dlc: "v2", diff: 18},
+                {name: "OST Volume 2 - Memento Mori", dlc: "v2", diff: 15},
+                {name: "OST Volume 2 - Metal United", dlc: "v2", diff: 15},
+                {name: "OST Volume 2 - Niemi", dlc: "v2", diff: 18},
+                {name: "OST Volume 2 - Out Of Control", dlc: "v2", diff: 13},
+                {name: "OST Volume 2 - Powersnake", dlc: "v2", diff: 18},
+                {name: "OST Volume 2 - Redneck Vikings From Hell", dlc: "v2", diff: 20},
+                {name: "OST Volume 2 - Utopia", dlc: "v2", diff: 15},
+                {name: "OST Volume 2 - We Are The Fire", dlc: "v2", diff: 17}
+            ];
+            var songIndex = 0;
+            var songCount = 1;
+            var playlistIndex = 0;
+            var config = [0,0,0,0,0,0]; // includeVol1, includeVol2, includeGH, includeHF, includeNB, includeSB
+            var sortEnabled = false;
+            var playlistArray = [];
+            var counter = $("#counter");
+            var count = $("#count");
+            var title = $("#center");
+            // Greetz: dubmood, crome, zalza, radix, arachno, MrGamer, 8bitbubsy, rez, JosSs, seablue, Soft Maniac, coma, maktone, cerror, LHS/DFS, Ghidorah, Beldoroon, mark knight/The Dark Knight, Zabutom, Razor1911, Conspiracy/CPY, fitgirl, strict9, Nick Skarny
+            function makePlaylist(){
+                console.info("Generating new playlist...");
+                playlistIndex = 0;
+                updateConfig();
+                var tempPL = [];
+                playlistArray = []; // empty out previous playlist
+                if (config[0] == true) {
+                    tempPL = tempPL.concat(songListVol1);
+                }
+                if (config[1] == true) {
+                    tempPL = tempPL.concat(songListVol2);
+                }
+                if (config[2] == true) {
+                    tempPL = tempPL.concat(songListGH);
+                }
+                if (config[3] == true) {
+                    tempPL = tempPL.concat(songListHF);
+                }
+                if (config[4] == true) {
+                    tempPL = tempPL.concat(songListNB);
+                }
+                if (config[5] == true) {
+                    tempPL = tempPL.concat(songListSabaton);
+                }
+                if ((allAreFalse(config)) == true) {
+                    tempPL = tempPL.concat(songListVol1);
+                    tempPL = tempPL.concat(songListVol2);
+                    tempPL = tempPL.concat(songListGH);
+                    tempPL = tempPL.concat(songListHF);
+                    tempPL = tempPL.concat(songListNB);
+                    tempPL = tempPL.concat(songListSabaton);
+                }
+                // console.log(tempPL);
+                var shuffled = shuffle(tempPL);
+                var holdArray = []; // Kinda inefficient way to ensure we have something to sort for later
+                if (songCount == 0) {
+                    alert("RagnaChooser V2 2.0.0 by Blackbeard\nJuly 2023\nFor Ragnarock (C) 2022-2023 Wanadev Studio\nThank you for using my tool, I hope you have fun.\nSpecial thanks to Nicolas and BloculusMonster!\nPlease put in a value above 1 to make the playlist!");
+                }
+                if (songCount > shuffled.length) {
+                        songCount = shuffled.length;
+                    }
+                    if (songCount > 0){
+                        for (var c = 0; c < songCount; c++){
+                            holdArray.push(shuffled[c]);
+                        }
+                        if (sortEnabled == true){
+                            holdArray.sort((a, b) => (a.diff > b.diff) ? 1: -1)
+                        }
+                        playlistArray = holdArray;
+                        console.log(playlistArray);
+                        showPlaylist(false);
+                    }
+            };
+            function updateConfig(which){
+                //console.info("Config updating...");
+                if (which == 1023) {
+                    sortEnabled = !sortEnabled;
+                }
+                var temp = document.querySelectorAll('input[type="checkbox"]');
+                for (var f = 0; f < temp.length - 1; f++) {
+                    config[f] = temp[f].checked;
+                }
+                songCount = count.val();
+                //console.log(config);
+                console.info("sortEnabled: " + sortEnabled + ", songCount: " + songCount);
+            };
+
+            function showPlaylist(direction){
+                if (playlistArray.length > 0){
+                    if (direction == true){
+                        // Ensure we are not indexing out of bounds when flicking to the end of the playlist
+                        if (playlistIndex < playlistArray.length - 1){
+                            playlistIndex = playlistIndex + 1;
+                        }
+                    }
+                    if (direction == false){
+                        
+                        // Ensure we are not going out of bounds when clicking Previous
+                        if (playlistIndex > 0) {
+                            playlistIndex = playlistIndex - 1;
+                        }
+                    }
+                    console.log(playlistIndex);
+                    title.text(playlistArray[playlistIndex].name);
+                    counter.text((playlistIndex + 1) + " of " + playlistArray.length + " songs in playlist");
+                }
+                else {
+                    alert("Please click Make Playlist button first.");
+                }
+            };
+
+            function shuffle(array)
+            {
+              var m = array.length, t, i;
+              while (m > 0) 
+              {
+                i = Math.floor(Math.random() * m--);
+                t = array[m];
+                array[m] = array[i];
+                array[i] = t;
+              }
+              return array;
+            };
+            
+            function allAreFalse(arr) {
+              return arr.every(element => element === false);
+            };
+            
+            
+        document.addEventListener("keydown", function(event){
+            if (event.key === "a" || event.key === "A") {
+                // Previous
+                showPlaylist(false);
+            } else if (event.key === "d" || event.key === "D") {
+                // Next
+                showPlaylist(true);
+            } else if (event.key === "w" || event.key === "W") {
+                // Increase
+                handleSettingKey(true);
+                makePlaylist();
+            } else if (event.key === "s" || event.key === "S") {
+                // Decrease
+                handleSettingKey(false);
+                makePlaylist();
+            } else if (event.key >= 1 && event.key <= 6) {
+                var checkboxIndex = parseInt(event.key) - 1;
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]')[checkboxIndex]; // Seventh checkbox should be ignored in this argument
+                checkboxes.checked = !checkboxes.checked;
+                makePlaylist(); // Regenerate playlist
+                songIndex = 0; // Reset the song index back to 0
+                showPlaylist(); // Display playlist
+            } else if (event.key === "q" || event.key === "Q") {
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]')
+                checkboxes[checkboxes.length - 1].checked = !checkboxes[checkboxes.length - 1].checked
+                updateConfig();
+            } else if (event.key === "Enter") {
+                console.log("Enter key pressed");
+                makePlaylist();
+            }
+        })
+            
+            function handleSettingKey(dir){
+                var max = count.prop("max");
+                var min = count.prop("min");
+                var cur = count.val();
+                cur = parseInt(cur);
+                // console.log("min: " + min +" max: " + max);
+                if ((cur > min) && dir == false){
+                    cur = cur - 1;
+                }
+                if ((cur < max) && dir == true){
+                    cur = cur + 1;
+                }
+                count.val(cur);
+            }
+        </script>
+    </body>
+</html>
