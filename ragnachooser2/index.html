@@ -60,6 +60,14 @@
                 font-size: 1.5em;
                 width: 80px;
             }
+            input[type="checkbox"] {
+                transform: scale(2);
+                -webkit-transform: scale(2);
+                -ms-transform: scale(2);
+            }
+            .placeholder {
+                line-height: 0.75em;
+            }
         </style>
     </head>
     <body>
@@ -67,21 +75,21 @@
             <div class="page-top">
                 <div class="title">RagnaChooser V2</div>
                 <input class="picker" type="checkbox" name="v1" id="v1" onChange="updateConfig(0)">
-                <label for="v1">Volume 1</label>
+                <label for="v1">Volume 1</label>&nbsp;
                 <input class="picker" type="checkbox" name="v2" id="v2" onChange="updateConfig(1)">
-                <label for="v2">Volume 2</label>
+                <label for="v2">Volume 2</label>&nbsp;
                 <input class="picker" type="checkbox" name="gh" id="gh" onChange="updateConfig(2)">
-                <label for="gh">Gloryhammer Raid</label>
+                <label for="gh">Gloryhammer Raid</label>&nbsp;
                 <input class="picker" type="checkbox" name="hf" id="hf" onChange="updateConfig(3)">
-                <label for="hf">Hellfest Raid</label>
+                <label for="hf">Hellfest Raid</label>&nbsp;
                 <input class="picker" type="checkbox" name="nb" id="nb" onChange="updateConfig(4)">
-                <label for="nb">Nuclear Blast Raid</label>
+                <label for="nb">Nuclear Blast Raid</label>&nbsp;
                 <input class="picker" type="checkbox" name="sb" id="sb" onChange="updateConfig(5)">
                 <label for="sb">Sabaton Raid</label>
-                <br/>
+                <div class="placeholder">&nbsp;</div>
                 <input class="option" type="checkbox" name="sort" id="sort" onChange="updateConfig(1023)">
                 <label for="sort">Sort songs by intensity</label>
-                <br/>
+                <div class="placeholder">&nbsp;</div>
                 <input class="count" type="number" name="count" id="count" value="1" min="1" max="72" onChange="updateConfig(99)">
                 <label for="count no">&nbsp;songs</label>
                 <button class="button" id="less" onClick="buttonHandler(false)">Less Songs</button>
@@ -227,7 +235,7 @@
                 var shuffled = shuffle(tempPL);
                 var holdArray = []; // Kinda inefficient way to ensure we have something to sort for later
                 if (songCount == 0) {
-                    alert("RagnaChooser V2 2.0.5 by Blackbeard\nJuly 2023\nFor Ragnarock (C) 2022-2023 Wanadev Studio\nThank you for using my tool, I hope you have fun.\nSpecial thanks to Nicolas and BloculusMonster!\nPlease put in a value above 1 to make the playlist!");
+                    alert("RagnaChooser V2 2.0.6 by Blackbeard\nJuly 2023\nFor Ragnarock (C) 2022-2023 Wanadev Studio\nThank you for using my tool, I hope you have fun.\nSpecial thanks to Nicolas and BloculusMonster!\nPlease put in a value above 1 to make the playlist!");
                 }
                 if (songCount > shuffled.length) {
                         songCount = shuffled.length;
