@@ -39,7 +39,7 @@
                 font-weight: bold;
                 font-size: 1.25em;
                 background-color: #A9A9A9;
-                padding: 5px 12px;
+                padding: 25px 15px;
                 border-radius: 15px;
                 cursor: pointer;
             }
@@ -52,6 +52,13 @@
               -webkit-user-select: none; /* Safari */
               -ms-user-select: none; /* IE 10 and IE 11 */
               user-select: none; /* Standard syntax */
+            }
+            button {
+                font-size: 1.5em;
+            }
+            input[type="number"] {
+                font-size: 1.5em;
+                width: 80px;
             }
         </style>
     </head>
@@ -77,16 +84,18 @@
                 <br/>
                 <input class="count" type="number" name="count" id="count" value="1" min="1" max="72" onChange="updateConfig(99)">
                 <label for="count no">&nbsp;songs</label>
+                <button class="button" id="less" onClick="buttonHandler(false)">Less Songs</button>
+                <button class="button" id="more" onClick="buttonHandler(true)">More Songs</button>
                 <button class="button" id="button" onClick="makePlaylist()">Make Playlist!</button>
             </div>
             <div class="shim"><span class="shim-text" id="counter"> 1 of 0 songs in playlist</span></div>
             <div class="page-mid">
-                <div class="prev no" id="prev" onClick="showPlaylist(false)">Prev</div>
+                <div class="prev no" id="prev" onClick="showPlaylist(false)">&larr; Prev</div>
                 <div class="center no" id="center">Press Make Playlist!</div>
-                <div class="next no" id="next" onClick="showPlaylist(true)">Next</div>
+                <div class="next no" id="next" onClick="showPlaylist(true)">Next &rarr;</div>
             </div>
         </div>
-        <div class="footer no">Controls: A = Previous, D = Next, W/S to increase/decrease song count,<br/>1~6 to select/deselect song lists, Q to enable/disable sorting, Enter to generate playlist<br/>Pressing W/S will also regenerate the playlist</div>
+        <div class="footer no">Controls: A = Previous, D = Next, W/S to increase/decrease song count,<br/>ZXCVBN to select/deselect song lists, Q to enable/disable sorting, Enter to generate playlist<br/>Pressing W/S will also regenerate the playlist</div>
         <script src="js/jquery.js"></script>
         <script>
             var songListGH = [
@@ -173,7 +182,6 @@
                 {name: "OST Volume 2 - Utopia", dlc: "v2", diff: 15},
                 {name: "OST Volume 2 - We Are The Fire", dlc: "v2", diff: 17}
             ];
-            var songIndex = 0;
             var songCount = 1;
             var playlistIndex = 0;
             var config = [0,0,0,0,0,0]; // includeVol1, includeVol2, includeGH, includeHF, includeNB, includeSB
@@ -186,7 +194,7 @@
             function makePlaylist(){
                 console.info("Generating new playlist...");
                 playlistIndex = 0;
-                updateConfig();
+                updateConfig(512);
                 var tempPL = [];
                 playlistArray = []; // empty out previous playlist
                 if (config[0] == true) {
@@ -219,7 +227,7 @@
                 var shuffled = shuffle(tempPL);
                 var holdArray = []; // Kinda inefficient way to ensure we have something to sort for later
                 if (songCount == 0) {
-                    alert("RagnaChooser V2 2.0.0 by Blackbeard\nJuly 2023\nFor Ragnarock (C) 2022-2023 Wanadev Studio\nThank you for using my tool, I hope you have fun.\nSpecial thanks to Nicolas and BloculusMonster!\nPlease put in a value above 1 to make the playlist!");
+                    alert("RagnaChooser V2 2.0.5 by Blackbeard\nJuly 2023\nFor Ragnarock (C) 2022-2023 Wanadev Studio\nThank you for using my tool, I hope you have fun.\nSpecial thanks to Nicolas and BloculusMonster!\nPlease put in a value above 1 to make the playlist!");
                 }
                 if (songCount > shuffled.length) {
                         songCount = shuffled.length;
@@ -248,8 +256,11 @@
                 songCount = count.val();
                 //console.log(config);
                 console.info("sortEnabled: " + sortEnabled + ", songCount: " + songCount);
+                if (which < 512 || which === 1023){
+                    makePlaylist();
+                }
             };
-
+            
             function showPlaylist(direction){
                 if (playlistArray.length > 0){
                     if (direction == true){
@@ -291,6 +302,16 @@
               return arr.every(element => element === false);
             };
             
+            function buttonHandler(which){
+                if (which === true){
+                    handleSettingKey(true);
+                    makePlaylist();
+                }
+                if (which === false){
+                    handleSettingKey(false);
+                    makePlaylist();
+                }
+            }
             
         document.addEventListener("keydown", function(event){
             if (event.key === "a" || event.key === "A") {
@@ -307,12 +328,44 @@
                 // Decrease
                 handleSettingKey(false);
                 makePlaylist();
-            } else if (event.key >= 1 && event.key <= 6) {
-                var checkboxIndex = parseInt(event.key) - 1;
-                var checkboxes = document.querySelectorAll('input[type="checkbox"]')[checkboxIndex]; // Seventh checkbox should be ignored in this argument
-                checkboxes.checked = !checkboxes.checked;
+            } else if (event.key === "z" ||event.key === "Z" ||event.key === "x" ||event.key === "X" ||event.key === "c" ||event.key === "C" ||event.key === "v" ||event.key === "V" ||event.key === "b" ||event.key === "B" ||event.key === "n" ||event.key === "N") {
+                switch(event.key){
+                    case "z":
+                    case "Z":
+                        var cb = document.querySelectorAll('input[type="checkbox"]')[0];
+                        cb.checked = !cb.checked;
+                        break;
+                    case "x":
+                    case "X":
+                        var cb = document.querySelectorAll('input[type="checkbox"]')[1];
+                        cb.checked = !cb.checked;
+                        break;
+                    case "c":
+                    case "C":
+                        var cb = document.querySelectorAll('input[type="checkbox"]')[2];
+                        cb.checked = !cb.checked;
+                        break;
+                    case "v":
+                    case "V":
+                        var cb = document.querySelectorAll('input[type="checkbox"]')[3];
+                        cb.checked = !cb.checked;
+                        break;
+                    case "b":
+                    case "B":
+                        var cb = document.querySelectorAll('input[type="checkbox"]')[4];
+                        cb.checked = !cb.checked;
+                        break;
+                    case "n":
+                    case "N":
+                        var cb = document.querySelectorAll('input[type="checkbox"]')[5];
+                        cb.checked = !cb.checked;
+                        break;
+                    }
+                // var checkboxIndex = parseInt(event.key) - 1;
+                //var checkboxes = document.querySelectorAll('input[type="checkbox"]')[checkboxIndex]; // Seventh checkbox should be ignored in this argument
+                //checkboxes.checked = !checkboxes.checked;
                 makePlaylist(); // Regenerate playlist
-                songIndex = 0; // Reset the song index back to 0
+                playlistIndex = 0; // Reset the song index back to 0
                 showPlaylist(); // Display playlist
             } else if (event.key === "q" || event.key === "Q") {
                 var checkboxes = document.querySelectorAll('input[type="checkbox"]')
