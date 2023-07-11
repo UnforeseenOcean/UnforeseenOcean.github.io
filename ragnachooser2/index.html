@@ -65,9 +65,29 @@
                 -webkit-transform: scale(2);
                 -ms-transform: scale(2);
             }
+            input[type="radio"] {
+                transform: scale(2);
+                -webkit-transform: scale(2);
+                -ms-transform: scale(2);
+            }
+            .hidden {
+                opacity: 0 !important; /* KABOOM */
+            }
+            .disabled {
+                display: none !important; /* DOUBLE KABOOM */
+            }
+            .more-text.one, .more-text.four{
+                opacity: 0.25;
+                font-size: 2.25em;
+            }
+            .more-text.two, .more-text.three{
+                opacity: 0.5;
+                font-size: 2.75em;
+            }
             .placeholder {
                 line-height: 0.75em;
             }
+            
         </style>
     </head>
     <body>
@@ -89,6 +109,12 @@
                 <div class="placeholder">&nbsp;</div>
                 <input class="option" type="checkbox" name="sort" id="sort" onChange="updateConfig(1023)">
                 <label for="sort">Sort songs by intensity</label>
+                <input class="picker menu" type="radio" name="showtype" id="showone" onChange="updateView(0)" checked>
+                <label for="showtype">Show One</label>
+                <input class="picker menu" type="radio" name="showtype" id="showmore" onChange="updateView(1)">
+                <label for="showtype">Show More</label>
+                <input class="picker menu" type="radio" name="showtype" id="showall" onChange="updateView(2)">
+                <label for="showtype">Show All</label>
                 <div class="placeholder">&nbsp;</div>
                 <input class="count" type="number" name="count" id="count" value="1" min="1" max="72" onChange="updateConfig(99)">
                 <label for="count no">&nbsp;songs</label>
@@ -96,14 +122,20 @@
                 <button class="button" id="more" onClick="buttonHandler(true)">More Songs</button>
                 <button class="button" id="button" onClick="makePlaylist()">Make Playlist!</button>
             </div>
-            <div class="shim"><span class="shim-text" id="counter"> 1 of 0 songs in playlist</span></div>
+            <div class="shim"><span class="shim-text no" id="counter"> 1 of 0 songs in playlist</span></div>
             <div class="page-mid">
                 <div class="prev no" id="prev" onClick="showPlaylist(false)">&larr; Prev</div>
+                <div class="column-wrapper">
+                <div class="center more-text one no hidden" id="text1">The Blue Box - To Live Is To Suffer</div>
+                <div class="center more-text two no hidden" id="text2">Blackbeard - The Ship Has Sailed</div>
                 <div class="center no" id="center">Press Make Playlist!</div>
+                <div class="center more-text three no hidden" id="text3">Malmen - Flowers</div>
+                <div class="center more-text four no hidden" id="text4">The Undefined - Integer Blues</div>
+                </div>
                 <div class="next no" id="next" onClick="showPlaylist(true)">Next &rarr;</div>
             </div>
         </div>
-        <div class="footer no">Controls: A = Previous, D = Next, W/S to increase/decrease song count,<br/>ZXCVBN to select/deselect song lists, Q to enable/disable sorting, Enter to generate playlist<br/>Pressing W/S will also regenerate the playlist</div>
+        <div class="footer no">Controls: A = Previous, D = Next, W/S to increase/decrease song count,<br/>ZXCVBN to select/deselect song lists, Q to enable/disable sorting, Enter to generate playlist<br/>Pressing W/S will also regenerate the playlist. <br/> &copy; 2023 Blackbeard. All rights reserved. <br/> The page contains no trackers at all, so your feedback is important for the improvement of the application.</div>
         <script src="js/jquery.js"></script>
         <script>
             var songListGH = [
@@ -198,6 +230,11 @@
             var counter = $("#counter");
             var count = $("#count");
             var title = $("#center");
+            var twobefore = $("#text1");
+            var onebefore = $("#text2");
+            var oneafter = $("#text3");
+            var twoafter = $("#text4");
+            var showMode = 0;
             // Greetz: dubmood, crome, zalza, radix, arachno, MrGamer, 8bitbubsy, rez, JosSs, seablue, Soft Maniac, coma, maktone, cerror, LHS/DFS, Ghidorah, Beldoroon, mark knight/The Dark Knight, Zabutom, Razor1911, Conspiracy/CPY, fitgirl, strict9, Nick Skarny
             function makePlaylist(){
                 console.info("Generating new playlist...");
@@ -235,7 +272,7 @@
                 var shuffled = shuffle(tempPL);
                 var holdArray = []; // Kinda inefficient way to ensure we have something to sort for later
                 if (songCount == 0) {
-                    alert("RagnaChooser V2 2.0.6 by Blackbeard\nJuly 2023\nFor Ragnarock (C) 2022-2023 Wanadev Studio\nThank you for using my tool, I hope you have fun.\nSpecial thanks to Nicolas and BloculusMonster!\nPlease put in a value above 1 to make the playlist!");
+                    alert("RagnaChooser V2 2.1.0 by Blackbeard\nJuly 2023\nFor Ragnarock (C) 2022-2023 Wanadev Studio\nThank you for using my tool, I hope you have fun.\nSpecial thanks to Nicolas and BloculusMonster!\nPlease put in a value above 1 to make the playlist!");
                 }
                 if (songCount > shuffled.length) {
                         songCount = shuffled.length;
@@ -270,7 +307,15 @@
             };
             
             function showPlaylist(direction){
+                var playlistTwoBefore = 0;
+                var playlistOneBefore = 0;
+                var playlistOneAfter = 0;
+                var playlistTwoAfter = 0;
+                var debugArray = [];
+                var prevBtn = $("#prev");
+                var nextBtn = $("#next");
                 if (playlistArray.length > 0){
+                    
                     if (direction == true){
                         // Ensure we are not indexing out of bounds when flicking to the end of the playlist
                         if (playlistIndex < playlistArray.length - 1){
@@ -284,13 +329,93 @@
                             playlistIndex = playlistIndex - 1;
                         }
                     }
-                    console.log(playlistIndex);
+                    if ((direction != true) && (direction != false)){
+                        // When the value is neither true or false, keep current index
+                        playlistIndex = playlistIndex;
+                    }
+                    
+                    playlistTwoBefore = playlistIndex - 2;
+                    playlistOneBefore = playlistIndex - 1;
+                    
+                    if ((playlistIndex - 2) < 0 ){
+                        twobefore.html("&nbsp;");
+                    }
+                    if ((playlistIndex - 1) < 0 ){
+                        onebefore.html("&nbsp;");
+                    }
+                    if ((playlistIndex + 1) <= playlistArray.length - 1 ){
+                        playlistOneAfter = playlistIndex + 1;
+                    }
+                    if ((playlistIndex + 2) <= playlistArray.length - 1 ){
+                        playlistTwoAfter = playlistIndex + 2;
+                    }
+                    
+                    debugArray = [playlistTwoBefore, playlistOneBefore, playlistIndex, playlistOneAfter, playlistTwoAfter];
+                    
+                    console.log(debugArray);
+                    
                     title.text(playlistArray[playlistIndex].name);
+                    prevBtn.removeClass("hidden");
+                    nextBtn.removeClass("hidden");
+                    if (showMode === 1){
+                        twobefore.removeClass("disabled");
+                        onebefore.removeClass("disabled");
+                        oneafter.removeClass("disabled");
+                        twoafter.removeClass("disabled");
+                        
+                        
+                        oneafter.text(playlistArray[playlistOneAfter].name);
+                        twoafter.text(playlistArray[playlistTwoAfter].name);
+                    }
+                    
+                    if (showMode === 1){
+                        twobefore.removeClass("hidden");
+                        onebefore.removeClass("hidden");
+                        oneafter.removeClass("hidden");
+                        twoafter.removeClass("hidden");
+                        
+                        if (playlistIndex - 1 >= 0){
+                            onebefore.text(playlistArray[playlistOneBefore].name);
+                        }
+                        if (playlistIndex - 2 >= 0){
+                            twobefore.text(playlistArray[playlistTwoBefore].name);
+                        }
+                        
+                        if (playlistIndex + 1 > playlistArray.length - 1){
+                            console.warn("About to run out of strings to display! PlaylistOneAfter +");
+                            oneafter.html("&nbsp;");
+                        }
+                        if (playlistIndex + 2 > playlistArray.length - 1){
+                            console.warn("About to run out of strings to display! PlaylistTwoAfter +");
+                            twoafter.html("&nbsp;");
+                        }
+                    } else if (showMode === 0 || showMode === 2){
+                        twobefore.addClass("disabled");
+                        onebefore.addClass("disabled");
+                        oneafter.addClass("disabled");
+                        twoafter.addClass("disabled");
+                    }
+                    
+                    if (showMode === 2){
+                        prevBtn.addClass("hidden");
+                        nextBtn.addClass("hidden");
+                        var temp = "";
+                        for (var c = 0; c < playlistArray.length; c++){
+                            temp = temp + playlistArray[c].name + "<br/>";
+                        }
+                        title.html(temp);
+                    }
+                    
                     counter.text((playlistIndex + 1) + " of " + playlistArray.length + " songs in playlist");
                 }
                 else {
                     alert("Please click Make Playlist button first.");
                 }
+            };
+            
+            function updateView(type){
+                showMode = type;
+                showPlaylist();
             };
 
             function shuffle(array)
