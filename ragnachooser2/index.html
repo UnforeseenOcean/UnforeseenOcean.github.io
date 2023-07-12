@@ -3,6 +3,10 @@
     <meta charset="utf-8">
     <head>
         <title>RagnaChooser 2: The Electric Boogaloo</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
         <style>
             body {
                 font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
@@ -507,6 +511,8 @@
             } else if (event.key === "Enter") {
                 console.log("Enter key pressed");
                 makePlaylist();
+            } else if (event.ctrlKey && event.shiftKey && event.key === "E"){
+                alert("The one wish I have for everyone in the world is knowing that war is a terrible tragedy and greed is what fuels it, and acting on it to stop the war.\nI am so sick and tired of seeing people lose their lives because of some rich pigs at the top of the pyramid.\nThe pyramid we built.\nThe corruption runs deep, and it must be stopped.");
             }
         })
             
