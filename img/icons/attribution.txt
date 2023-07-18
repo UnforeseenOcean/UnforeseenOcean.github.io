@@ -1,0 +1,2 @@
+Icons in ./win: (C) 1998 Microsoft Corporation
+Icons in ./: (C) 1999 Apache Software Foundation
