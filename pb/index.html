@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/98.css">
+      <link rel="stylesheet" href="css/jquery-ui.min.css">
+      <style>
+          body {
+              background: #008080;
+          }
+          #indexview {
+              width: 660px;
+              height: 550px;
+          }
+          .ugly {
+              text-decoration: none;
+              color: #222222;
+              border-bottom: 0.5px solid #222222;
+            }
+          .window-menu, .menu-items {
+              color: #222222;
+              user-select: none;
+              cursor: not-allowed;
+          }
+          .textfix {
+              position: relative;
+              top: -3px;
+              left: 3px;
+              padding-bottom: 10px;
+              user-select: none;
+              color: white;
+          }
+          .icons {
+              position: absolute;
+              display: flex;
+              user-select: none;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              top: 10px;
+              z-index: -918234;
+              font-family: "Pixelated MS Sans Serif";
+              font-size: 11px;
+          }
+          .icon-text {
+              padding-top: 5px;
+          }
+          .icons-wrapper {
+              margin-bottom: 25px;
+          }
+          .icons, .icons-wrapper, .icon-text {
+              color: white;
+          }
+      
+      </style>
+    <title>Binbows 94</title>
+  </head>
+  <body>
+          <div id="indexview" class="window iframe-container">
+              <div class="title-bar">
+                  <div class="title-bar-text"><img src="img/icons/win/ie.png" alt="E"><span class="textfix">Index of /projects - Michaelsoft Intranet Exploder</span></div>
+                  <div class="title-bar-controls">
+                      <button aria-label="Minimize"></button>
+                      <button aria-label="Maximize"></button>
+                      <button aria-label="Close"></button>
+                  </div>
+              </div>
+              <div class="window-body">
+                  <div class="window-menu">
+                      <span class="menu-items"><span class="ugly">F</span>ile</span>&nbsp;&nbsp;
+                      <span class="menu-items"><span class="ugly">E</span>dit</span>&nbsp;&nbsp;
+                      <span class="menu-items"><span class="ugly">V</span>iew</span>&nbsp;&nbsp;
+                      <span class="menu-items">F<span class="ugly">a</span>vorites</span>&nbsp;&nbsp;
+                      <span class="menu-items"><span class="ugly">T</span>ools</span>&nbsp;&nbsp;
+                      <span class="menu-items"><span class="ugly">H</span>ell</span>&nbsp;&nbsp;
+                  </div>
+                  <div class="spacer">
+                      &nbsp;
+                  </div>
+                  <iframe id="indexview-inner" title="Index of /projects" width="640" height="480" src="indexview.html" style="background: white"></iframe>
+              </div>
+            </div>
+      <div class="wallflower">
+          <div class="icons">
+              <div class="icons-wrapper">
+                  <img class="wallpaper-icons" src="img/icons/win/bin2.png" alt="html">
+                  <div class="icon-text">Recycle Bin</div>
+              </div>
+              <div class="icons-wrapper">
+                  <img class="wallpaper-icons" src="img/icons/win/com.png" alt="html">
+                  <div class="icon-text">My Computah</div>
+              </div>
+              <div class="icons-wrapper">
+                  <img class="wallpaper-icons" src="img/icons/win/mydoc.png" alt="html">
+                  <div class="icon-text">My Documents</div>
+              </div>
+              <div class="icons-wrapper">
+                  <img class="wallpaper-icons" src="img/icons/win/malburg.png" alt="html">
+                  <div class="icon-text">malburg.exe</div>
+              </div>
+              <div class="icons-wrapper">
+                  <img class="wallpaper-icons" src="img/icons/win/ie2.png" alt="html">
+                  <div class="icon-text">Internet<br/>Explorer</div>
+              </div>
+              <div class="icons-wrapper">
+                  <img class="wallpaper-icons" src="img/icons/win/mine.png" alt="html">
+                  <div class="icon-text">Minecraft.exe</div>
+              </div>
+              <div class="icons-wrapper">
+                  <img class="wallpaper-icons" src="img/icons/win/dx.png" alt="html">
+                  <div class="icon-text">directx.exe</div>
+              </div>
+              <div class="icons-wrapper">
+                  <img class="wallpaper-icons" src="img/icons/win/clock.png" alt="html">
+                  <div class="icon-text">Time Freezer</div>
+              </div>
+              <div class="icons-wrapper">
+                  <img class="wallpaper-icons" src="img/icons/win/iso.png" alt="html">
+                  <div class="icon-text">RZR1911.iso</div>
+              </div>
+              <div class="icons-wrapper">
+                  <img class="wallpaper-icons" src="img/icons/win/js.png" alt="html">
+                  <div class="icon-text">loki.js</div>
+              </div>
+              <div class="icons-wrapper">
+                  <img class="wallpaper-icons" src="img/icons/win/lnk.png" alt="html">
+                  <div class="icon-text">To Valhalla</div>
+              </div>
+          </div>
+      
+      </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+      <script>
+      $( function() {
+          $("#indexview").draggable();
+      });
+      </script>
+  </body>
+    
+</html>
