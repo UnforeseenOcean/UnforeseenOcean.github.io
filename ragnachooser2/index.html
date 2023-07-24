@@ -9,8 +9,63 @@
         <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
         <link rel="manifest" href="site.webmanifest">
         <style>
+            
+            :root {
+                --background-light: #ffffff;
+                --text-light: #000000;
+                --menu-bg-light: #333333;
+                --menu-text-light: #ffffff;
+                --button-light: #a9a9a9;
+                --button-text-light: #ffffff;
+                
+                --background-dark: #202020;
+                --text-dark: #ffffff;
+                --menu-bg-dark: #303030;
+                --menu-text-dark: #ffffff;
+                --button-dark: #606060;
+                --button-text-dark: #ffffff;
+                
+                --background-hicon: #000000;
+                --text-hicon: #ffff00;
+                --menu-bg-hicon: #000000;
+                --menu-text-hicon: #ffff00;
+                --button-hicon: #101010;
+                --button-text-hicon: #ffff00;
+            }
+            /* High-contrast mode colors */
+            .page-top.hicon {
+                background-color: #000000;
+                color: #ffff00;
+            }
+            .prev.hicon, .next.hicon {
+                background-color: #101010;
+                color: #ffff00;
+            }
+            .hicon {
+                background-color: #000000;
+                color: #ffff00;
+            }
+            
+            /* Dark mode colors */
+            
+            .page-top.dark {
+                background-color: #202020;
+                color: #ffffff;
+            }
+            .prev.dark, .next.dark {
+                background-color: #606060;
+                color: #ffffff;
+            }
+            .dark {
+                background-color: #303030;
+                color: #ffffff;
+            }
             body {
                 font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+                margin: 0;
+                padding: 0;
+                background-color: var(--background-light);
+                color: var(--text-light);
             }
             .page-container {
                 width: 100%;
@@ -21,11 +76,12 @@
                 align-items: center;
             }
             .page-top {
-                background-color: #333333;
+                background-color: var(--menu-bg-light);
+                color: var(--menu-text-light);
                 padding: 10px;
-                color: white;
                 border-radius: 15px;
             }
+            
             .page-mid {
                 display: flex;
                 flex-direction: row;
@@ -47,6 +103,8 @@
                 padding: 25px 15px;
                 border-radius: 15px;
                 cursor: pointer;
+                background-color: var(--button-light);
+                color: var(--button-text-light);
             }
             .footer {
                 width: 100%;
@@ -81,23 +139,182 @@
             .disabled {
                 display: none !important; /* DOUBLE KABOOM */
             }
-            .more-text.one, .more-text.four{
+            
+            .more-text.one, .more-text.four {
                 opacity: 0.25;
                 font-size: 2.25em;
             }
-            .more-text.two, .more-text.three{
+            .more-text.two, .more-text.three {
                 opacity: 0.5;
                 font-size: 2.75em;
+            }
+            .easy {
+                color: #19BD00;
+            }
+            .medium {
+                color: #CB8800;
+            }
+            .hard {
+                color: #CB0000;
+            }
+            .menu-btn {
+                position: fixed;
+                left: 50px;
+                bottom: 50px;
+            }
+            .menu-div {
+                display: none;
+                position: fixed;
+                left: 150px;
+                bottom: 50px;
+            }
+            .show {
+                display: block;
+            }
+            .fade {
+                opacity: 0.25;
+            }
+            .cookie-nag-container {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: rgba(255,255,255,0.5);
+                z-index: 9999999999;
+            }
+            .cookie-nag {
+                position: absolute;
+                background-color: white;
+                color: black;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                border: outset;
+                border-width: thick;
+                padding: 15px;
+            }
+            .cookie {
+                font-size: 4em;
+                animation: shake 0.25s linear infinite;
+            }
+            .cookie-nag-title {
+                font-size: 2em;
+            }
+            .small-text {
+                font-size: 0.6em;
+            }
+            .cookie-reject {
+                background-color: lightgray;
+                color: black;
+            }
+            .cookie-accept {
+                background-color: #55BB49;
+                font-size: 4em;
+                width: 250px;
+                height: 100px;
+                color: black;
+                font-weight: bold;
             }
             .placeholder {
                 line-height: 0.75em;
             }
             
+            /* End of definition */
+            
+            /* CSS Var */
+            body.dark {
+                --bg: var(--background-dark);
+                --txt: var(--text-dark);
+            }
+            .page-top.dark {
+                --mbg: var(--menu-bg-dark);
+                --mtxt: var(--menu-text-dark);
+            }
+            .next.dark, .prev.dark {
+                --btn: var(--button-dark);
+                --btxt: var(--button-text-dark);
+            }
+            
+            body.hicon {
+                --bg: var(--background-hicon);
+                --txt: var(--text-hicon);
+            }
+            .page-top.hicon {
+                --mbg: var(--menu-bg-hicon);
+                --mtxt: var(--menu-text-hicon);
+            }
+            .next.hicon, .prev.hicon {
+                --btn: var(--button-hicon);
+                --btxt: var(--button-text-hicon);
+            }
+            
+            body.dark, body.hicon {
+                background-color: var(--bg);
+                color: var(--txt);
+            }
+            .page-top.dark, .page-top.hicon {
+                background-color: var(--mbg);
+                color: var(--mtxt);
+            }
+            .next.dark, .prev.dark, .next.hicon, .prev.hicon {
+                background-color: var(--btn);
+                color: var(--btxt);
+            }
+            
+            @keyframes shake {
+              0%  { transform: translate(2px, 1px) rotate(0deg); }
+              10% { transform: translate(-1px, -2px) rotate(-2deg); }
+              20% { transform: translate(-3px, 0px) rotate(3deg); }
+              30% { transform: translate(0px, 2px) rotate(0deg); }
+              40% { transform: translate(1px, -1px) rotate(1deg); }
+              50% { transform: translate(-1px, 2px) rotate(-1deg); }
+              60% { transform: translate(-3px, 1px) rotate(0deg); }
+              70% { transform: translate(2px, 1px) rotate(-2deg); }
+              80% { transform: translate(-1px, -1px) rotate(4deg); }
+              90% { transform: translate(2px, 2px) rotate(0deg); }
+              100%{ transform: translate(1px, -2px) rotate(-1deg); }
+            }
+            @keyframes blink {
+                0% { opacity: 0; }
+                9.99% { opacity: 0; }
+                10% { opacity: 1; }
+                19.99% { opacity: 1; }
+                20% { opacity: 0; }
+                29.99% { opacity: 0; }
+                30% { opacity: 1; }
+                39.99% { opacity: 1; }
+                40% { opacity: 0; }
+                49.99% { opacity: 0; }
+                50% { opacity: 1; }
+                59.99% { opacity: 1; }
+                60% { opacity: 0; }
+                69.99% { opacity: 0; }
+                70% { opacity: 1; }
+                79.99% { opacity: 1; }
+                80% { opacity: 0; }
+                89.99% { opacity: 0; }
+                90% { opacity: 1; }
+                99.99% { opacity: 1; }
+                100% { opacity: 0; }
+            }
         </style>
     </head>
-    <body>
+    <body class="light"> <!-- CSS -->
         <div class="page-container">
-            <div class="page-top">
+            <div class="cookie-nag-container" id="cookienag-hideme">
+            <div class="cookie-nag">
+                <div class="cookie">🍪</div>
+                <div class="cookie-nag-title">Oh my, browser cookie! Whatever I will do?!</div>
+                <div class="cookie-nag-content">This site uses cookies for storing your settings. No ads or tracking or anything like that. Just settings.<br/>
+                    Please click the big &quot;OKAY&quot; button below if you are okay with it.</div>
+                <div class="cookie-nag-content">If you do not agree, press &quot;NO WAY&quot; button instead. The page will function regardless.<br/>You will see this message again because we can't save the settings. That's how the cookie crumbles. <span class="small-text">Sorry. Again.</span></div>
+                <div class="cookie-nag-content">Also, once you agree, please refresh the page.</div>
+                <div class="cookie-nag-buttons"><button class="cookie-reject" onClick="closeDialog(false)">NO WAY</button>&nbsp;<button class="cookie-accept" onClick="closeDialog(true)">OKAY</button></div>
+            </div>
+        </div>
+            <div class="page-top light" id="pgtop"> <!-- CSS -->
                 <div class="title">RagnaChooser V2</div>
                 <input class="picker" type="checkbox" name="v1" id="v1" onChange="updateConfig(0)">
                 <label for="v1">Volume 1</label>&nbsp;
@@ -114,22 +331,25 @@
                 <div class="placeholder">&nbsp;</div>
                 <input class="option" type="checkbox" name="sort" id="sort" onChange="updateConfig(1023)">
                 <label for="sort">Sort songs by intensity</label>
-                <input class="picker menu" type="radio" name="showtype" id="showone" onChange="updateView(0)" checked>
-                <label for="showtype">Show One</label>
-                <input class="picker menu" type="radio" name="showtype" id="showmore" onChange="updateView(1)">
-                <label for="showtype">Show More</label>
-                <input class="picker menu" type="radio" name="showtype" id="showall" onChange="updateView(2)">
-                <label for="showtype">Show All</label>
+                <input class="option" type="checkbox" name="difficulty" id="diff" onChange="updateConfig(666)" checked>
+                <label for="difficulty">Also Pick Difficulty</label>
+                
+                <input class="radio menu" type="radio" name="showtype" id="showone" onChange="updateView(0)" checked>
+                <label for="showone">Show One</label>
+                <input class="radio menu" type="radio" name="showtype" id="showmore" onChange="updateView(1)">
+                <label for="showmore">Show More</label>
+                <input class="radio menu" type="radio" name="showtype" id="showall" onChange="updateView(2)">
+                <label for="showall">Show All</label>
                 <div class="placeholder">&nbsp;</div>
-                <input class="count" type="number" name="count" id="count" value="1" min="1" max="72" onChange="updateConfig(99)">
-                <label for="count no">&nbsp;songs</label>
+                <input class="count" type="number" name="count" id="count" value="10" min="1" max="72" onChange="updateConfig(99)">
+                <label for="count" class="no">&nbsp;songs</label>
                 <button class="button" id="less" onClick="buttonHandler(false)">Less Songs</button>
                 <button class="button" id="more" onClick="buttonHandler(true)">More Songs</button>
                 <button class="button" id="button" onClick="makePlaylist()">Make Playlist!</button>
             </div>
-            <div class="shim"><span class="shim-text no" id="counter"> 1 of 0 songs in playlist</span></div>
+            <div class="shim"><span class="shim-text no" id="counter"> 0 of 0 songs in playlist</span></div>
             <div class="page-mid">
-                <div class="prev no" id="prev" onClick="showPlaylist(false)">&larr; Prev</div>
+                <div class="prev no light" id="prev" onClick="showPlaylist(false)">&larr; Prev</div> <!-- CSS -->
                 <div class="column-wrapper">
                 <div class="center more-text one no hidden" id="text1">The Blue Box - To Live Is To Suffer</div>
                 <div class="center more-text two no hidden" id="text2">Blackbeard - The Ship Has Sailed</div>
@@ -137,101 +357,47 @@
                 <div class="center more-text three no hidden" id="text3">Malmen - Flowers</div>
                 <div class="center more-text four no hidden" id="text4">The Undefined - Integer Blues</div>
                 </div>
-                <div class="next no" id="next" onClick="showPlaylist(true)">Next &rarr;</div>
+                <div class="next no light" id="next" onClick="showPlaylist(true)">Next &rarr;</div> <!-- CSS -->
             </div>
         </div>
-        <div class="footer no">Controls: A = Previous, D = Next, W/S to increase/decrease song count,<br/>ZXCVBN to select/deselect song lists, Q to enable/disable sorting, Enter to generate playlist<br/>Pressing W/S will also regenerate the playlist. <br/> &copy; 2023 Blackbeard. All rights reserved. <br/> The page contains no trackers at all, so your feedback is important for the improvement of the application.</div>
+        <div class="footer no">
+            &copy; 2023 Blackbeard. All rights reserved. <br/> 
+            The page contains no trackers at all, so your feedback is important for the improvement of the application.
+        </div>
+        <div class="menu-div" id="menudiv">
+            <button onClick="clearLocalStorage()">Clear Settings</button>
+            &nbsp;
+            <input type="radio" name="scrmode" id="litemode" onChange="setDisplayMode(0)">
+            <label for="litemode" class="no">Light Mode</label>
+            &nbsp;
+            <input type="radio" name="scrmode" id="darkmode" onChange="setDisplayMode(1)">
+            <label for="darkmode" class="no">Dark Mode</label>
+            &nbsp;
+            <input type="radio" name="scrmode" id="hiconmode" onChange="setDisplayMode(2)">
+            <label for="hiconmode" class="no">High Contrast</label>
+            <div class="menu-controls no">
+            Controls: A/D = Flick through songs, W/S: Adjust song count,<br/>
+            ZXCVBN: Toggle filters, Q: Toggle sorting, Enter: Generate<br/>
+            Pressing W/S will also regenerate the playlist. <br/> 
+            </div>
+        </div>
+        <div class="menu-btn">
+            <button class="menu-btn-deco" onClick="toggleMenu();">Menu</button>
+        </div>
+        
         <script src="js/jquery.js"></script>
         <script>
-            var songListGH = [
-                {name: "Gloryhammer Raid - Gloryhammer", dlc: "gh", diff: 16},
-                {name: "Gloryhammer Raid - Questlords of Inverness Ride to the Galactic Fortress!", dlc: "gh", diff: 22},
-                {name: "Gloryhammer Raid - Rise of the Chaos Wizards", dlc: "gh", diff: 18},
-                {name: "Gloryhammer Raid - The Fires of Ancient Cosmic Destiny", dlc: "gh", diff: 18},
-                {name: "Gloryhammer Raid - The Land of Unicorns", dlc: "gh", diff: 17},
-                {name: "Gloryhammer Raid - The Siege of Dunkeld", dlc: "gh", diff: 21}
-            ];
-            var songListHF = [
-                {name: "Hellfest Raid - Battlefield", dlc: "hf", diff: 15},
-                {name: "Hellfest Raid - Born For One Thing", dlc: "hf", diff: 19},
-                {name: "Hellfest Raid - Going Hunting", dlc: "hf", diff: 15},
-                {name: "Hellfest Raid - Great Marquis Of Hell", dlc: "hf", diff: 17},
-                {name: "Hellfest Raid - Härjaren", dlc: "hf", diff: 12},
-                {name: "Hellfest Raid - Heart Demolition", dlc: "hf", diff: 18},
-                {name: "Hellfest Raid - Life Will Always Find Its Way", dlc: "hf", diff: 19},
-                {name: "Hellfest Raid - One For The Road", dlc: "hf", diff: 14},
-                {name: "Hellfest Raid - Skyfall", dlc: "hf", diff: 21},
-                {name: "Hellfest Raid - Tribal", dlc: "hf", diff: 16},
-                {name: "Hellfest Raid - You're Gonna Go Far, Kid", dlc: "hf", diff: 13}
-            ];
-            var songListNB = [
-                {name: "Nuclear Blast Raid - A Man With A Plan", dlc: "nb", diff: 17},
-                {name: "Nuclear Blast Raid - Abyss Of Time", dlc: "nb", diff: 18},
-                {name: "Nuclear Blast Raid - Ambiramus", dlc: "nb", diff: 14},
-                {name: "Nuclear Blast Raid - Eye of the Storm", dlc: "nb", diff: 15},
-                {name: "Nuclear Blast Raid - Nevermore", dlc: "nb", diff: 20},
-                {name: "Nuclear Blast Raid - One Night In Tokyo", dlc: "nb", diff: 18},
-                {name: "Nuclear Blast Raid - Revolution", dlc: "nb", diff: 20},
-                {name: "Nuclear Blast Raid - Rise Again", dlc: "nb", diff: 18},
-                {name: "Nuclear Blast Raid - Vodka", dlc: "nb", diff: 14}
-            ];
-            var songListSabaton = [
-                {name: "Sabaton Raid - Night Witches", dlc: "sb", diff: 17},
-                {name: "Sabaton Raid - Resist and Bite", dlc: "sb", diff: 16},
-                {name: "Sabaton Raid - Seven Pillars of Wisdom", dlc: "sb", diff: 19},
-                {name: "Sabaton Raid - Steel Commanders", dlc: "sb", diff: 18},
-                {name: "Sabaton Raid - Stormtroopers", dlc: "sb", diff: 18},
-                {name: "Sabaton Raid - To Hell and Back", dlc: "sb", diff: 14}
-            ];
-            var songListVol1 = [
-                {name: "OST Volume 1 - Au Petit Matin", dlc: "v1", diff: 23},
-                {name: "OST Volume 1 - Call of the North", dlc: "v1", diff: 13},
-                {name: "OST Volume 1 - Chomp Chomp", dlc: "v1", diff: 22},
-                {name: "OST Volume 1 - Dead and Gone", dlc: "v1", diff: 14},
-                {name: "OST Volume 1 - Dewey", dlc: "v1", diff: 14},
-                {name: "OST Volume 1 - Drunken dwarves", dlc: "v1", diff: 17},
-                {name: "OST Volume 1 - Evier metal", dlc: "v1", diff: 18},
-                {name: "OST Volume 1 - Heroes", dlc: "v1", diff: 15},
-                {name: "OST Volume 1 - Hootsforce", dlc: "v1", diff: 17},
-                {name: "OST Volume 1 - Iridium", dlc: "v1", diff: 19},
-                {name: "OST Volume 1 - Join The Riot", dlc: "v1", diff: 11},
-                {name: "OST Volume 1 - Kammthaar", dlc: "v1", diff: 18},
-                {name: "OST Volume 1 - Kampfzwerg", dlc: "v1", diff: 17},
-                {name: "OST Volume 1 - Löwenherz", dlc: "v1", diff: 13},
-                {name: "OST Volume 1 - Loki", dlc: "v1", diff: 13},
-                {name: "OST Volume 1 - Masters of The Galaxy", dlc: "v1", diff: 17},
-                {name: "OST Volume 1 - Metfest", dlc: "v1", diff: 15},
-                {name: "OST Volume 1 - Mexico", dlc: "v1", diff: 16},
-                {name: "OST Volume 1 - Mine Mine Mine!", dlc: "v1", diff: 18},
-                {name: "OST Volume 1 - Nitro", dlc: "v1", diff: 15},
-                {name: "OST Volume 1 - No Grave But The Sea", dlc: "v1", diff: 17},
-                {name: "OST Volume 1 - Red Wine Teeth", dlc: "v1", diff: 15},
-                {name: "OST Volume 1 - The Great Pirate Bottle", dlc: "v1", diff: 21},
-                {name: "OST Volume 1 - The Next One Down", dlc: "v1", diff: 15},
-                {name: "OST Volume 1 - To Erebor", dlc: "v1", diff: 17},
-                {name: "OST Volume 1 - Tortuga", dlc: "v1", diff: 15},
-                {name: "OST Volume 1 - Universe on fire", dlc: "v1", diff: 17},
-                {name: "OST Volume 1 - Valhalleluja", dlc: "v1", diff: 18},
-                {name: "OST Volume 1 - Welcome To Asgard", dlc: "v1", diff: 10},
-                {name: "OST Volume 1 - Whaole", dlc: "v1", diff: 17}
-            ];
-        var songListVol2 = [
-                {name: "OST Volume 2 - Hypa Hypa", dlc: "v2", diff: 18},
-                {name: "OST Volume 2 - Mediator", dlc: "v2", diff: 18},
-                {name: "OST Volume 2 - Memento Mori", dlc: "v2", diff: 15},
-                {name: "OST Volume 2 - Metal United", dlc: "v2", diff: 15},
-                {name: "OST Volume 2 - Niemi", dlc: "v2", diff: 18},
-                {name: "OST Volume 2 - Out Of Control", dlc: "v2", diff: 13},
-                {name: "OST Volume 2 - Powersnake", dlc: "v2", diff: 18},
-                {name: "OST Volume 2 - Redneck Vikings From Hell", dlc: "v2", diff: 20},
-                {name: "OST Volume 2 - Utopia", dlc: "v2", diff: 15},
-                {name: "OST Volume 2 - We Are The Fire", dlc: "v2", diff: 17}
-            ];
-            var songCount = 1;
+            
+            // Internal variables
+            var songCount = 10;
             var playlistIndex = 0;
             var config = [0,0,0,0,0,0]; // includeVol1, includeVol2, includeGH, includeHF, includeNB, includeSB
             var sortEnabled = false;
+            var diffEnabled = true;
             var playlistArray = [];
+            var showMode = 0;
+            
+            // DOM shortcuts
             var counter = $("#counter");
             var count = $("#count");
             var title = $("#center");
@@ -239,8 +405,312 @@
             var onebefore = $("#text2");
             var oneafter = $("#text3");
             var twoafter = $("#text4");
-            var showMode = 0;
-            // Greetz: dubmood, crome, zalza, radix, arachno, MrGamer, 8bitbubsy, rez, JosSs, seablue, Soft Maniac, coma, maktone, cerror, LHS/DFS, Ghidorah, Beldoroon, mark knight/The Dark Knight, Zabutom, Razor1911, Conspiracy/CPY, fitgirl, strict9, Nick Skarny
+            
+            // Default data as a fallback
+            var userData = {
+                cookieAccepted: false,
+                displayMode: 0,
+                filterConfig: [0,0,0,0,0,0],
+                songCount: 10,
+                songFormat: 0,
+                displayDiff: false,
+                sortSongs: false,
+                useLokiLib: false
+            }
+            
+            function toggleMenu(){
+                var dom = $("#menudiv");
+                dom.toggleClass("show");
+            }
+            
+            function closeDialog(accepted){
+                if (!accepted){
+                    $("#cookienag-hideme").hide();
+                }
+                else {
+                    setLocalStorage("cookie", true);
+                    $("#cookienag-hideme").hide();
+                }
+            }
+            
+            window.onload = function(){
+                initPage();
+            }
+            
+            function initPage(){
+                // This function must be called when DOM is loaded
+                // and close the nag message before the user sees it
+                getLocalStorage();
+                if (userData.cookieAccepted === true){
+                    closeDialog(false); // no need to set it again, just close it
+                }
+                applySettingsFromLS();
+            }
+            function applySettingsFromLS(){
+                // define some shorthand vars
+                var dm = userData.displayMode;
+                var fc = userData.filterConfig;
+                var sc = userData.songCount;
+                var sf = userData.songFormat;
+                var df = userData.displayDiff;
+                var ss = userData.sortSongs;
+                
+                console.info(dm + ", " + fc + ", " + sc + ", " + sf + ", " + df + ", " + ss);
+                
+                // define DOM shortcuts
+                var rblite = $("#litemode");
+                var rbdark = $("#darkmode");
+                var rbhicon = $("#hiconmode");
+                var showone = $("#showone");
+                var showmore = $("showmore");
+                var showall = $("#showall");
+                var showdiff = $("#diff");
+                var sort = $("#sort");
+                
+                // set display mode
+                setDisplayMode(dm);
+                switch (dm){
+                    case 0:
+                        rblite.prop("checked", true).trigger("click");
+                        break;
+                    case 1:
+                        rbdark.prop("checked", true).trigger("click");
+                        break;
+                    case 2:
+                        rbhicon.prop("checked", true).trigger("click");
+                        break;
+                } // This will trigger the function twice, but it doesn't really matter in the end...
+                
+                
+                // convert numbers into bool
+                
+                var sa = fc.map(element => element == 1);
+                $(".picker").each(function(i, obj){
+                    $(this).prop("checked", sa[i]);
+                })
+                count.val(sc); // Set the song count, or at least try to
+                
+                switch (sf){
+                    case 0:
+                        showone.prop("checked", true).trigger("click");
+                        break;
+                    case 1:
+                        showmore.prop("checked", true).trigger("click");
+                        break;
+                    case 2:
+                        showall.prop("checked", true).trigger("click");
+                        break;
+                }
+                showMode = sf;
+                showPlaylist("none");
+                if (df == true){
+                    showdiff.prop("checked", true).trigger("click");
+                }
+                if (ss == true){
+                    sort.prop("checked", true).trigger("click");
+                }
+            }
+            
+            function getLocalStorage(){
+                console.log("Trying to get LocalStorage.");
+                // getLocalStorage must be executed when the DOM is fully loaded
+                if (localStorage.getItem("cookieAccepted") !== null){
+                    userData.cookieAccepted = JSON.parse(localStorage.getItem("cookieAccepted"));
+                }
+                if (localStorage.getItem("displayMode") !== null){
+                    userData.displayMode = JSON.parse(localStorage.getItem("displayMode"));
+                }
+                if (localStorage.getItem("songsSelected") !== null){
+                    userData.filterConfig = JSON.parse(localStorage.getItem("songsSelected"));
+                }
+                if (localStorage.getItem("songCount") !== null){
+                    userData.songCount = JSON.parse(localStorage.getItem("songCount"));
+                }
+                if (localStorage.getItem("songFormat") !== null){
+                    userData.songFormat = JSON.parse(localStorage.getItem("songFormat"));
+                }
+                if (localStorage.getItem("displayDiff") !== null){
+                    userData.displayDiff = JSON.parse(localStorage.getItem("displayDiff"));
+                }
+                if (localStorage.getItem("sortSongs") !== null){
+                    userData.sortSongs = JSON.parse(localStorage.getItem("sortSongs"));
+                }
+                if (localStorage.getItem("useLokiJS") !== null){
+                    userData.useLokiLib = JSON.parse(localStorage.getItem("useLokiJS"));
+                }
+            }
+            
+            function clearLocalStorage(){
+                const res = confirm("Are you sure you want to clear the settings?");
+                if (res == true) {
+                    localStorage.clear();
+                    console.info("Settings cleared");
+                } else {
+                    console.info("Canceled");
+                    return false;
+                }
+            }
+            
+            function setLocalStorage(type, data){
+                console.info("Got call to write value "+ data + " to " + type);
+                if (userData.cookieAccepted !== false){
+                    switch (type){
+                        case "cookie":
+                            localStorage.setItem("cookieAccepted", JSON.stringify(data));
+                            break;
+                        case "displayMode":
+                            localStorage.setItem("displayMode", JSON.stringify(data));
+                            break;
+                        case "songsSelected":
+                            localStorage.setItem("songsSelected", JSON.stringify(data));
+                            break;
+                        case "songCount":
+                            localStorage.setItem("songCount", JSON.stringify(data));
+                            break;
+                        case "songFormat":
+                            localStorage.setItem("songFormat", JSON.stringify(data));
+                            break;
+                        case "displayDiff":
+                            localStorage.setItem("displayDiff", JSON.stringify(data));
+                            break;
+                        case "sortSongs":
+                            localStorage.setItem("sortSongs", JSON.stringify(data));
+                            break;
+                        case "useLokiJS":
+                            localStorage.setItem("useLokiJS", JSON.stringify(data));
+                            break;
+                        default:
+                            console.error("You can't invoke setLocalStorage with null as type.");
+                            break;
+                    }
+                }
+                else {
+                    switch (type){
+                        case "cookie":
+                            localStorage.setItem("cookieAccepted", JSON.stringify(data));
+                            break;
+                        default:
+                            console.warn("Warning: Application running in demo mode. Call to save '" + type + "' will be ignored.")
+                    }
+                }
+            }
+            
+            function setDisplayMode(mode){
+                setLocalStorage("displayMode", mode)
+                console.log("Screen mode is " + mode);
+                
+                // DOM shortcuts
+                var body = $("body");
+                var topmenu = $("#pgtop");
+                var next = $("#next");
+                var prev = $("#prev");
+                
+                // Clear all classes
+                body.removeClass("light dark hicon");
+                topmenu.removeClass("light dark hicon");
+                next.removeClass("light dark hicon");
+                prev.removeClass("light dark hicon");
+                if (mode == 0){
+                    // Well, we don't need to do anything here, but we will leave it here for now
+                } else if (mode == 1){
+                    body.addClass("dark");
+                    topmenu.addClass("dark");
+                    next.addClass("dark");
+                    prev.addClass("dark");
+                } else if (mode == 2){
+                    body.addClass("hicon");
+                    topmenu.addClass("hicon");
+                    next.addClass("hicon");
+                    prev.addClass("hicon");
+                }
+            }
+            
+            var songListGH = [
+                {name: "Gloryhammer Raid - Gloryhammer", dlc: "gh", diff: 16, diffList: [2, 6, 8]},
+                {name: "Gloryhammer Raid - Questlords of Inverness Ride to the Galactic Fortress!", dlc: "gh", diff: 22, diffList: [5, 7, 10]},
+                {name: "Gloryhammer Raid - Rise of the Chaos Wizards", dlc: "gh", diff: 18, diffList: [3, 6, 9]},
+                {name: "Gloryhammer Raid - The Fires of Ancient Cosmic Destiny", dlc: "gh", diff: 18, diffList: [3, 5, 10]},
+                {name: "Gloryhammer Raid - The Land of Unicorns", dlc: "gh", diff: 17, diffList: [3, 5, 9]},
+                {name: "Gloryhammer Raid - The Siege of Dunkeld", dlc: "gh", diff: 21, diffList: [5, 7, 9]}
+            ];
+            var songListHF = [
+                {name: "Hellfest Raid - Battlefield", dlc: "hf", diff: 15, diffList: [2, 5, 8]},
+                {name: "Hellfest Raid - Born For One Thing", dlc: "hf", diff: 19, diffList: [4, 7, 8]},
+                {name: "Hellfest Raid - Going Hunting", dlc: "hf", diff: 15, diffList: [3, 5, 7]},
+                {name: "Hellfest Raid - Great Marquis Of Hell", dlc: "hf", diff: 17, diffList: [3, 6, 8]},
+                {name: "Hellfest Raid - Härjaren", dlc: "hf", diff: 12, diffList: [2, 4, 6]},
+                {name: "Hellfest Raid - Heart Demolition", dlc: "hf", diff: 18, diffList: [4, 6, 8]},
+                {name: "Hellfest Raid - Life Will Always Find Its Way", dlc: "hf", diff: 19, diffList: [4, 6, 8]},
+                {name: "Hellfest Raid - One For The Road", dlc: "hf", diff: 14, diffList: [3, 5, 6]},
+                {name: "Hellfest Raid - Skyfall", dlc: "hf", diff: 21, diffList: [4, 8, 9]},
+                {name: "Hellfest Raid - Tribal", dlc: "hf", diff: 16, diffList: [3, 5, 8]},
+                {name: "Hellfest Raid - You're Gonna Go Far, Kid", dlc: "hf", diff: 13, diffList: [1, 5, 7]}
+            ];
+            var songListNB = [
+                {name: "Nuclear Blast Raid - A Man With A Plan", dlc: "nb", diff: 17, diffList: [3, 5, 9]},
+                {name: "Nuclear Blast Raid - Abyss Of Time", dlc: "nb", diff: 18, diffList: [3, 6, 9]},
+                {name: "Nuclear Blast Raid - Ambiramus", dlc: "nb", diff: 14, diffList: [2, 4, 8]},
+                {name: "Nuclear Blast Raid - Eye of the Storm", dlc: "nb", diff: 15, diffList: [3, 5, 7]},
+                {name: "Nuclear Blast Raid - Nevermore", dlc: "nb", diff: 20, diffList: [3, 7, 10]},
+                {name: "Nuclear Blast Raid - One Night In Tokyo", dlc: "nb", diff: 18, diffList: [2, 7, 9]},
+                {name: "Nuclear Blast Raid - Revolution", dlc: "nb", diff: 20, diffList: [4, 7, 9]},
+                {name: "Nuclear Blast Raid - Rise Again", dlc: "nb", diff: 18, diffList: [4, 6, 8]},
+                {name: "Nuclear Blast Raid - Vodka", dlc: "nb", diff: 14, diffList: [2, 5, 7]}
+            ];
+            var songListSabaton = [
+                {name: "Sabaton Raid - Night Witches", dlc: "sb", diff: 17, diffList: [3, 6, 8]},
+                {name: "Sabaton Raid - Resist and Bite", dlc: "sb", diff: 16, diffList: [1, 5, 10]},
+                {name: "Sabaton Raid - Seven Pillars of Wisdom", dlc: "sb", diff: 19, diffList: [2, 7, 10]},
+                {name: "Sabaton Raid - Steel Commanders", dlc: "sb", diff: 18, diffList: [3, 6, 9]},
+                {name: "Sabaton Raid - Stormtroopers", dlc: "sb", diff: 18, diffList: [3, 6, 9]},
+                {name: "Sabaton Raid - To Hell and Back", dlc: "sb", diff: 14, diffList: [1, 5, 8]}
+            ];
+            var songListVol1 = [
+                {name: "OST Volume 1 - Au Petit Matin", dlc: "v1", diff: 23, diffList: [5, 8, 10]},
+                {name: "OST Volume 1 - Call of the North", dlc: "v1", diff: 13, diffList: [2, 4, 7]},
+                {name: "OST Volume 1 - Chomp Chomp", dlc: "v1", diff: 22, diffList: [4, 8, 10]},
+                {name: "OST Volume 1 - Dead and Gone", dlc: "v1", diff: 14, diffList: [2, 4, 8]},
+                {name: "OST Volume 1 - Dewey", dlc: "v1", diff: 14, diffList: [2, 5, 7]},
+                {name: "OST Volume 1 - Drunken Dwarves", dlc: "v1", diff: 17, diffList: [2, 6, 9]},
+                {name: "OST Volume 1 - Evier metal", dlc: "v1", diff: 18, diffList: [3, 6, 9]},
+                {name: "OST Volume 1 - Heroes", dlc: "v1", diff: 15, diffList: [3, 4, 8]},
+                {name: "OST Volume 1 - Hootsforce", dlc: "v1", diff: 17, diffList: [4, 6, 7]},
+                {name: "OST Volume 1 - Iridium", dlc: "v1", diff: 19, diffList: [3, 7, 9]},
+                {name: "OST Volume 1 - Join The Riot", dlc: "v1", diff: 11, diffList: [1, 3, 7]},
+                {name: "OST Volume 1 - Kammthaar", dlc: "v1", diff: 18, diffList: [4, 6, 8]},
+                {name: "OST Volume 1 - Kampfzwerg", dlc: "v1", diff: 17, diffList: [3, 5, 9]},
+                {name: "OST Volume 1 - Löwenherz", dlc: "v1", diff: 13, diffList: [2, 4, 7]},
+                {name: "OST Volume 1 - Loki", dlc: "v1", diff: 13, diffList: [2, 4, 7]},
+                {name: "OST Volume 1 - Masters of The Galaxy", dlc: "v1", diff: 17, diffList: [3, 5, 9]},
+                {name: "OST Volume 1 - Metfest", dlc: "v1", diff: 15, diffList: [3, 5, 7]},
+                {name: "OST Volume 1 - Mexico", dlc: "v1", diff: 16, diffList: [3, 5, 8]},
+                {name: "OST Volume 1 - Mine Mine Mine!", dlc: "v1", diff: 18, diffList: [3, 6, 9]},
+                {name: "OST Volume 1 - Nitro", dlc: "v1", diff: 15, diffList: [1, 5, 9]},
+                {name: "OST Volume 1 - No Grave But The Sea", dlc: "v1", diff: 17, diffList: [3, 5, 9]},
+                {name: "OST Volume 1 - Red Wine Teeth", dlc: "v1", diff: 15, diffList: [3, 5, 7]},
+                {name: "OST Volume 1 - The Great Pirate Bottle", dlc: "v1", diff: 21, diffList: [4, 7, 10]},
+                {name: "OST Volume 1 - The Next One Down", dlc: "v1", diff: 15, diffList: [2, 5, 8]},
+                {name: "OST Volume 1 - To Erebor", dlc: "v1", diff: 17, diffList: [4, 5, 8]},
+                {name: "OST Volume 1 - Tortuga", dlc: "v1", diff: 15, diffList: [3, 5, 7]},
+                {name: "OST Volume 1 - Universe on fire", dlc: "v1", diff: 17, diffList: [2, 6, 9]},
+                {name: "OST Volume 1 - Valhalleluja", dlc: "v1", diff: 18, diffList: [4, 6, 8]},
+                {name: "OST Volume 1 - Welcome To Asgard", dlc: "v1", diff: 10, diffList: [1, 3, 6]},
+                {name: "OST Volume 1 - Whaole", dlc: "v1", diff: 17, diffList: [3, 5, 9]}
+            ];
+        var songListVol2 = [
+                {name: "OST Volume 2 - Hypa Hypa", dlc: "v2", diff: 18, diffList: [4, 6, 8]},
+                {name: "OST Volume 2 - Mediator", dlc: "v2", diff: 18, diffList: [4, 6, 8]},
+                {name: "OST Volume 2 - Memento Mori", dlc: "v2", diff: 15, diffList: [2, 5, 8]},
+                {name: "OST Volume 2 - Metal United", dlc: "v2", diff: 15, diffList: [3, 5, 7]},
+                {name: "OST Volume 2 - Niemi", dlc: "v2", diff: 18, diffList: [3, 6, 9]},
+                {name: "OST Volume 2 - Out Of Control", dlc: "v2", diff: 13, diffList: [2, 4, 7]},
+                {name: "OST Volume 2 - Powersnake", dlc: "v2", diff: 18, diffList: [4, 6, 8]},
+                {name: "OST Volume 2 - Redneck Vikings From Hell", dlc: "v2", diff: 20, diffList: [3, 7, 10]},
+                {name: "OST Volume 2 - Utopia", dlc: "v2", diff: 15, diffList: [2, 5, 8]},
+                {name: "OST Volume 2 - We Are The Fire", dlc: "v2", diff: 17, diffList: [3, 6, 8]}
+            ];
+            
+            // Greetz: dubmood, crome, zalza, radix, arachno, MrGamer, 8bitbubsy, rez, JosSs, seablue, Soft Maniac, coma, maktone, cerror, LHS/DFS, Ghidorah, Beldoroon, mark knight/The Dark Knight, Zabutom, Razor1911, Conspiracy/CPY, fitgirl, strict9, Nick Skarny, Wanadev Studio, JamieDerg
             function makePlaylist(){
                 console.info("Generating new playlist...");
                 playlistIndex = 0;
@@ -273,11 +743,14 @@
                     tempPL = tempPL.concat(songListNB);
                     tempPL = tempPL.concat(songListSabaton);
                 }
+                for (var f = 0; f < tempPL.length; f++){
+                    tempPL[f].picked = generateDiffIndex();
+                }
                 // console.log(tempPL);
                 var shuffled = shuffle(tempPL);
                 var holdArray = []; // Kinda inefficient way to ensure we have something to sort for later
                 if (songCount == 0) {
-                    alert("RagnaChooser V2 2.1.0 by Blackbeard\nJuly 2023\nFor Ragnarock (C) 2022-2023 Wanadev Studio\nThank you for using my tool, I hope you have fun.\nSpecial thanks to Nicolas and BloculusMonster!\nPlease put in a value above 1 to make the playlist!");
+                    alert("RagnaChooser V2 2.1.9 by Blackbeard\nJuly 2023 - Partial Rewrite by JamieDerg\nFor Ragnarock (C) 2022-2023 Wanadev Studio\nThank you for using my tool, I hope you have fun.\nSpecial thanks to Nicolas and BloculusMonster!\nPlease put in a value above 1 to make the playlist!");
                 }
                 if (songCount > shuffled.length) {
                         songCount = shuffled.length;
@@ -287,7 +760,7 @@
                             holdArray.push(shuffled[c]);
                         }
                         if (sortEnabled == true){
-                            holdArray.sort((a, b) => (a.diff > b.diff) ? 1: -1)
+                            holdArray.sort((a, b) => (a.diff > b.diff) ? 1: -1);
                         }
                         playlistArray = holdArray;
                         console.log(playlistArray);
@@ -296,17 +769,26 @@
             };
             function updateConfig(which){
                 //console.info("Config updating...");
-                if (which == 1023) {
+                if (which === 1023) {
                     sortEnabled = !sortEnabled;
+                    setLocalStorage("sortSongs", sortEnabled);
+                }
+                if (which === 666) {
+                    diffEnabled = !diffEnabled;
+                    userData.displayDiff = diffEnabled;
+                    showPlaylist("none"); // Do not update playlist and only show it
+                    setLocalStorage("displayDiff", diffEnabled);
                 }
                 var temp = document.querySelectorAll('input[type="checkbox"]');
-                for (var f = 0; f < temp.length - 1; f++) {
+                for (var f = 0; f < temp.length - 2; f++) {
                     config[f] = temp[f].checked;
                 }
+                setLocalStorage("songsSelected", config);
                 songCount = count.val();
+                setLocalStorage("songCount", songCount);
                 //console.log(config);
-                console.info("sortEnabled: " + sortEnabled + ", songCount: " + songCount);
-                if (which < 512 || which === 1023){
+                console.info("sortEnabled: " + sortEnabled + ", diffEnabled: " + diffEnabled + ", songCount: " + songCount);
+                if (which < 511 || which === 1023){
                     makePlaylist();
                 }
             };
@@ -319,6 +801,8 @@
                 var debugArray = [];
                 var prevBtn = $("#prev");
                 var nextBtn = $("#next");
+                var menudiv = $("#menudiv");
+                menudiv.removeClass("fade");
                 if (playlistArray.length > 0){
                     
                     if (direction == true){
@@ -359,7 +843,13 @@
                     
                     console.log(debugArray);
                     
-                    title.text(playlistArray[playlistIndex].name);
+                    title.html(playlistArray[playlistIndex].name);
+                    if (diffEnabled == true){
+                        var which = playlistArray[playlistIndex].picked;
+                        var strTmp = playlistArray[playlistIndex].diffList[which];
+                        title.append("&nbsp;("+ strTmp +")");
+                        console.info("Which: " + which +", Str: "+ strTmp);
+                    }
                     prevBtn.removeClass("hidden");
                     nextBtn.removeClass("hidden");
                     if (showMode === 1){
@@ -378,6 +868,7 @@
                         onebefore.removeClass("hidden");
                         oneafter.removeClass("hidden");
                         twoafter.removeClass("hidden");
+                        menudiv.removeClass("fade");
                         
                         if (playlistIndex - 1 >= 0){
                             onebefore.text(playlistArray[playlistOneBefore].name);
@@ -404,9 +895,19 @@
                     if (showMode === 2){
                         prevBtn.addClass("hidden");
                         nextBtn.addClass("hidden");
+                        menudiv.addClass("fade");
                         var temp = "";
+                        var diffStrings = ["<span class='easy'>Easy</span>", "<span class='medium'>Normal</span>", "<span class='hard'>Hard</span>"];
                         for (var c = 0; c < playlistArray.length; c++){
-                            temp = temp + playlistArray[c].name + "<br/>";
+                            temp = temp + playlistArray[c].name;
+                            if (diffEnabled == true){
+                                var which = playlistArray[c].picked;
+                                // var strTmp = playlistArray[c].diffList[which];
+                                var strTmp = diffStrings[which];
+                                temp = temp + ("&nbsp;("+ strTmp +")<br/>");
+                            } else if (diffEnabled == false){
+                                 temp = temp + "<br/>"
+                            }
                         }
                         title.html(temp);
                     }
@@ -414,12 +915,14 @@
                     counter.text((playlistIndex + 1) + " of " + playlistArray.length + " songs in playlist");
                 }
                 else {
-                    alert("Please click Make Playlist button first.");
+                    makePlaylist();
+                    // alert("Please click Make Playlist button first.");
                 }
             };
             
             function updateView(type){
                 showMode = type;
+                setLocalStorage("songFormat", showMode);
                 showPlaylist();
             };
 
@@ -435,6 +938,14 @@
               }
               return array;
             };
+            
+            function generateDiffIndex(){
+                var a = Math.floor(Math.random() * 3);
+                if (a > 2) {
+                    a = 2;
+                }
+                return a;
+            }
             
             function allAreFalse(arr) {
               return arr.every(element => element === false);
@@ -507,7 +1018,7 @@
                 showPlaylist(); // Display playlist
             } else if (event.key === "q" || event.key === "Q") {
                 var checkboxes = document.querySelectorAll('input[type="checkbox"]')
-                checkboxes[checkboxes.length - 1].checked = !checkboxes[checkboxes.length - 1].checked
+                checkboxes[checkboxes.length - 2].checked = !checkboxes[checkboxes.length - 2].checked
                 updateConfig();
             } else if (event.key === "Enter") {
                 console.log("Enter key pressed");
@@ -530,6 +1041,98 @@
                     cur = cur + 1;
                 }
                 count.val(cur);
+            }
+            
+            // Loki.js by Blackbeard. All rights reserved.
+            // Loki.js is a spaghetti code JS random number generator, based on a very long text array and a hashing function called cyrb53.
+            function getLokiRNG(min, max, type, count){
+                // Text from "The Poetic Edda - Northvegr Edition" by Benjamin Thorpe, intentionally poorly OCR'd to add randomness
+                const seedString = [
+                    "21. Then said Hök", "Laufey", " son: ", "I will with thee as.a servant go: we two will drive to Jötunheim", " Loki 8.", "Illit goes with the Æsir", "I it goes with the Alfar. Hast thou Hlorridis hammer hidden?", " Fiölsvith 35. Uni and Ir", "Bari and Ori", "Var and Vegdrasil", "Dorri and Uri", "Delling and Atvard", "Lidskialf", "BØR 5. Flew then [SR the plumage rattled until he came beyond the Æsirs dwellings", "and came within the Jotun’ land. Jam op elkarg ", "amy Sung ay ssapun «ude 208. uvur ou ffeys a", "Proj saesamu", "om ", "saumuey År sey wd", "ssoons puv anoge| peu ancy I", "TI POT 2. and first of all these words he uttered: ", "Hear now", "BEE! what I now say", "which no ones knows anywhere on earth", "nor in heaven above; the Ass hammer is stolen!", " 38. BRI begat the wolf with Angrboda", "but Sleipnir he begat with Svadilfari: ", "one monster seemed of all most deadly", "which from Byleist’s brother sprang. 19. Then spake HØRE Laufey", "s son: ", "Do thou", "Thor! refrain from suchlike words: forthwith the Jotuns will Asgard inhabit", "unless thy hammer thou gettest back", " 39. BBR", "scorched up in his hearts affections", "had found a half-burnt ", "woman", "s heart. [oki became guileful from that wicked woman; thence in the world are all giantesses come. 38. Bound she saw lying", "under Hveralund", "å monstrous form", "to Bøk like. ", "There sits Sigyn", "for her consorts sake", "not right glad. ", "Understand ye yet", "or what? 10. Flew then BB the plumage rattled until he came beyond the Jötunis dwellings", "and came within the Æsirs courts; there he met Thor", "in the middle court", "who these words first of all uttered. Vala 20. ", "Home ride thou", "Odin! and exult. ", "Thus shall never more ", "man again visit me", "until BØ free from his bonds escapes", "and Ragnarök all-destroying comes", " 37. Long they had not journeyed when of Hlorridis goats one lay down half-dead before the car. It from the pole had sprung across the trace; but the false HØRE was of this the cause. 50. That ship fares from the east: come will Muspell’s people der the sea", "and Hök steers. ", "The monster", "s kin goes all with the wolf; with them the brother is of Byleist on their course. 20. Of many thing inquired", "when the meal was over", "the high gods of Heimdall", "the goddesses of IS", "whether the maid had uttered divinations or wise words? From noon until twilights advent. Loki 5. Knowest thou not","Eldir", 
+                    "that if we two with bitter words contend", "I shall be rich in answers", "if thou sayest too much? Doki then went into the hall", "but when those present saw who was come in", "they all sat silent. Loki 6. I Lopt am come thirsty into this hall", "from along journey", "to beseech the Æsir ", "one draught to give me of the bright mead", "Loki 40. Be silent", "Ty; to thy wife it happened to have a son by me. Nor rag nor penny ever hadst thou", "poor wretch! for this injury. Frey 41. I the wolf see lying at the river mouth", "until the powers are swept away. So shalt thou be bound", "if thou art not silent", "thou framer of evil. Loki 42. With gold thou boughtest Gymirs daughter", "and so gavest away thy sword: but when Muspells sons through the dark forest ride", "thou", "unhappy", "wilt not have wherewith to fight. Loki 20. Be silent", "Gefion! will now just mention", "how that fair youth thy mind corrupted", "who thee a necklace gave", "and around whom thou thy limbs didst twine? Odin 21. Thou art raving", "Hök! and hast lost thy wits", "in calling Gefion anger on thee; for all men’ destinies", "ween", "she knows as thoroughly as I do. Loki 22. Be silent", "Odin! ", "Thou never couldst allot conflicts between men: oft hast thou given to those to whom thou oughtest not victory to cowards. Loki 15. Valiant on thy seat art thou", "Bragi! but so thou shouldst not be", "Bragi", "the benchis pride! Go and fight", "ifthou art angry; a brave man sits not considering. Idun 16. I pray thee", "Bragi! let avail the bond of children", "and ofall adopted sons", "and to Loki speak not in reproachful words", "in Ægirs hall Loki 17. Be silent", "Idun! of all women I declare thee most fond of men", "since thou thy arms", "carefully washed", "didst twine round thy brothers murderer. Idun 18. [ök I address not with opprobrious words", "in Ægirs hall Bragi I soothe", "by beer excited", "I desire not that angry ye fight. Loki 34. Be silent", "Niörd! ", "Thou wast sent eastward hence", "a hostage from the gods. Hymirs daughter had thee for a utensil", "and flowed into thy mouth.! Niörd 35. Tis to me a solace", "as Ta long way hence ", "was sent", "a hostage from the gods", "that I had a son", "", "whom no one hates", "and accounted is a chief among the sir. Loki 36. Cease now", "Niörd! in bounds contain thyself; will no longer keep it secret: it was with thy sister thou hadst such a son; hardly worse than thyself. no maid he makes to weep", "no wife of man", "and from bonds looses all Loki 38. Be silent", "Ty! ", "Thou couldst never settle a strife ", "twixt two; of thy right hand also I must mention make", "which Fenrir from thee tore. Loki 44. What little thing is that I see ", "wagging its tail", "and snapping eagerly? At the ears of Frey thou shouldst ever be", "and clatter under mills. Byggvir 45. Byggvir I am named", "and am thought alert", "by all gods and men; therefore am I joyful here", "that all the sons of Hropt drink beer together. Loki 46. Be silent", "Byggvir! ", "Thou couldst never dole out food to men", "", "when", "lying in thy truckle bed", "thou wast not to be found", "while men were fighting. Heimdall 47. Kök", "thou art drunk", "and hast lost thy wits. ", "Why dost thou not leave off", "LOK But drunkenness sorules every man", "that he knows not of his garrulity. Loki 48. Be silent", "Heimdall! For thee in early days ", "was that hateful life decreed: with a wet back thou must ever be", "and keep watch as guardian of the gods. Freyja 29. Mad art thou", "BØE in recounting thy foul misdeeds. Frigg", "I believe", "knows all that happens", 
+                    "although she says it not. Loki 30. Be thou silent", "Freyja! know thee full well; thou art not free from vices: of the Æsir and the Alfar", "that are herein", "each has been thy paramour. Freyja 31. False is thy tongue. Henceforth it will", "I think", "prate no good to thee. Wroth with thee are the Air", "and the Asyniur. Sad shalt thou home depart. Loki 32. Be silent", "Freyja! ", "Thou art a sorceress", "and with much evil blended; since against thy brother thou the gentle powers excited. And then", "Freyja! what didst thou do? Niörd 33. Itis no great wonder", "ifsilk-clad dames get themselves husbands", "lovers", "but ", "tis a wonder that a wretched As", "that has borne children", "should herein enter. Loki 64. I have said before the Æsir", "I have said before the Æsir sons", "that which my mind suggested: but for thee alone will Igo out; because I know that thou wilt fight. 65. Ægir! thou hast brewed beer; but thou never shalt henceforth a compotation hold. All thy possessions", "which are herein", "flame shall play over", "and on thy back shall burn thee. After this E6ki", "in the likeness of a salmon", "cast himself into the waterfall of Franangr", "where the Æsir caught him", "and bound him with the entrails of his son Nari; but his other son", "Narfi", "was changed into a wolf. Skadi took a venomous serpent", "and fastened it up over LØkfs face. The venom trickled down from it. Sigyn", "GØkts wife", "sat by", "and held a basin under the venom; and when the basin was fall", "carried the venom out. Meanwhile the venom dropped on Köki", "who shrank from it so violently that the whole earth trembled. This causes what are not called earthquakes. Loki 24. But", "it is said", "thou wentest with tottering steps in Samsö", "and knocked at houses as a Vala. In likeness of a fortune telle", "thou wentest among people; Now that", "methinks", "betokens a base nature. Frigg 25. Your doings ye should never publish among men", "What ye", "sir twain", "did in days of yore. Ever forgotten be men’s former deeds! Loki 26. Be thou silent", "Frigg! ", "Thou art Fjörgynis daughter", "and ever hast been fond of men", "since Ve and Vili it is said", "thou", "Vidrir’s wife", "didst both to thy bosom take. Frigg 27. Know thou that if I had", "in Ægirs halls", "a son like Baldr", "", "out thou shouldst not go from the Æsirs sons: thou shouldst have been fiercely assailed. Loki 28. But wilt thou", "Frigg! that of my wickedness I more recount? Tam the cause that thou seest not Baldr riding to the halls. ", "Thor 59. Silence", "thou impure being! My mighty hammer", "Mjollnir", "shall stop thy prating. Up I will hurl thee to the east region", "and none shall see thee after. Loki 60. Of thy eastern travels thou shouldst never to people speak", "since ina glove-thumb thou", "Einheri! wast doubled up", "and hardly thoughtest thou was Thor. ", "Thor 61. Silence", "thou impure being! My mighty hammer", "Mjollnir", "shall stop thy prating; with this right hand I", "Hrugnir’s bane", "will smite thee", "so that thy every bone be broken. Loki 62. Tis my intention a long life to live", "though with thy hammer thou dost threaten me. Skrymirs thongs seemed to thee hard", "when at the food thou couldst not get", "", "when", "in full health", "of hunger dying. ", "Thor 63. Silence", "thou impure being! My mighty hammer", "Mjollnir", "shall stop thy prating. Hrungnirs bane shall cast thee down to Hel", "beneath the grating of the dead. BHI viewed all the gold that Andvari owned; but when he had produced the gold", "he retained a sin- gle ring", "which Løkt also took from him. The dwarf went into his stone and said: 5. That gold which the dwarf possessed", "shall to two brothers be cause of death", "and to eight princes", "of dissension. From my wealth no one shall good derive. ", "The Æsir produced the gold to Hreidmar", "and with it crammed the otters skin full", "and set it up on the feet. They then had to heap up the gold and cover it; but when that was done", "Hreidmar", "step- ping forward", "observed a whisker", "and required it to be covered; whereupon Odin drew forth the ring Andvara-naut", "and covered the hair. LØKi said: 6. There is gold for thee", "and thou hast a great redemption for my life. For thy son no blessing is decreed; ", "of both it shall prove the bane. Hreidmar 7. Gifts thou hast given", "friendly gifts thou hast given not; with a kind heart thou hast not given. Of your lives ye should Skadi 49. Thou art merry", "BBP Not long wilt thou frisk with an unbound tail; for thee", "on a rock’ point", "with the entrails of thy ice-cold son", "the gods will bind. Loki 50. Know", "if on a rocks point", "with the entrails of my ice-cold son", "the gods will bind me", "that first and foremost Iwas at the slaying", "when we assailed Thiassi. Skadi 51. Know", "if first and foremost thou wast at the slaying", "when ye assailed Thiassi", "that from my dwellings and fields shall to thee ever cold counsels come. Loki 52. Milder was thou of speech to Laufeys son", "when to thy bed thou didst invite me. Such matters must be mentioned", "if we accurately must recount our vices. ", "Then Sif came forth", "and poured out mead for [Kd in an icy cup", "saying: 53. Hail to thee", "[ki and this cool cup receive", "fall of old mead: at least me alone", "among the blameless Æsir race", "leave stainless. Loki 9. Odin! dost thou remember when we in early days blended our blood together? ", "When to taste beer thou didst constantly refuse", "unless to both ", "twas offered? Odin 10. Rise up", "Vidar! and let the wolf", "s sire sit at our compotation; that Loki may not utter words of contumely in Ægirs hall Vidar then rising", "presented Hök with drink", "who before drinking thus addressed", "11. Hail", "Æsir! Hail", "Asyniur! And ye", "all-holy gods! all", "save that one As", "who sits within there", "Bragi", "on yonder bench. Bragi 12. Å horse and falchion I from my stores will give thee", "and also with a ring reward thee", "ifthou the Æsir wilt not requite with malice. Provoke not the gods against thee. Loki 13. Of horse and rings wilt thou ever", "Bragi! be in want. Of the Æsir and the Alfar", "that are here present", "in conflict thou art the most backward", "and in the play of darts most timid. He took the horn", "drank", "and said: 54. So alone shouldst thou be", "hadst thou strict and prudent been towards thy mate; but one I know", 
+                    "and", "I think", "know him well", "a favoured rival of Hlorridi", "and that is the wily I. ", "Thou art Byggvir’s wife", "and with much evil mingled: never came a greater monster among the Æsirs sons. ", "Thou art a dirty strumpet. ", "Thor then came in and said: 57. Silence", "thou impure being! My mighty hammer", "Mjollnir", "shall stop thy prating. Iwill thy head from thy neck strike; then will thy life be ended. Loki 58. Now the son of earth is hither come. Why dost thou chafe so", "Thor? ", "Thou wilt not dare do so", "when with the wolf thou hast to fight", "and he the all-powerful father swallows whole. Agisdrekka", "eda Lokasenna", "eda Lokaglepsa Ægir", "s Compotation or HBF Altercation Ægir", "who is also name Gymir", "had brewed beer for the sir", "after he had got the great kettle", "as has been already related. To the entertainment came Odin and his wife Frigg. Thor did not come", "be- ing in the East", "but his wife Sif was there", "also Bragi and his wife Idun", "and Ty", "who was one-hand- ed", "Fenrisulf having bitten off his hand while being bound. Besides these were Niörd and his wife Skadi", "Frey and Freyja", "and Odins son Vidar. Loki too was there", "and Frey", " attendants", "Byggvir and Beyla. Many other Æsir and Alfar were also present. Ægir had two servants", "Fimafeng and Eldir. Bright gold was there used instead of fire-light. ", "The beer served itself to the guests. The place was a great sanctuary. The guests greatly praised the excellence of Ægirs servants. This Loki could not hear with patience", "and so slew Fimafeng: whereupon the Æsir shook their shields", "exclaimed against Løki", "chased him into the forest", "and then returned to drink. [oki came again", "and found Eldir standing without", "whom he thus addressed: 1. Tell me", "Eldir! ere thou thy foot settest one step forward", "", "on what converse the sons of the triumphant gods at their potation? Eldir 2. Of their arms converse", "and of their martial fame", "the sons of the triumphant gods. Of the sir and the Alfar that are here within not one has a friendly word for thee. LJ 3.1 will go into Agi’ halls", "to see the compotation. Strife and hate to the Æsirs sons I bear", "and will mix their mead with bale. Sigurbarkvida Fafnisbana Onnur The Second Lay of Sigurd Fafnicide Sigurd went to Hiålprek", "s stud and chose himself a horse", "which was afterwards named Grani. Regin", "Hreidmar5 son", "was then come to Hiålprek; he was the most skilful of men", "and a dwarf in stature; he was wise", "cruel", "and versed in magic. Regin undertook the rearing and instruction of Sigurd", "and bore him great affection. He informed Sigurd of his parentage", "and how it befell that Odin", "and Hoenir", "and [gil came to Andvarafors (the waterfall of Andvari) In the fall there was an abundance of fish. There was a dwarf named Andvari", "who had long lived in the fall in the like- ness of a pike", "and in which he supplied himself with food. ", "Our brother’", "continued Regin", "was named Otr", "who often went in to the fall in the likeness of an otter. He had caught a salmon", "and ", "was sitting on the bank of the river with his eyes shut eating it", "when Løki killed him with a stone. ", "The Æsir thought themselves very lucky", "and stripped off the otter’s skin. That same evening they sought entertainment with Hreidmar", "and showed their prize. Thereupon we laid hands on them", "and imposed on them", "as the redemption of their lives", "that they should fill the otters skin with gold", "and cover it over with red gold. They thereupon sent Loki to procure gold. He went to Ran", "and obtained her net", "and thence proceeded to Andvarafors", "and cast the net before a pike", "which leapt into the net. Whereupon Bøki said: 1. What fish is this", "that in the river swims", "and cannot from harm itself protect? ", "Redeem thy life from Hel", "and find me the water flame. ", "The Pike 2. Andvari I am named", "Oin was my father named; ", "many a cataract have I passed. A luckless Norn in times of old decreed", "that in the water I should wade. = 3. Tell me", "Andvarit if thou wilt enjoy"]; 
+                // If you are wondering why the array is split like that, it's because of lint engine limitation.
+                
+                if (type === "double" || type === "float"){
+                    console.warn("Loki.js developer suggests you avoid using float or double parameter until its number generation is fixed.");
+                }
+                
+                const seedTimeObj = new Date;
+                const seedTime = seedTimeObj.getTime();
+                
+                var strIndex = seedTime % seedString.length; // Ensure at least some randomness
+                var seedStrSelected = seedString[strIndex];
+                console.info("stringIndex: " + strIndex +", selectedString: " + seedStrSelected);
+                
+                const seed = seedStrSelected + seedTime.toString();
+                var hash = 0;
+                
+                var magic1 = 0xdeadbeef ^ seed;
+                var magic2 = 0x41c6ce57 ^ seed;
+                for (var f = 0; f < seed.length; f++){
+                    const char = seed.charCodeAt(f);
+                    magic1 = Math.imul(magic1 ^ (magic1 >>> 16), 2246822507);
+                    magic1 ^= Math.imul(magic2 ^ (magic2 >>> 13), 3266489909);
+                    magic2 = Math.imul(magic2 ^ (magic2 >>> 16), 2246822507);
+                    magic2 ^= Math.imul(magic1 ^ (magic1 >>> 13), 3266489909);
+                    hash = 4294967296 * (2097151 & magic2) + (magic1 >>> 0);
+
+                    strIndex = hash % seedString.length;
+                    seedStrSelected = seedString[strIndex];
+                }
+                
+                var rng = (hash % (max - min + 1)) + min;
+                if (count === 1){
+                    if (type === "bool") {
+                        return (1 === (rng % 2)); // Is the RNG value divisible by 2? True or false...
+                    } else if (type === "float" || type === "double") {
+                        const dp = type === "float" ? 1 : 2;
+                        const multiplier = Math.pow(10, dp);
+                        return Math.floor(rng * multiplier) / multiplier;
+                        // Note: Float and double is kinda bungled
+                    } else {
+                        return Math.floor(rng);
+                    }
+                } else if (count > 1){
+                    var arr = [];
+                    var newValue = 0;
+                    for (var q = 0; q < count; q++){
+                        for (var f = 0; f < seed.length; f++){
+                            const char = seed.charCodeAt(f);
+                            magic1 = Math.imul(magic1 ^ (magic1 >>> 16), 2246822507);
+                            magic1 ^= Math.imul(magic2 ^ (magic2 >>> 13), 3266489909);
+                            magic2 = Math.imul(magic2 ^ (magic2 >>> 16), 2246822507);
+                            magic2 ^= Math.imul(magic1 ^ (magic1 >>> 13), 3266489909);
+                            hash = 4294967296 * (2097151 & magic2) + (magic1 >>> 0);
+                            strIndex = hash % seedString.length;
+                            seedStrSelected = seedString[strIndex];
+                            // console.info("stringIndex: " + strIndex +", selectedString: " + seedStrSelected);
+                            rngtmp = (hash % (max - min + 1)) + min; 
+                            
+                            if (type === "bool") {
+                                newValue = (1 === (rngtmp % 2));
+                            } else if (type === "float" || type === "double") {
+                                const dp = type === "float" ? 1 : 2;
+                                const multiplier = Math.pow(10, dp);
+                                newValue = Math.floor(rngtmp * multiplier) / multiplier;
+                                // Note: Float and double is kinda bungled
+                            } else {
+                                newValue =  Math.floor(rngtmp);
+                            } 
+                            
+                        }
+                        arr.push(newValue);
+                    }
+                    return arr;
+                } else {
+                    throw new Error("Division by zero");
+                }
+                
+            }
+            
+            function demoLokiJS(){
+                console.log(getLokiRNG(0, 100, "float", 50));
             }
         </script>
     </body>
