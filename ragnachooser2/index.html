@@ -220,6 +220,16 @@
             .placeholder {
                 line-height: 0.75em;
             }
+            .error-notice {
+                font-weight: bold;
+                font-size: 1.25em;
+                background-color: lightgray;
+                border-style: groove;
+                border-color: lightgray;
+                border-width: 4px;
+                padding: 5px;
+                text-align: center;
+            }
             
             /* End of definition */
             
@@ -313,6 +323,14 @@
                 <div class="cookie-nag-content">Also, once you agree, please refresh the page.</div>
                 <div class="cookie-nag-buttons"><button class="cookie-reject" onClick="closeDialog(false)">NO WAY</button>&nbsp;<button class="cookie-accept" onClick="closeDialog(true)">OKAY</button></div>
             </div>
+                <div class="error-notice">
+                    <p>If you see this text in the center and can't do anything, please disable Adblocker.</p>
+                    <p>Looks like some "cookie nag remover" functions detect it as nuisance.</p>
+                    <p>I promise you, I never put any ads on the pages. If there's one, you've got a virus.</p>
+                    <p>To close this modal dialog and continue without save function, </p>
+                    <p>click on the button below:</p>
+                    <button onclick="closeDialog(false);">Close</button>
+                </div>
         </div>
             <div class="page-top light" id="pgtop"> <!-- CSS -->
                 <div class="title">RagnaChooser V2</div>
