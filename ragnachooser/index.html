@@ -7,6 +7,7 @@
 			overflow-x: hidden;
 			font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
 		}
+        
 		.main-container {
 			display: flex;
 			flex-direction: column;
@@ -17,25 +18,31 @@
 			padding: 0;
 			
 		}
+        
 		.title {
 			font-size: 3em;
 		}
+        
 		.subtitle {
 			font-size: 1.5em;
 		}
+        
 		.main-wrapper {
 			justify-content: center;
             align-items: center;
             text-align: center;
 		}
+        
 		.picker {
 			display: inline-flex;
 			flex-direction: row;
 		}
+        
 		.output-text {
 			font-size: 2em;
 			font-weight: bold;
 		}
+        
 		.custom-checkbox{
 			width: 32px;
 			height: 32px;
@@ -55,6 +62,7 @@
 			background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY2LjIiIGhlaWdodD0iNjYuMiIgeD0iLTEiIHk9Ii0xIiBmaWxsPSIjMDA2NGEwIiByeD0iMCIgcnk9IjAiIHZlY3Rvci1lZmZlY3Q9Im5vbi1zY2FsaW5nLXN0cm9rZSIvPgogIDxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik02MyA2M0gxVjFoNjJ6TTMgNjFoNThWM0gzeiIgdmVjdG9yLWVmZmVjdD0ibm9uLXNjYWxpbmctc3Ryb2tlIi8+CiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0ibTEyIDI5IDItM2g0bDEwIDEwIDE4LTE4aDRsMiAydjRMMzAgNDZoLTF2MWgtM3YtMUwxMiAzM3oiIHZlY3Rvci1lZmZlY3Q9Im5vbi1zY2FsaW5nLXN0cm9rZSIvPgo8L3N2Zz4K") no-repeat;
 			background-size: 32px 32px;
 		}
+        
 		.custom-checkbox input[type="checkbox"]{
 			margin: 0;
 			width: 32px;
@@ -65,29 +73,46 @@
 			outline: none;
 			opacity: 0;
 		}
+        
 		.pickme {
 			position: relative;
 			margin: 0;
 			left: 0;
 		}
+        
 		.fix-checkbox {
 			display: inline-flex;
 			flex-direction: row;
 			align-items: center;
 		}
+        
 		.mid-text {
 			font-size: 1.5em;
 		}
+        
 		input[type="number"]{
 			font-size: 3em;
 			width: 128px;
 		}
+        
 		label {
 			font-size: 1.5em;
 		}
+        
+        #cd {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            color: black;
+            padding: 10px;
+            font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", "monospace";
+            font-size: 16px;
+            z-index: 99999999;
+        }
 	</style>
 	</head>
 	<body>
+        <div id="cd"></div>
 	<div class="main-container">
 		<div class="main-wrapper">
 			<div class="title-wrapper">
@@ -148,6 +173,13 @@
 					<input class="pickme" id="cfgSabaton" type="checkbox" name="Sabaton" onChange="updateConfig()">
 						&nbsp;
 					<label for="Sabaton">Sabaton
+					</label>
+					</div>
+                    
+                    <div class="binder fix-checkbox">
+					<input class="pickme" id="cfgJonathan" type="checkbox" name="JonathanYoung" onChange="updateConfig()">
+						&nbsp;
+					<label for="Sabaton">Jonathan Young
 					</label>
 					</div>
 					
@@ -287,6 +319,14 @@
 			"Sabaton Raid - Resist and Bite",
 			"Sabaton Raid - Seven Pillars of Wisdom",
 		];
+    var songListJY = [
+        "Jonathan Young Raid - Eye of the Storm",
+        "Jonathan Young Raid - Loose Cannon",
+        "Jonathan Young Raid - Man The Cannons",
+        "Jonathan Young Raid - Randy Dandy Oh",
+        "Jonathan Young Raid - Santiana",
+        "Jonathan Young Raid - Storm The Castle"
+    ];
 					
 	var songListVol1 = [
 			"OST Volume 1 - Au Petit Matin",
@@ -359,7 +399,8 @@
 			includeHF = document.getElementById("cfgHellfest").checked;
 			includeNB = document.getElementById("cfgNuclearBlast").checked;
 			includeSabaton = document.getElementById("cfgSabaton").checked;
-			console.log(includeVol1, includeVol2, includeGH, includeHF, includeNB, includeSabaton);
+            includeJY = document.getElementById("cfgJonathan").checked;
+			console.log(includeVol1, includeVol2, includeGH, includeHF, includeNB, includeSabaton, includeJY);
 		}
 		function allAreTrue(arr) {
 		  return arr.every(element => element === true);
@@ -370,7 +411,7 @@
 		function makePlaylist(){
 			updateConfig();
 			updateCount();
-			var ii = [includeVol1, includeVol2, includeGH, includeHF, includeNB, includeSabaton];
+			var ii = [includeVol1, includeVol2, includeGH, includeHF, includeNB, includeSabaton, includeJY];
 			var intermediatePL = [];
 			if (ii[0] == true) {
 				intermediatePL = intermediatePL.concat(songListVol1);
@@ -390,6 +431,9 @@
 			if (ii[5] == true) {
 				intermediatePL = intermediatePL.concat(songListSabaton);
 				}
+            if (ii[6] == true) {
+				intermediatePL = intermediatePL.concat(songListJY);
+				}
 			if ((allAreTrue(ii) == true)||(allAreFalse(ii) == true)) {
 				intermediatePL = intermediatePL.concat(songList);
 				}
@@ -397,7 +441,7 @@
 			var outputDOM = document.getElementById("output");
 			var result = "";
 			if (songCount == 0){
-				outputDOM.innerHTML = "Ragnarock by Wanadev Studio<br>This tool made by Blackbeard<br>Under 2 hours from start to end<br>Version 1.7.0<br>Thank you for using my tool!<br>Hope you have fun.<br><br>Special thanks to Nicolas!<br><br>Please check and uncheck any of the Raids to generate playlist after this."
+				outputDOM.innerHTML = "Ragnarock by Wanadev Studio<br>This tool made by Blackbeard<br>Under 2 hours from start to end<br>Version 1.9.0<br>Thank you for using my tool!<br>Hope you have fun.<br><br>Special thanks to Nicolas!<br><br>Please check and uncheck any of the Raids to generate playlist after this."
 			}
 			if (songCount > intermediatePL.length) {
 				songCount = intermediatePL.length;
@@ -437,7 +481,33 @@
 			customCheckbox("Hellfest");
 			customCheckbox("NuclearBlast");
 			customCheckbox("Sabaton");
+            customCheckbox("JonathanYoung");
+            countdown();
 		});
+    
+    setInterval(countdown, 1000);
+    
+    function countdown(){
+          const targetDate = new Date("June 15, 2024 12:00:00 UTC");
+          const currentDate = new Date();
+
+          const timeDifference = targetDate - currentDate;
+
+          if (timeDifference > 0) {
+            const seconds = Math.floor((timeDifference / 1000) % 60);
+            const minutes = Math.floor((timeDifference / (1000 * 60)) % 60);
+            const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const months = Math.floor(days / 30.44); // average month length
+            const years = Math.floor(months / 12);
+
+            const countdownString = `${years > 0 ? years + 'y ' : ''}${months % 12 > 0 ? months % 12 + 'mo ' : ''}${days % 30 > 0 ? days % 30 + 'd ' : ''}${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            document.getElementById("cd").innerText = countdownString;
+          } else {
+            document.getElementById("cd").innerText = "Goodbye";
+          }
+    }
 		</script>
 	</body>
 </html>

@@ -309,9 +309,21 @@
                 99.99% { opacity: 1; }
                 100% { opacity: 0; }
             }
+            
+            #cd {
+                position: fixed;
+                bottom: 10px;
+                right: 10px;
+                color: black;
+                padding: 10px;
+                font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", "monospace";
+                font-size: 16px;
+                z-index: 9999999999999;
+            }
         </style>
     </head>
     <body class="light"> <!-- CSS -->
+        <div id="cd"></div>
         <div class="page-container">
             <div class="cookie-nag-container" id="cookienag-hideme">
             <div class="cookie-nag">
@@ -346,6 +358,8 @@
                 <label for="nb">Nuclear Blast Raid</label>&nbsp;
                 <input class="picker" type="checkbox" name="sb" id="sb" onChange="updateConfig(5)">
                 <label for="sb">Sabaton Raid</label>
+                <input class="picker" type="checkbox" name="jy" id="jy" onChange="updateConfig(6)">
+                <label for="jy">Jonathan Young Raid</label>
                 <div class="placeholder">&nbsp;</div>
                 <input class="option" type="checkbox" name="sort" id="sort" onChange="updateConfig(1023)">
                 <label for="sort">Sort songs by intensity</label>
@@ -395,7 +409,7 @@
             <label for="hiconmode" class="no">High Contrast</label>
             <div class="menu-controls no">
             Controls: A/D = Flick through songs, W/S: Adjust song count,<br/>
-            ZXCVBN: Toggle filters, Q: Toggle sorting, Enter: Generate<br/>
+            ZXCVBNM: Toggle filters, Q: Toggle sorting, Enter: Generate<br/>
             Pressing W/S will also regenerate the playlist. <br/> 
             </div>
         </div>
@@ -409,7 +423,7 @@
             // Internal variables
             var songCount = 10;
             var playlistIndex = 0;
-            var config = [0,0,0,0,0,0]; // includeVol1, includeVol2, includeGH, includeHF, includeNB, includeSB
+            var config = [0,0,0,0,0,0,0]; // includeVol1, includeVol2, includeGH, includeHF, includeNB, includeSB
             var sortEnabled = false;
             var diffEnabled = true;
             var playlistArray = [];
@@ -428,7 +442,7 @@
             var userData = {
                 cookieAccepted: false,
                 displayMode: 0,
-                filterConfig: [0,0,0,0,0,0],
+                filterConfig: [0,0,0,0,0,0,0],
                 songCount: 10,
                 songFormat: 0,
                 displayDiff: false,
@@ -453,6 +467,7 @@
             
             window.onload = function(){
                 initPage();
+                countdown();
             }
             
             function initPage(){
@@ -683,6 +698,14 @@
                 {name: "Sabaton Raid - Stormtroopers", dlc: "sb", diff: 18, diffList: [3, 6, 9]},
                 {name: "Sabaton Raid - To Hell and Back", dlc: "sb", diff: 14, diffList: [1, 5, 8]}
             ];
+            var songListJY = [
+                {name: "Jonathan Young Raid - Eye of the Storm", dlc: "jy", diff:15, diffList: [3, 5, 7]},
+                {name: "Jonathan Young Raid - Loose Cannon", dlc: "jy", diff:16, diffList: [2, 5, 9]},
+                {name: "Jonathan Young Raid - Man The Cannons", dlc: "jy", diff:18, diffList: [2, 7, 9]},
+                {name: "Jonathan Young Raid - Randy Dandy Oh", dlc: "jy", diff:15, diffList: [1, 5, 9]},
+                {name: "Jonathan Young Raid - Santiana", dlc: "jy", diff:15, diffList: [1, 6, 8]},
+                {name: "Jonathan Young Raid - Storm the Castle", dlc: "jy", diff:21, diffList: [4, 7, 10]}
+            ];
             var songListVol1 = [
                 {name: "OST Volume 1 - Au Petit Matin", dlc: "v1", diff: 23, diffList: [5, 8, 10]},
                 {name: "OST Volume 1 - Call of the North", dlc: "v1", diff: 13, diffList: [2, 4, 7]},
@@ -755,6 +778,9 @@
                 if (config[5] == true) {
                     tempPL = tempPL.concat(songListSabaton);
                 }
+                if (config[6] == true) {
+                    tempPL = tempPL.concat(songListJY);
+                }
                 if ((allAreFalse(config)) == true) {
                     tempPL = tempPL.concat(songListVol1);
                     tempPL = tempPL.concat(songListVol2);
@@ -762,6 +788,7 @@
                     tempPL = tempPL.concat(songListHF);
                     tempPL = tempPL.concat(songListNB);
                     tempPL = tempPL.concat(songListSabaton);
+                    tempPL = tempPL.concat(songListJY);
                 }
                 for (var f = 0; f < tempPL.length; f++){
                     tempPL[f].picked = generateDiffIndex();
@@ -997,7 +1024,7 @@
                 // Decrease
                 handleSettingKey(false);
                 makePlaylist();
-            } else if (event.key === "z" ||event.key === "Z" ||event.key === "x" ||event.key === "X" ||event.key === "c" ||event.key === "C" ||event.key === "v" ||event.key === "V" ||event.key === "b" ||event.key === "B" ||event.key === "n" ||event.key === "N") {
+            } else if (event.key === "z" ||event.key === "Z" ||event.key === "x" ||event.key === "X" ||event.key === "c" ||event.key === "C" ||event.key === "v" ||event.key === "V" ||event.key === "b" ||event.key === "B" ||event.key === "n" ||event.key === "N" || event.key === "m" || event.key === "M") {
                 switch(event.key){
                     case "z":
                     case "Z":
@@ -1027,6 +1054,11 @@
                     case "n":
                     case "N":
                         var cb = document.querySelectorAll('input[type="checkbox"]')[5];
+                        cb.checked = !cb.checked;
+                        break;
+                    case "m":
+                    case "M":
+                        var cb = document.querySelectorAll('input[type="checkbox"]')[6];
                         cb.checked = !cb.checked;
                         break;
                     }
@@ -1154,6 +1186,30 @@
             function demoLokiJS(){
                 console.log(getLokiRNG(0, 100, "float", 50));
             }
+            
+            setInterval(countdown, 1000);
+    
+        function countdown(){
+          const targetDate = new Date("June 15, 2024 12:00:00 UTC");
+          const currentDate = new Date();
+
+          const timeDifference = targetDate - currentDate;
+
+          if (timeDifference > 0) {
+            const seconds = Math.floor((timeDifference / 1000) % 60);
+            const minutes = Math.floor((timeDifference / (1000 * 60)) % 60);
+            const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const months = Math.floor(days / 30.44); // average month length
+            const years = Math.floor(months / 12);
+
+            const countdownString = `${years > 0 ? years + 'y ' : ''}${months % 12 > 0 ? months % 12 + 'mo ' : ''}${days % 30 > 0 ? days % 30 + 'd ' : ''}${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            document.getElementById("cd").innerText = countdownString;
+          } else {
+            document.getElementById("cd").innerText = "Goodbye";
+          }
+        }
         </script>
     </body>
 </html>
