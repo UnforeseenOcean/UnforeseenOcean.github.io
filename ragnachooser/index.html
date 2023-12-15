@@ -123,7 +123,7 @@
 			<div class="input-wrapper">
 				<div class="mid-text">How many to suggest?: </div>
 				<span class="picker">
-					<input class="counter" id="counter" type="number" name="counter" min="0" max="72" value="1" onChange="updateCount()">
+					<input class="counter" id="counter" type="number" name="counter" min="0" max="78" value="1" onChange="updateCount()">
 					<div class="mid-text">&nbsp;song(s)</div>
 				</span><br><br>
 				<span class="picker">
@@ -175,14 +175,16 @@
 					<label for="Sabaton">Sabaton
 					</label>
 					</div>
+                    &nbsp;
                     
                     <div class="binder fix-checkbox">
 					<input class="pickme" id="cfgJonathan" type="checkbox" name="JonathanYoung" onChange="updateConfig()">
 						&nbsp;
-					<label for="Sabaton">Jonathan Young
+					<label for="JonathanYoung">Jonathan Young
 					</label>
 					</div>
-					
+					&nbsp;
+                    
 					<br>
 				</span>
 				<div class="mid-text">If you select none of the raids, it will pick from all raids</div>
@@ -205,6 +207,7 @@
 		var includeHF = 0;
 		var includeNB = 0;
 		var includeSabaton = 0;
+        var includeJY = 0;
 		var songList = [
 			"Gloryhammer Raid - Gloryhammer",
 			"Gloryhammer Raid - Questlords of Inverness Ride to the Galactic Fortress!",
@@ -238,6 +241,12 @@
 			"Sabaton Raid - Steel Commanders",
 			"Sabaton Raid - Resist and Bite",
 			"Sabaton Raid - Seven Pillars of Wisdom",
+            "Jonathan Young Raid - Eye of the Storm",
+            "Jonathan Young Raid - Loose Cannon",
+            "Jonathan Young Raid - Man The Cannons",
+            "Jonathan Young Raid - Randy Dandy Oh",
+            "Jonathan Young Raid - Santiana",
+            "Jonathan Young Raid - Storm The Castle",
 			"OST Volume 1 - Au Petit Matin",
 			"OST Volume 1 - Call of the North",
 			"OST Volume 1 - Chomp Chomp",
@@ -325,8 +334,8 @@
         "Jonathan Young Raid - Man The Cannons",
         "Jonathan Young Raid - Randy Dandy Oh",
         "Jonathan Young Raid - Santiana",
-        "Jonathan Young Raid - Storm The Castle"
-    ];
+        "Jonathan Young Raid - Storm The Castle",
+        ];
 					
 	var songListVol1 = [
 			"OST Volume 1 - Au Petit Matin",
@@ -441,7 +450,7 @@
 			var outputDOM = document.getElementById("output");
 			var result = "";
 			if (songCount == 0){
-				outputDOM.innerHTML = "Ragnarock by Wanadev Studio<br>This tool made by Blackbeard<br>Under 2 hours from start to end<br>Version 1.9.0<br>Thank you for using my tool!<br>Hope you have fun.<br><br>Special thanks to Nicolas!<br><br>Please check and uncheck any of the Raids to generate playlist after this."
+				outputDOM.innerHTML = "Ragnarock by Wanadev Studio<br>This tool made by Blackbeard<br>Under 2 hours from start to end<br>Version 1.9.1<br>Thank you for using my tool!<br>Hope you have fun.<br><br>Special thanks to Nicolas!<br><br>Please check and uncheck any of the Raids to generate playlist after this."
 			}
 			if (songCount > intermediatePL.length) {
 				songCount = intermediatePL.length;

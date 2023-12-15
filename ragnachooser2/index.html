@@ -357,9 +357,9 @@
                 <input class="picker" type="checkbox" name="nb" id="nb" onChange="updateConfig(4)">
                 <label for="nb">Nuclear Blast Raid</label>&nbsp;
                 <input class="picker" type="checkbox" name="sb" id="sb" onChange="updateConfig(5)">
-                <label for="sb">Sabaton Raid</label>
+                <label for="sb">Sabaton Raid</label>&nbsp;
                 <input class="picker" type="checkbox" name="jy" id="jy" onChange="updateConfig(6)">
-                <label for="jy">Jonathan Young Raid</label>
+                <label for="jy">Jonathan Young Raid</label>&nbsp;
                 <div class="placeholder">&nbsp;</div>
                 <input class="option" type="checkbox" name="sort" id="sort" onChange="updateConfig(1023)">
                 <label for="sort">Sort songs by intensity</label>
@@ -373,7 +373,7 @@
                 <input class="radio menu" type="radio" name="showtype" id="showall" onChange="updateView(2)">
                 <label for="showall">Show All</label>
                 <div class="placeholder">&nbsp;</div>
-                <input class="count" type="number" name="count" id="count" value="10" min="1" max="72" onChange="updateConfig(99)">
+                <input class="count" type="number" name="count" id="count" value="10" min="1" max="78" onChange="updateConfig(99)">
                 <label for="count" class="no">&nbsp;songs</label>
                 <button class="button" id="less" onClick="buttonHandler(false)">Less Songs</button>
                 <button class="button" id="more" onClick="buttonHandler(true)">More Songs</button>
@@ -797,7 +797,7 @@
                 var shuffled = shuffle(tempPL);
                 var holdArray = []; // Kinda inefficient way to ensure we have something to sort for later
                 if (songCount == 0) {
-                    alert("RagnaChooser V2 2.1.9 by Blackbeard\nJuly 2023 - Partial Rewrite by JamieDerg\nFor Ragnarock (C) 2022-2023 Wanadev Studio\nThank you for using my tool, I hope you have fun.\nSpecial thanks to Nicolas and BloculusMonster!\nPlease put in a value above 1 to make the playlist!");
+                    alert("RagnaChooser V2 2.2.1 by Blackbeard\nJuly 2023 - Partial Rewrite by JamieDerg\nFor Ragnarock (C) 2022-2023 Wanadev Studio\nThank you for using my tool, I hope you have fun.\nSpecial thanks to Nicolas and BloculusMonster!\nPlease put in a value above 1 to make the playlist!");
                 }
                 if (songCount > shuffled.length) {
                         songCount = shuffled.length;
