@@ -753,6 +753,32 @@
 				{name: "OST Volume 2 - Only Human", dlc: "v2", diff: 18, diffList: [2, 6, 10]}
             ];
             
+            const ragnaSort = (a, b) => {
+                for (let i = 0; i < a.diffList.length; i++) {
+                    if (a.diffList[i] !== b.diffList[i]) {
+                      return a.diffList[i] - b.diffList[i];
+                    }
+                  }
+                return a.name.localeCompare(b.name);
+            };
+    
+            function ragnaSortShim(array) {
+                var tmp = array; // Copy array into a new one which will mutate
+                var tmp2 = tmp.sort(ragnaSort);
+                var c = 0
+                var tmp3 = tmp2.map(element => {
+                    try { // try...catch is a bit redundant here but whatever 
+                        element.diff = c;
+                        c++;
+                    } catch (error) {
+                        console.error(error);
+                    }
+                    return element;
+                })
+                
+                return tmp3;
+            }
+            
             // Greetz: dubmood, crome, zalza, radix, arachno, MrGamer, 8bitbubsy, rez, JosSs, seablue, Soft Maniac, coma, maktone, cerror, LHS/DFS, Ghidorah, Beldoroon, mark knight/The Dark Knight, Zabutom, Razor1911, Conspiracy/CPY, fitgirl, strict9, Nick Skarny, Wanadev Studio, JamieDerg
             function makePlaylist(){
                 console.info("Generating new playlist...");
@@ -791,6 +817,7 @@
                     tempPL = tempPL.concat(songListJY);
                 }
                 for (var f = 0; f < tempPL.length; f++){
+                    // Generate the selection of difficulties
                     tempPL[f].picked = generateDiffIndex();
                 }
                 // console.log(tempPL);
@@ -806,8 +833,9 @@
                         for (var c = 0; c < songCount; c++){
                             holdArray.push(shuffled[c]);
                         }
+                        var hack = ragnaSortShim(holdArray); // A very ugly hack
                         if (sortEnabled == true){
-                            holdArray.sort((a, b) => (a.diff > b.diff) ? 1: -1);
+                            hack.sort((a, b) => (a.diff > b.diff) ? 1: -1);
                         }
                         playlistArray = holdArray;
                         console.log(playlistArray);
