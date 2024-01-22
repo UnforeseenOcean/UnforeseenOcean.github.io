@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>RagnaTest</title>
+</head>
+
+<body>
+    <div class="goat" id="a"></div>
+    <script>
+    var songListGH = [
+                {name: "Gloryhammer Raid - Gloryhammer", dlc: "gh", diff: 16, diffList: [2, 6, 8]},
+                {name: "Gloryhammer Raid - Questlords of Inverness Ride to the Galactic Fortress!", dlc: "gh", diff: 22, diffList: [5, 7, 10]},
+                {name: "Gloryhammer Raid - Rise of the Chaos Wizards", dlc: "gh", diff: 18, diffList: [3, 6, 9]},
+                {name: "Gloryhammer Raid - The Fires of Ancient Cosmic Destiny", dlc: "gh", diff: 18, diffList: [3, 5, 10]},
+                {name: "Gloryhammer Raid - The Land of Unicorns", dlc: "gh", diff: 17, diffList: [3, 5, 9]},
+                {name: "Gloryhammer Raid - The Siege of Dunkeld", dlc: "gh", diff: 21, diffList: [5, 7, 9]}
+            ];
+            var songListHF = [
+                {name: "Hellfest Raid - Battlefield", dlc: "hf", diff: 15, diffList: [2, 5, 8]},
+                {name: "Hellfest Raid - Born For One Thing", dlc: "hf", diff: 19, diffList: [4, 7, 8]},
+                {name: "Hellfest Raid - Going Hunting", dlc: "hf", diff: 15, diffList: [3, 5, 7]},
+                {name: "Hellfest Raid - Great Marquis Of Hell", dlc: "hf", diff: 17, diffList: [3, 6, 8]},
+                {name: "Hellfest Raid - Härjaren", dlc: "hf", diff: 12, diffList: [2, 4, 6]},
+                {name: "Hellfest Raid - Heart Demolition", dlc: "hf", diff: 18, diffList: [4, 6, 8]},
+                {name: "Hellfest Raid - Life Will Always Find Its Way", dlc: "hf", diff: 19, diffList: [4, 6, 8]},
+                {name: "Hellfest Raid - One For The Road", dlc: "hf", diff: 14, diffList: [3, 5, 6]},
+                {name: "Hellfest Raid - Skyfall", dlc: "hf", diff: 21, diffList: [4, 8, 9]},
+                {name: "Hellfest Raid - Tribal", dlc: "hf", diff: 16, diffList: [3, 5, 8]},
+                {name: "Hellfest Raid - You're Gonna Go Far, Kid", dlc: "hf", diff: 13, diffList: [1, 5, 7]}
+            ];
+            var songListNB = [
+                {name: "Nuclear Blast Raid - A Man With A Plan", dlc: "nb", diff: 17, diffList: [3, 5, 9]},
+                {name: "Nuclear Blast Raid - Abyss Of Time", dlc: "nb", diff: 18, diffList: [3, 6, 9]},
+                {name: "Nuclear Blast Raid - Ambiramus", dlc: "nb", diff: 14, diffList: [2, 4, 8]},
+                {name: "Nuclear Blast Raid - Eye of the Storm", dlc: "nb", diff: 15, diffList: [3, 5, 7]},
+                {name: "Nuclear Blast Raid - Nevermore", dlc: "nb", diff: 20, diffList: [3, 7, 10]},
+                {name: "Nuclear Blast Raid - One Night In Tokyo", dlc: "nb", diff: 18, diffList: [2, 7, 9]},
+                {name: "Nuclear Blast Raid - Revolution", dlc: "nb", diff: 20, diffList: [4, 7, 9]},
+                {name: "Nuclear Blast Raid - Rise Again", dlc: "nb", diff: 18, diffList: [4, 6, 8]},
+                {name: "Nuclear Blast Raid - Vodka", dlc: "nb", diff: 14, diffList: [2, 5, 7]}
+            ];
+            var songListSabaton = [
+                {name: "Sabaton Raid - Night Witches", dlc: "sb", diff: 17, diffList: [3, 6, 8]},
+                {name: "Sabaton Raid - Resist and Bite", dlc: "sb", diff: 16, diffList: [1, 5, 10]},
+                {name: "Sabaton Raid - Seven Pillars of Wisdom", dlc: "sb", diff: 19, diffList: [2, 7, 10]},
+                {name: "Sabaton Raid - Steel Commanders", dlc: "sb", diff: 18, diffList: [3, 6, 9]},
+                {name: "Sabaton Raid - Stormtroopers", dlc: "sb", diff: 18, diffList: [3, 6, 9]},
+                {name: "Sabaton Raid - To Hell and Back", dlc: "sb", diff: 14, diffList: [1, 5, 8]}
+            ];
+            var songListJY = [
+                {name: "Jonathan Young Raid - Eye of the Storm", dlc: "jy", diff:15, diffList: [3, 5, 7]},
+                {name: "Jonathan Young Raid - Loose Cannon", dlc: "jy", diff:16, diffList: [2, 5, 9]},
+                {name: "Jonathan Young Raid - Man The Cannons", dlc: "jy", diff:18, diffList: [2, 7, 9]},
+                {name: "Jonathan Young Raid - Randy Dandy Oh", dlc: "jy", diff:15, diffList: [1, 5, 9]},
+                {name: "Jonathan Young Raid - Santiana", dlc: "jy", diff:15, diffList: [1, 6, 8]},
+                {name: "Jonathan Young Raid - Storm the Castle", dlc: "jy", diff:21, diffList: [4, 7, 10]}
+            ];
+            var songListVol1 = [
+                {name: "OST Volume 1 - Au Petit Matin", dlc: "v1", diff: 23, diffList: [5, 8, 10]},
+                {name: "OST Volume 1 - Call of the North", dlc: "v1", diff: 13, diffList: [2, 4, 7]},
+                {name: "OST Volume 1 - Chomp Chomp", dlc: "v1", diff: 22, diffList: [4, 8, 10]},
+                {name: "OST Volume 1 - Dead and Gone", dlc: "v1", diff: 14, diffList: [2, 4, 8]},
+                {name: "OST Volume 1 - Dewey", dlc: "v1", diff: 14, diffList: [2, 5, 7]},
+                {name: "OST Volume 1 - Drunken Dwarves", dlc: "v1", diff: 17, diffList: [2, 6, 9]},
+                {name: "OST Volume 1 - Evier metal", dlc: "v1", diff: 18, diffList: [3, 6, 9]},
+                {name: "OST Volume 1 - Heroes", dlc: "v1", diff: 15, diffList: [3, 4, 8]},
+                {name: "OST Volume 1 - Hootsforce", dlc: "v1", diff: 17, diffList: [4, 6, 7]},
+                {name: "OST Volume 1 - Iridium", dlc: "v1", diff: 19, diffList: [3, 7, 9]},
+                {name: "OST Volume 1 - Join The Riot", dlc: "v1", diff: 11, diffList: [1, 3, 7]},
+                {name: "OST Volume 1 - Kammthaar", dlc: "v1", diff: 18, diffList: [4, 6, 8]},
+                {name: "OST Volume 1 - Kampfzwerg", dlc: "v1", diff: 17, diffList: [3, 5, 9]},
+                {name: "OST Volume 1 - Löwenherz", dlc: "v1", diff: 13, diffList: [2, 4, 7]},
+                {name: "OST Volume 1 - Loki", dlc: "v1", diff: 13, diffList: [2, 4, 7]},
+                {name: "OST Volume 1 - Masters of The Galaxy", dlc: "v1", diff: 17, diffList: [3, 5, 9]},
+                {name: "OST Volume 1 - Metfest", dlc: "v1", diff: 15, diffList: [3, 5, 7]},
+                {name: "OST Volume 1 - Mexico", dlc: "v1", diff: 16, diffList: [3, 5, 8]},
+                {name: "OST Volume 1 - Mine Mine Mine!", dlc: "v1", diff: 18, diffList: [3, 6, 9]},
+                {name: "OST Volume 1 - Nitro", dlc: "v1", diff: 15, diffList: [1, 5, 9]},
+                {name: "OST Volume 1 - No Grave But The Sea", dlc: "v1", diff: 17, diffList: [3, 5, 9]},
+                {name: "OST Volume 1 - Red Wine Teeth", dlc: "v1", diff: 15, diffList: [3, 5, 7]},
+                {name: "OST Volume 1 - The Great Pirate Bottle", dlc: "v1", diff: 21, diffList: [4, 7, 10]},
+                {name: "OST Volume 1 - The Next One Down", dlc: "v1", diff: 15, diffList: [2, 5, 8]},
+                {name: "OST Volume 1 - To Erebor", dlc: "v1", diff: 17, diffList: [4, 5, 8]},
+                {name: "OST Volume 1 - Tortuga", dlc: "v1", diff: 15, diffList: [3, 5, 7]},
+                {name: "OST Volume 1 - Universe on fire", dlc: "v1", diff: 17, diffList: [2, 6, 9]},
+                {name: "OST Volume 1 - Valhalleluja", dlc: "v1", diff: 18, diffList: [4, 6, 8]},
+                {name: "OST Volume 1 - Welcome To Asgard", dlc: "v1", diff: 10, diffList: [1, 3, 6]},
+                {name: "OST Volume 1 - Whaole", dlc: "v1", diff: 17, diffList: [3, 5, 9]}
+            ];
+        var songListVol2 = [
+                {name: "OST Volume 2 - Hypa Hypa", dlc: "v2", diff: 18, diffList: [4, 6, 8]},
+                {name: "OST Volume 2 - Mediator", dlc: "v2", diff: 18, diffList: [4, 6, 8]},
+                {name: "OST Volume 2 - Memento Mori", dlc: "v2", diff: 15, diffList: [2, 5, 8]},
+                {name: "OST Volume 2 - Metal United", dlc: "v2", diff: 15, diffList: [3, 5, 7]},
+                {name: "OST Volume 2 - Niemi", dlc: "v2", diff: 18, diffList: [3, 6, 9]},
+                {name: "OST Volume 2 - Out Of Control", dlc: "v2", diff: 13, diffList: [2, 4, 7]},
+                {name: "OST Volume 2 - Powersnake", dlc: "v2", diff: 18, diffList: [4, 6, 8]},
+                {name: "OST Volume 2 - Redneck Vikings From Hell", dlc: "v2", diff: 20, diffList: [3, 7, 10]},
+                {name: "OST Volume 2 - Utopia", dlc: "v2", diff: 15, diffList: [2, 5, 8]},
+                {name: "OST Volume 2 - We Are The Fire", dlc: "v2", diff: 17, diffList: [3, 6, 8]},
+				{name: "OST Volume 2 - Sanaton Maa", dlc: "v2", diff: 16, diffList: [2, 6, 8]},
+				{name: "OST Volume 2 - Only Human", dlc: "v2", diff: 18, diffList: [2, 6, 10]}
+            ];
+        
+        const ragnaSort = (a, b) => {
+            for (let i = 0; i < a.diffList.length; i++) {
+                if (a.diffList[i] !== b.diffList[i]) {
+                  return a.diffList[i] - b.diffList[i];
+                }
+              }
+            return a.name.localeCompare(b.name);
+        };
+    
+            function ragnaSortShim(array) {
+                var tmp = array; // Copy array into a new one which will mutate
+                var tmp2 = tmp.sort(ragnaSort);
+                var c = 0
+                var tmp3 = tmp2.map(element => {
+                    try { // try...catch is a bit redundant here but whatever 
+                        element.diff = c;
+                        c++;
+                    } catch (error) {
+                        console.error(error);
+                    }
+                    return element;
+                })
+                
+                return tmp3;
+            }
+        console.log(ragnaSortShim(songListVol1));
+    </script>
+</body>
+</html>
