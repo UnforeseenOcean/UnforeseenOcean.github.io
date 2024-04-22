@@ -51,6 +51,12 @@
         color: var(--seg-on-w);
       }
       
+      .sel {
+        position: fixed;
+        left: 10px;
+        bottom: 10px;
+        z-index: 1337;
+      }
       
     </style>
   </head>
@@ -355,6 +361,7 @@
                   <path id="L2C10MA2" d="m576.06,589.85l-1.95-1.95h-1.56l-.24-.22h-3.94c-1.06,0-1.93.87-1.93,1.93s.87,1.93,1.93,1.93h9.37l-1.68-1.68Z" />
                   <path id="L2C10GR" d="m571.51,581.41c-.7-.7-1.84-.7-2.54,0-.7.7-.7,1.84,0,2.54l3.72,3.72h1.51l1.86,1.86v-3.57l-4.55-4.55Z" />
                   <circle id="L2C10UM1" cx="592.23" cy="585.69" r="1.83" />
+                  <circle id="L2C10UM2" cx="567.75" cy="585.69" r="1.83"/>
                   <path id="L2C10MA1" d="m583.92,589.85l1.95-1.95h1.19s.37,0,.37,0l.24-.22h3.94c1.06,0,1.93.87,1.93,1.93,0,1.06-.87,1.93-1.93,1.93h-9.37s1.68-1.68,1.68-1.68Z" />
                   <path id="L2C10AC" d="m588.47,581.41c.7-.7,1.84-.7,2.54,0,.7.7.7,1.84,0,2.54l-3.72,3.72h-1.51s-1.86,1.86-1.86,1.86v-.32s0-1.31,0-1.31v-.45s0-1.04,0-1.04v-.45s4.55-4.55,4.55-4.55Z" />
                   <g id="L2C10RI">
@@ -1410,7 +1417,27 @@
         </svg>
       </div>
     </div>
-
+    <div class="sel">
+        <select name="langs" id="lang" onchange="changeLang()">
+            <option value="0">English</option>
+            <option value="1">Čeština</option>
+            <option value="2">Deutsch</option>
+            <option value="3">Dansk</option>
+            <option value="4">Suomi</option>
+            <option value="5">Français</option>
+            <option value="6">Kreyòl ayisyen</option>
+            <option value="7">ʻōlelo Hawaiʻi</option>
+            <option value="8">Na hÉireann</option>
+            <option value="9">Italiano</option>
+            <option value="10">Te Reo Māori</option>
+            <option value="11">Nederlands</option>
+            <option value="12">Norsk</option>
+            <option value="13">Polski</option>
+            <option value="14">Português</option>
+            <option value="15">Svenska</option>
+            <option value="16">Cymraeg</option>
+        </select>
+    </div>
     <script>
     // Order of the segments: A (top), B (top right), C (bottom right), D (bottom), E (bottom left), F (top left), G1 (left middle), G2 (right middle), H (top left diagonal line), I (top center line), J (top right diagonal line), K (bottom left diagonal line), L (bottom center line), M (bottom right diagonal line), Dot, Grave, Acute, Macron Left, Macron Right, Umlaut Left, Umlaut Right, Circumflex, Ring, Cedilla
     // A, B, C, D, E, F, G1, G2, H, I, J, K, L, M, DP, GR, AC, ML, MR, UL, UR, CF, RI, CE
@@ -1636,8 +1663,15 @@
     const stringsDK = ["JANUAR", "FEBRUAR", "MARTS", "APRIL", "MAJ", "JUNI", "JULI", "AUGUST", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DECEMBER", "SØNDAG", "MANDAG", "TIRSDAG", "ONSDAG", "TORSDAG", "FREDAG", "LØRDAG"];
     
     var colonState = true;
-    var language = 5;
+    var language = 0;
     // Languages = 17
+    
+    function changeLang() {
+        var sz = document.getElementById("lang");
+        var dz = Number(sz.value);
+        language = dz;
+    }
+    
     const langList = [stringsEN, stringsCZ, stringsDE, stringsDK, stringsFI, stringsFR, stringsHA, stringsHW, stringsIR, stringsIT, stringsMA, stringsNL, stringsNO, stringsPL, stringsPT, stringsSE, stringsWE];
     
     const num = [
@@ -1745,6 +1779,7 @@
     }
     
     function setDays(day) {
+        clearLine3();
         var n1data = num[findIndexN(day.charAt(0))];
         var n2data = num[findIndexN(day.charAt(1))];
         setState(n1data.a, line3_n1.a);
@@ -1765,10 +1800,9 @@
         setState(n2data.g, line3_n2.g1);
         setState(n1data.g, line3_n2.g2);
     }
-    // const langList = [stringsEN, stringsCZ, stringsDE, stringsDK, stringsFI, stringsFR, stringsHA, stringsHW, stringsIR, stringsIT, stringsMA, stringsNL, stringsNO, stringsPL, stringsPT, stringsSE, stringsWE];
-    // const stringsEN = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER", "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
-    // {a: true, b: true, c: true, d: true, e: true, f: true, g1: false, g2: false, h: false, i: false, j: false, k: false, l: false, m: true, dp: false, gr: false, ac: false, ml: false, mr: false, ul: false, ur: false, cf: false, ri: false, ce: false, data: "Q"},
+    
     function setWeekdays(wd) {
+        clearLine1();
         var len = langList[language][wd + 12].length;
         var str = langList[language][wd + 12];
         for (var x = 0; x < len; x++) {
@@ -1801,6 +1835,7 @@
     }
     
     function setMonths(mt) {
+        clearLine2();
         var len = langList[language][mt].length;
         var str = langList[language][mt];
         for (var x = 0; x < len; x++) {
@@ -1874,27 +1909,85 @@
     }
     
     function clearLine1() {
-        line1_obj.forEach(function(obj, index) {
-            if (obj.classList.contains("on")) {
-                obj.classList.remove("on");
-            }
-        });
+        for (var x = 0; x < 16; x++) {
+            // VERY ugly hack
+            setState(false, line1_obj[x].a);
+            setState(false, line1_obj[x].b);
+            setState(false, line1_obj[x].c);
+            setState(false, line1_obj[x].d);
+            setState(false, line1_obj[x].e);
+            setState(false, line1_obj[x].f);
+            setState(false, line1_obj[x].g1);
+            setState(false, line1_obj[x].g2);
+            setState(false, line1_obj[x].h);
+            setState(false, line1_obj[x].i);
+            setState(false, line1_obj[x].j);
+            setState(false, line1_obj[x].k);
+            setState(false, line1_obj[x].l);
+            setState(false, line1_obj[x].m);
+            setState(false, line1_obj[x].dp);
+            setState(false, line1_obj[x].gr);
+            setState(false, line1_obj[x].ac);
+            setState(false, line1_obj[x].ml);
+            setState(false, line1_obj[x].mr);
+            setState(false, line1_obj[x].ul);
+            setState(false, line1_obj[x].ur);
+            setState(false, line1_obj[x].cf);
+            setState(false, line1_obj[x].ri);
+            setState(false, line1_obj[x].ce);
+        }
     }
     
     function clearLine2() {
-        line2_obj.forEach(function(obj, index) {
-            if (obj.classList.contains("on")) {
-                obj.classList.remove("on");
-            }
-        });
+        for (var x = 0; x < 16; x++) {
+            // VERY ugly hack
+            setState(false, line2_obj[x].a);
+            setState(false, line2_obj[x].b);
+            setState(false, line2_obj[x].c);
+            setState(false, line2_obj[x].d);
+            setState(false, line2_obj[x].e);
+            setState(false, line2_obj[x].f);
+            setState(false, line2_obj[x].g1);
+            setState(false, line2_obj[x].g2);
+            setState(false, line2_obj[x].h);
+            setState(false, line2_obj[x].i);
+            setState(false, line2_obj[x].j);
+            setState(false, line2_obj[x].k);
+            setState(false, line2_obj[x].l);
+            setState(false, line2_obj[x].m);
+            setState(false, line2_obj[x].dp);
+            setState(false, line2_obj[x].gr);
+            setState(false, line2_obj[x].ac);
+            setState(false, line2_obj[x].ml);
+            setState(false, line2_obj[x].mr);
+            setState(false, line2_obj[x].ul);
+            setState(false, line2_obj[x].ur);
+            setState(false, line2_obj[x].cf);
+            setState(false, line2_obj[x].ri);
+            setState(false, line2_obj[x].ce);
+        }
     }
     
     function clearLine3() {
-        line3_obj.forEach(function(obj, index) {
-            if (obj.classList.contains("on")) {
-                obj.classList.remove("on");
-            }
-        });
+        for (var x = 0; x < 2; x++) {
+            // VERY ugly hack
+            setState(false, line3_n1.a);
+            setState(false, line3_n1.b);
+            setState(false, line3_n1.c);
+            setState(false, line3_n1.d);
+            setState(false, line3_n1.e);
+            setState(false, line3_n1.f);
+            setState(false, line3_n1.g1);
+            setState(false, line3_n1.g2);
+            setState(false, line3_n2.a);
+            setState(false, line3_n2.b);
+            setState(false, line3_n2.c);
+            setState(false, line3_n2.d);
+            setState(false, line3_n2.e);
+            setState(false, line3_n2.f);
+            setState(false, line3_n2.g1);
+            setState(false, line3_n2.g2);
+        }
     }
     
     function clearTime() {
@@ -1953,6 +2046,8 @@
     function initPage() {
     dot.classList.add("on");
     quartz(tick);
+    var em = document.getElementById("lang");
+    em.value = 0;
     }
     
     function quartz(callback) {
