@@ -2028,7 +2028,7 @@
         var hr = dateObj.getHours().toString().padStart(2, "0");
         var mn = dateObj.getMinutes().toString().padStart(2, "0");
         var se = dateObj.getSeconds().toString().padStart(2, "0");
-        var ms = dateObj.getMilliseconds().toString();
+        var ms = dateObj.getMilliseconds().toString().padStart(3, "0");;
         var weekday = dateObj.getDay();
         var month = dateObj.getMonth();
         var day = dateObj.getDate().toString().padStart(2, "0");
