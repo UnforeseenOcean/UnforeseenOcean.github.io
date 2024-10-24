@@ -230,7 +230,18 @@
                 padding: 5px;
                 text-align: center;
             }
-            
+            .eol-notice {
+                position: absolute;
+                z-index: 99999999999;
+                font-weight: bold;
+                font-size: 1.25em;
+                background-color: lightgray;
+                border-style: groove;
+                border-color: lightgray;
+                border-width: 4px;
+                padding: 5px;
+                text-align: center;
+            }
             /* End of definition */
             
             /* CSS Var */
@@ -343,6 +354,15 @@
                     <p>click on the button below:</p>
                     <button onclick="closeDialog(false);">Close</button>
                 </div>
+                <div class="eol-notice" id="eolnotice">
+                    <p>Yes, the time has come for this silly little tool.</p>
+                    <p>I am unable to update this tool any longer.</p>
+                    <p>This tool is in &quot;End of life&quot; state.</p>
+                    <p>No further support will be provided.</p>
+                    <p>Please see <a href="/rc-eol">This page</a> for more information.</p>
+                    <p>To continue using this tool anyway, press the button below.</p>
+                    <button onclick="closeDialog(true);">Close</button>
+                </div>
         </div>
             <div class="page-top light" id="pgtop"> <!-- CSS -->
                 <div class="title">RagnaChooser V2</div>
@@ -393,7 +413,7 @@
             </div>
         </div>
         <div class="footer no">
-            &copy; 2023 Blackbeard. All rights reserved. <br/> 
+            &copy; 2024 Blackbeard. All rights reserved. <br/> 
             The page contains no trackers at all, so your feedback is important for the improvement of the application.
         </div>
         <div class="menu-div" id="menudiv">
@@ -750,7 +770,9 @@
                 {name: "OST Volume 2 - Utopia", dlc: "v2", diff: 15, diffList: [2, 5, 8]},
                 {name: "OST Volume 2 - We Are The Fire", dlc: "v2", diff: 17, diffList: [3, 6, 8]},
 				{name: "OST Volume 2 - Sanaton Maa", dlc: "v2", diff: 16, diffList: [2, 6, 8]},
-				{name: "OST Volume 2 - Only Human", dlc: "v2", diff: 18, diffList: [2, 6, 10]}
+				{name: "OST Volume 2 - Only Human", dlc: "v2", diff: 18, diffList: [2, 6, 10]},
+				{name: "OST Volume 2 - Northern Lights", dlc: "v2", diff: 14, diffList: [2, 5, 7]},
+				{name: "OST Volume 2 - Gates of Ekrund", dlc: "v2", diff: 16, diffList: [2, 6, 8]}
             ];
             
             const ragnaSort = (a, b) => {
@@ -824,7 +846,7 @@
                 var shuffled = shuffle(tempPL);
                 var holdArray = []; // Kinda inefficient way to ensure we have something to sort for later
                 if (songCount == 0) {
-                    alert("RagnaChooser V2 2.2.1 by Blackbeard\nJuly 2023 - Partial Rewrite by JamieDerg\nFor Ragnarock (C) 2022-2023 Wanadev Studio\nThank you for using my tool, I hope you have fun.\nSpecial thanks to Nicolas and BloculusMonster!\nPlease put in a value above 1 to make the playlist!");
+                    alert("RagnaChooser V2 2.2.4 by Blackbeard\nOctober 2024 - Partial Rewrite by JamieDerg\nFor Ragnarock (C) 2022-2024 Wanadev Studio\nThank you for using my tool, I hope you have fun.\nSpecial thanks to Nicolas and BloculusMonster!\nPlease put in a value above 1 to make the playlist!");
                 }
                 if (songCount > shuffled.length) {
                         songCount = shuffled.length;
@@ -1214,30 +1236,6 @@
             function demoLokiJS(){
                 console.log(getLokiRNG(0, 100, "float", 50));
             }
-            
-            setInterval(countdown, 1000);
-    
-        function countdown(){
-          const targetDate = new Date("June 15, 2024 12:00:00 UTC");
-          const currentDate = new Date();
-
-          const timeDifference = targetDate - currentDate;
-
-          if (timeDifference > 0) {
-            const seconds = Math.floor((timeDifference / 1000) % 60);
-            const minutes = Math.floor((timeDifference / (1000 * 60)) % 60);
-            const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
-            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            const months = Math.floor(days / 30.44); // average month length
-            const years = Math.floor(months / 12);
-
-            const countdownString = `${years > 0 ? years + 'y ' : ''}${months % 12 > 0 ? months % 12 + 'mo ' : ''}${days % 30 > 0 ? days % 30 + 'd ' : ''}${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-
-            document.getElementById("cd").innerText = countdownString;
-          } else {
-            document.getElementById("cd").innerText = "Goodbye";
-          }
-        }
         </script>
     </body>
 </html>
