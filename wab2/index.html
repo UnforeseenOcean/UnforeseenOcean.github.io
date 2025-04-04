@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<meta charset="utf-8">
+<!--
+Copyright (c) 2011 Antoine Santo Aka NoNameNo
+
+This File is part of the CODEF project.
+
+More info : http://codef.santo.fr
+Demo gallery http://www.wab.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+<html lang="en">
+
+<head>
+    <title>WE ARE BACK 2.0</title>
+    <style>
+        body {
+            background-color: #000000;
+            text-align: center;
+        }
+        
+        .commodore-border {
+            z-index: 10;
+            position: absolute;
+            left: 50%;
+            margin-top: -105px;
+            transform: translate(-50%, 0%);
+            display: inline-block;
+        }
+        .commodore-border img {
+            width: 854px;
+            height: 727px;
+        }
+
+        .Wrapper {
+            position: relative;
+            text-align: center;
+            padding: 0;
+            margin-top: 120px;
+            vertical-align: middle;
+        }
+
+        .Error {
+            background-image: url('img/Error.gif');
+            background-color: #000000;
+            background-position: top;
+            z-index: -999999;
+            display: inline-block;
+            width: 640px;
+            position: absolute;
+            height: 480px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, 0%);
+            background-repeat: no-repeat;
+        }
+        
+        #main {
+            z-index: 1;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, 0%);
+            display: inline-block;
+            margin-top: -8px;
+            padding: 10px;
+        }
+
+        .footer {
+            color: #ffffff;
+            display: inline-block;
+            font-size: 1em;
+
+            font-family: monospace;
+            margin-top: 623px;
+            z-index: -1000000;
+        }
+        .footer p {
+            line-height: 0.2em;
+        }
+    </style>
+    <script src="js/codef_core.js"></script>
+    <script src="js/codef_starfield.js"></script>
+    <script src="js/codef_scrolltext.js"></script>
+    <script src="js/codef_music.js"></script>
+    <script>
+        var myfont = new image('img/newfont.png');
+        var logo = new image('img/fucking-title.png');
+        var player = new music("MK");
+        var mycanvas;
+        var mystarfield;
+        var myscrolltext;
+
+        var myscrollparam = [{
+            myvalue: 0,
+            amp: 60,
+            inc: 0.2,
+            offset: 0.04
+        }, ];
+
+        <!-- MOD files from Maktone and Cerror have missing channels, and it doesn't support s3m-->
+		<!-- wolamed.xm does not play on this player, what a shame... -->
+		<!-- narfanto.xm does not play -->
+        var musiclist = new Array();
+        musiclist = ["music/caroline.xm", "music/dlz-tvsh.xm", "music/lovefirs.xm", "music/melannie.mod", "music/theufo.xm", "music/noisyhot.xm", "music/ninjaskl.xm", "music/puncho.xm", "music/pundar.xm", "music/tent.xm", "music/finalsho.xm", "music/rudown.xm", "music/shock01.mod", "music/thor_h.xm", "music/ledsna.xm", "music/baobao.mod", "music/kb.xm", "music/tightone.xm", "music/chiffel.xm", "music/nudel.xm", "music/cubic.xm", "music/sexxybi3.xm", "music/worldchp.xm"];
+
+        var musictitle = new Array();
+        musictitle = ["CAROLINE IN NEON BY JOULE & KO0X", "STANDARD TVSHOW THEME BY DALEZY", "LOVE AT FIRST SIGHT BY MALMEN", "MELANNIE BY ESTRAYK", "THE UFO BY DJ ANDY", "NOISY HOTDOGS BY ROBBI", "NINJA STARTS SCHOOL BY DUBMOOD", "PUNCHOUT JOGGINGTIME BY ZALZA", "PUNDA BJ#RNE BY ZALZA", "NIGHT IN THE TENT BY ANALIZAT0R", "FINAL SHOWDOWN BY X-ACTO", "R U DOWN BY ANIMAL", "SHOCK THERAPHY 01 BY CHROMAG", "THOR HETER HAJO BY DALEZY", "LEDSNA ALVER BY STALKER", "!BAO!BAO! BY MAF", "DEMO TUNE BY .KB", "REMEMBER THE TIGHT ONES BY FEGOLHUZZ", "CHIFFEL 65: BLUE BY FLOPPI", "NUDEL SOPPA BLUES BY ZALZA", "CUBIC RUBIC BY SLASH", "SEXXXY BITS 3 BY DROZERIX", "WORLD OF CHIP BY PALEDETH AND DUALTRAX"];
+
+        var dice = Math.floor(Math.random() * musiclist.length);
+        var music = musiclist[dice];
+
+
+        function init() {
+            console.log("Music: " + musictitle[dice]);
+            console.log("File: " + music);
+            mycanvas = new canvas(640, 480, "main");
+            mystarfield = new starfield3D(mycanvas, 500, 2, 640, 480, 320, 240, '#FFFFFF', 100, 0, 0);
+            myfont.initTile(19, 25, 32);
+            myscrolltext = new scrolltext_horizontal();
+            myscrolltext.scrtxt = "WE ARE BACK! * A CODEF JS DEMO * NO FLASH * 100 PERCENT JAVASCRIPT ;;; A TRIBUTE TO THE GOOD OLD TIMES * AMIGA FOREVER ;;; HAVE FUN!! * THIS SHITTY DEMO WAS MADE BY TORBJ#RN ; SPECIAL THANKS TO ANTOINE SANTO ; GREETZ IN NO PARTICULAR ORDER: ALGAR * ARACHNO * ASAP * ASMA * AT4RE * CERROR * CHROMAG * CPY * DALEZY * DUALTRAX * DUBMOOD * EPYX * ESTRAYK * FEGOLHUZZ * GOTO80 * GRAFF * HVSC * HYOCHAN * JIZ * JOSSS * JOULE * LHS * LOONIE * MAF * MAKTONE * MALMEN * MELON DEZIGN * MODARCHIVE.ORG * MODE7 * MODLAND * MOZILLA * OGGE * ORION * PALEDETH * PEAK * RADIX * RAZOR1911 * REZ * SEABLUE * SINNY * THE DARK KNIGHT * TRSI * VIBE * ZABUTOM * ZALZA ; GFX BY TORBJ#RN ; ASSETS BY JIZ AND MELON DEZIGN ; RIP KEYGENMUSIC.NET ; MUSIC: " + musictitle[dice] + " ;;; THANK YOU! ;;;       ";
+            myscrolltext.init(mycanvas, myfont, 1, myscrollparam);
+            player.LoadAndRun(music);
+            go();
+        }
+
+        function go() {
+            mycanvas.fill('#000000');
+            mystarfield.draw();
+            logo.draw(mycanvas, 120, 160, 0.7, 1, 0.5, 0.5);
+            myscrolltext.draw(240 - 16);
+
+            requestAnimFrame(go);
+        }
+    </script>
+</head>
+
+<body onLoad="init();"> <!--onLoad="init();"-->
+    <div class="commodore-border"><img src="img/commodore-1084.svg"></div>
+    <div class="Wrapper">
+        <div id="main"></div>
+        <div class="Error" title="BOOT ERROR: STRING TANGLED"></div>
+        <noscript>Your browser does not support JavaScript.</noscript>
+    </div>
+    <div class="footer">
+        <p>CODEF by Antoine "NoNameNo" Santo &amp; Contributors</p>
+        <p>Viewer designed by Torbjorn.</p>
+        <p>Commodore is a trademark of respective parties.</p>
+        <p>This page is optimized for Mozilla Firefox >65.0.2.</p>
+        <p>On Chrome the sound may not play correctly due to anti-autoplay feature.</p>
+    </div>
+</body>
+
+</html>
