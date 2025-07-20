@@ -219,6 +219,13 @@
                         </label>
                     </div>
                     &nbsp;
+                    <div class="binder fix-checkbox">
+                        <input class="pickme" id="cfgViking" type="checkbox" name="Viking" onChange="updateConfig()">
+                        &nbsp;
+                        <label for="Viking">Viking
+                        </label>
+                    </div>
+                    &nbsp;
                     <br>
                 </span>
                 <div class="mid-text">If you select none of the raids, it will pick from all raids</div>
@@ -243,6 +250,7 @@
         var includeSabaton = 0;
         var includeJY = 0;
         var includeAlestorm = 0;
+        var includeViking = 0;
         var songList = [
             "Gloryhammer Raid - Gloryhammer",
             "Gloryhammer Raid - Questlords of Inverness Ride to the Galactic Fortress!",
@@ -331,7 +339,12 @@
             "Alestorm Raid - Keelhauled",
             "Alestorm Raid - P.A.R.T.Y",
             "Alestorm Raid - Shipwrecked",
-            "Alestorm Raid - Treasure Chest Party Quest"
+            "Alestorm Raid - Treasure Chest Party Quest",
+            "Viking Raid - Death of the God of Light",
+            "Viking Raid - Hold the Heathen Hammer High",
+            "Viking Raid - Skal",
+            "Viking Raid - Twilight of the Gods",
+            "Viking Raid - Valhalla Calling"
         ];
         var songListGH = [
             "Gloryhammer Raid - Gloryhammer",
@@ -389,6 +402,13 @@
             "Alestorm Raid - P.A.R.T.Y",
             "Alestorm Raid - Shipwrecked",
             "Alestorm Raid - Treasure Chest Party Quest"
+        ];
+        var songListViking = [
+            "Viking Raid - Death of the God of Light",
+            "Viking Raid - Hold the Heathen Hammer High",
+            "Viking Raid - Skal",
+            "Viking Raid - Twilight of the Gods",
+            "Viking Raid - Valhalla Calling"
         ];
         var songListVol1 = [
             "OST Volume 1 - Au Petit Matin",
@@ -510,7 +530,8 @@
             includeSabaton = document.getElementById("cfgSabaton").checked;
             includeJY = document.getElementById("cfgJonathan").checked;
             includeAlestorm = document.getElementById("cfgAlestorm").checked;
-            console.log(includeVol1, includeVol2, includeGH, includeHF, includeNB, includeSabaton, includeJY, includeAlestorm);
+            includeViking = document.getElementById("cfgViking").checked;
+            console.log(includeVol1, includeVol2, includeGH, includeHF, includeNB, includeSabaton, includeJY, includeAlestorm, includeViking);
         }
 
         function allAreTrue(arr) {
@@ -524,7 +545,7 @@
         function makePlaylist() {
             updateConfig();
             updateCount();
-            var ii = [includeVol1, includeVol2, includeGH, includeHF, includeNB, includeSabaton, includeJY, includeAlestorm];
+            var ii = [includeVol1, includeVol2, includeGH, includeHF, includeNB, includeSabaton, includeJY, includeAlestorm, includeViking];
             var intermediatePL = [];
             if (ii[0] == true) {
                 intermediatePL = intermediatePL.concat(songListVol1);
@@ -550,6 +571,9 @@
             if (ii[7] == true) {
                 intermediatePL = intermediatePL.concat(songListAlestorm);
             }
+            if (ii[8] == true) {
+                intermediatePL = intermediatePL.concat(songListViking);
+            }
             if ((allAreTrue(ii) == true) || (allAreFalse(ii) == true)) {
                 intermediatePL = intermediatePL.concat(songList);
             }
@@ -557,7 +581,7 @@
             var outputDOM = document.getElementById("output");
             var result = "";
             if (songCount == 0) {
-                outputDOM.innerHTML = "Ragnarock by Wanadev Studio<br>This tool made by Blackbeard<br>Under 2 hours from start to end<br>Version 2.0.0<br>Thank you for using my tool!<br>Hope you have fun.<br><br>Special thanks to Nicolas!<br><br>Please check and uncheck any of the Raids to generate playlist after this."
+                outputDOM.innerHTML = "Ragnarock by Wanadev Studio<br>This tool made by Blackbeard<br>Under 2 hours from start to end<br>Version 2.0.1<br>Thank you for using my tool!<br>Hope you have fun.<br><br>Special thanks to Nicolas!<br><br>Please check and uncheck any of the Raids to generate playlist after this."
             }
             if (songCount > intermediatePL.length) {
                 songCount = intermediatePL.length;
@@ -3839,6 +3863,7 @@
             customCheckbox("Sabaton");
             customCheckbox("JonathanYoung");
             customCheckbox("Alestorm");
+            customCheckbox("Viking");
         });
     </script>
 </body>
